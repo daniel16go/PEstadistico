@@ -1,0 +1,84 @@
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+C:\Users\Danii\Source\Repos\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+D:\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+D:\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+D:\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+D:\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
+D:\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+D:\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+D:\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+D:\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+E:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
+E:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+E:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+E:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+E:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+E:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+E:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+E:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+E:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+E:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+E:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+E:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+D:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+D:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+D:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+D:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Proyectos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
+D:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+D:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+D:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+D:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Proyectos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+E:\Proyectos\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Productivo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache

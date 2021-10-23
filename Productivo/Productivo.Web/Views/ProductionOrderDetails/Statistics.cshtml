@@ -1,0 +1,160 @@
+﻿@model Productivo.Core.Entities.ProductionOrderDetailEntity
+
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-sm-4">
+        <h2>Registro Produccion</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="m-b-md">
+                                <h2>Indicadores</h2>
+                            </div>
+                            <div>
+                                <hr />
+                                <div class="justify-content-md-center text-center">
+                                    <div class="panel-content">
+                                        <h2 class="colortitle-Productivo">OEE Evolucion de Produccion</h2>
+                                        <div id="chart-container2">Productivo Core Loading Data!!!</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                @Html.ActionLink("Regresar", "Details", "ProductionOrders", new { id = Model.ProductionOrdersId }, new { @class = "h3-Pandora  btn btn-secondary btn-sm" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    <script type="text/javascript">
+
+        FusionCharts.ready(function () {
+
+
+             var fusioncharts = new FusionCharts({
+                type: 'angulargauge',
+                renderAt: 'chart-container2',
+                width: '100%',
+                height: '300',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "showBorder": "0",
+                        "showShadow": "0",
+                        "use3DLighting": "0",
+                        "showLabels": "0",
+                        "showValues": "0",
+                        "paletteColors": "#58E2C2, #F7E53B",
+                        "bgColor": "#ffffff",
+                        "bgAlpha": "100",
+                        "canvasBgAlpha": "0",
+                        "decimals": "0",
+                        "baseFont": "Arial",
+                        "setAdaptiveMin": "1",
+                        "baseFontColor": "#000000",
+                        "chartTopMargin": "0",
+                        "canvasTopMargin": "0",
+                        "chartBottomMargin": "70",
+                        "chartLeftMargin": "10",
+                        "chartRightMargin": "10",
+                        "showTickMarks": "0",
+                        "showTickValues": "0",
+                        "showLimits": "0",
+                        "majorTMAlpha": "0",
+                        "minorTMAlpha": "0",
+                        "pivotFillAlpha": "0",
+                        "showPivotBorder": "0",
+                        "gaugeouterradius": "150",
+                        "gaugeInnerradius": "125",
+                        "showGaugeBorder": "0",
+                        "gaugeFillMix": "{light+0}",
+                        "toolTipBgcolor": "#484E69",
+                        "toolTipPadding": "7",
+                        "toolTipBorderRadius": "3",
+                        "toolTipBorderAlpha": "30",
+                        "tooltipBorderThickness": "0.7",
+                        "toolTipColor": "#FDFDFD",
+                        "transposeAnimation": "1"
+                    },
+                    "annotations": {
+                        "groups": [{
+                            "items": [
+                                {
+                                    "id": "2",
+                                    "type": "text",
+                                    "text": "@ViewBag.OEE%",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "1",
+                                    "fontSize": "45",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY"
+                                }, {
+                                    "id": "3",
+                                    "type": "text",
+                                    "text": "80% OEE Min.",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "0",
+                                    "fontSize": "25",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY + 45"
+                                }]
+                        }]
+                    },
+
+                    "colorRange": {
+                        "color": [{
+                            "minValue": "0",
+                            "maxValue": "@ViewBag.OEE",
+                            "code": "#58E2C2"
+                        },
+                        {
+                            "minValue": "0",
+                            "maxValue": "100",
+                            "code": "#48506E"
+                        }
+                        ]
+                    },
+                    "dials": {
+                        "dial": [{
+                            "value": "@ViewBag.OEE",
+                            "alpha": "0",
+                            "borderAlpha": "0",
+                            "radius": "0",
+                            "baseRadius": "0",
+                            "rearExtension": "0",
+                            "baseWidth": "0",
+                            "showValue": "0"
+                        }]
+                    }
+
+                }
+            });
+            fusioncharts.render();
+        });
+    </script>
+}
+

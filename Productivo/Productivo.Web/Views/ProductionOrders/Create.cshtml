@@ -1,0 +1,489 @@
+﻿@model Productivo.Core.ViewModels.ProductionOrders.ProductionOrderCreateViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Ordenes de produccion</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="ProdDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="ProdDate" class="form-control" />
+                                    <span asp-validation-for="ProdDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="ProdStartDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="ProdStartDate" class="form-control" />
+                                    <span asp-validation-for="ProdStartDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="Order" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Order" class="form-control" />
+                                    <span asp-validation-for="Order" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="StatusId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="StatusId" id="status-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Status">
+                                                <option disabled selected value="">Seleccione un status...</option>
+                                            </select>
+
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-status" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="StatusId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="Lot" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Lot" class="form-control" />
+                                    <span asp-validation-for="Lot" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="ProductsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="ProductsId" id="products-id" class="form-control"
+                                                    asp-items="@ViewBag.Products">
+                                                <option disabled selected value="">Seleccione un producto...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-product" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="ProductsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                         
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="ShiftsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="ShiftsId" id="shift-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Shifts">
+                                                <option disabled selected value="">Seleccione un tipo...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-shift" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="ShiftsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="ExpectedQuantity" class="control-label h4-Pandora"></label>
+                                    <input asp-for="ExpectedQuantity" class="form-control" />
+                                    <span asp-validation-for="ExpectedQuantity" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="MinPackageWeight" class="control-label h4-Pandora"></label>
+                                    <input asp-for="MinPackageWeight" class="form-control" />
+                                    <span asp-validation-for="MinPackageWeight" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="MaxPackageWeight" class="control-label h4-Pandora"></label>
+                                    <input asp-for="MaxPackageWeight" class="form-control" />
+                                    <span asp-validation-for="MaxPackageWeight" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="Lenght" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Lenght" class="form-control" />
+                                    <span asp-validation-for="Lenght" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="LenghtTolerance" class="control-label h4-Pandora"></label>
+                                    <input asp-for="LenghtTolerance" class="form-control" />
+                                    <span asp-validation-for="LenghtTolerance" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-------------------------------------------------------ModalCode---------------------------------------------------------------->
+            <form id="add-item-status">
+                <div class="modal fade" id="modal-create-status" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Status</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Status.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Status.Name" id="status-name" class="form-control" />
+                                                    <span asp-validation-for="Status.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Status.Module" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Status.Module" id="status-module" class="form-control" />
+                                                    <span asp-validation-for="Status.Module" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-status" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form id="add-item-product">
+                <div class="modal fade" id="modal-create-product" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Productos</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.Code" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Products.Code" id="product-code" class="form-control" />
+                                                    <span asp-validation-for="Products.Code" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Products.Name" id="product-name" class="form-control" />
+                                                    <span asp-validation-for="Products.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.UnitsId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Products.UnitsId" id="product-units-id" class="form-control" asp-
+                                                            asp-items="ViewBag.Units">
+                                                        <option disabled selected value="">Seleccione un tipo...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Products.UnitsId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.CodeERP" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Products.CodeERP" id="product-code-erp" class="form-control" />
+                                                    <span asp-validation-for="Products.CodeERP" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.Minimum" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Products.Minimum" id="product-minimum" class="form-control" />
+                                                    <span asp-validation-for="Products.Minimum" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.Maximum" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Products.Maximum" id="product-maximum" class="form-control" />
+                                                    <span asp-validation-for="Products.Maximum" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.Factor1" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Products.Factor1" id="product-factor1" class="form-control" />
+                                                    <span asp-validation-for="Products.Factor1" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.Factor2" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Products.Factor2" id="product-factor2" class="form-control" />
+                                                    <span asp-validation-for="Products.Factor2" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.Weight" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Products.Weight" id="product-weight" class="form-control" />
+                                                    <span asp-validation-for="Products.Weight" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.ProductTypesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Products.ProductTypesId" id="product-product-type-id" class="form-control" asp-
+                                                            asp-items="ViewBag.ProductTypes">
+                                                        <option disabled selected value="">Seleccione un tipo...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Products.ProductTypesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Products.ShapesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Products.ShapesId" id="product-shapes-id" class="form-control" asp-
+                                                            asp-items="ViewBag.Shapes">
+                                                        <option disabled selected value="">Seleccione un tipo...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Products.ShapesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-product" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form id="add-item-shift">
+                <div class="modal fade" id="modal-create-shift" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Turnos</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Shifts.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Shifts.Name" id="shift-name" class="form-control" />
+                                                    <span asp-validation-for="Shifts.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Shifts.ShiftStart" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Shifts.ShiftStart" id="shift-shiftstart" class="form-control" />
+                                                    <span asp-validation-for="Shifts.ShiftStart" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Shifts.ShiftEnd" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Shifts.ShiftEnd" id="shift-shiftend" class="form-control" />
+                                                    <span asp-validation-for="Shifts.ShiftEnd" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Shifts.RestTimeShift" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Shifts.RestTimeShift" id="shift-resttimeshift" class="form-control" />
+                                                    <span asp-validation-for="Shifts.RestTimeShift" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-shift" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        $("#add-item-status").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#status-name").val();
+            var _module = $("#status-module").val();
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddStatus'), { name: _name, module: _module },
+                function (data) {
+                    $("#close-modal-status").click();
+                    var _id = data['id'];
+                    $("#status-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-status')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-product").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _code = $("#product-code").val();
+            var _name = $("#product-name").val();
+            var _unitsId = $("#product-units-id").val();
+            var _codeERP = $("#product-code-erp").val();
+            var _minimum = $("#product-minimum").val();
+            var _maximum = $("#product-maximum").val();
+            var _factor1 = $("#product-factor1").val();
+            var _factor2 = $("#product-factor2").val();
+            var _weight = $("#product-weight").val();
+            var _productTypeId = $("#product-product-type-id").val();
+            var _shapesId = $("#product-shapes-id").val();
+
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddProducts'),
+                {
+                    code: _code,
+                    name: _name,
+                    unitsId: _unitsId,
+                    codeERP: _codeERP,
+                    minimum: _minimum,
+                    maximum: _maximum,
+                    factor1: _factor1,
+                    factor2: _factor2,
+                    weight: _weight,
+                    productType: _productTypeId,
+                    shapesId: _shapesId
+                },
+                function (data) {
+                    $("#close-modal-product").click();
+                    var _id = data['id'];
+                    $("#products-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-product')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-shift").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _Name = $("#shift-name").val();
+            var _ShiftStart = $("#shift-shiftstart").val();
+            var _ShiftEnd = $("#shift-shiftend").val();
+            var _RestTimeShift = $("#shift-resttimeshift").val();
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddShift'),
+                {
+                    Name: _Name,
+                    ShiftStart: _ShiftStart,
+                    ShiftEnd: _ShiftEnd,
+                    RestTimeShift: _RestTimeShift
+                },
+                function (data) {
+                    $("#close-modal-shift").click();
+                    var _id = data['id'];
+                    $("#shift-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-shift')[0].reset();
+                }
+            );
+        });
+    </script>
+}

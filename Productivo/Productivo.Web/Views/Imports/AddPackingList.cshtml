@@ -1,0 +1,101 @@
+﻿@model Productivo.Core.ViewModels.Imports.AddPackingListViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Ordenes de Compra - Packing List</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="AddPackingList">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                        <input type="hidden" asp-for="ImportsId" />
+                        <input type="hidden" asp-for="ImportDetailsId" />
+                        <input type="hidden" asp-for="LoadDate" value="@DateTime.Now" />
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Heat" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Heat" class="form-control" />
+                                    <span asp-validation-for="Heat" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Package" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Package" class="form-control" />
+                                    <span asp-validation-for="Package" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Pieces" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Pieces" class="form-control" />
+                                    <span asp-validation-for="Pieces" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="GrossWeight" class="control-label h4-Pandora"></label>
+                                    <input asp-for="GrossWeight" class="form-control" />
+                                    <span asp-validation-for="GrossWeight" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="NetWeight" class="control-label h4-Pandora"></label>
+                                    <input asp-for="NetWeight" class="form-control" />
+                                    <span asp-validation-for="NetWeight" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

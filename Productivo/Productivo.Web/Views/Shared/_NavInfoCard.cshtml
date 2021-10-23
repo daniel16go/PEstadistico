@@ -1,0 +1,34 @@
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<Productivo.Core.Entities.ApplicationUser> userManager
+<div class="info-card">
+    <img src="~/Images/Avatars/@userManager.GetUserAsync(User).Result.FilePath" class="profile-image rounded-circle" alt="@(Settings.Theme.User)">
+    <div class="info-card-text">
+        <a href="#" class="d-flex align-items-center text-white">
+            <span class="d-inline-block">
+                <span class="block m-t-xs font-bold">@userManager.GetUserAsync(User).Result.FirstName</span>
+            </span>
+        </a>
+        <a href="#" class="d-flex align-items-center text-white">
+            <span class="d-inline-block">
+                <span class="block m-t-xs font-bold">  @userManager.GetUserAsync(User).Result.Position</span>
+            </span>
+        </a>
+        @if (DateTime.Now.Hour >= 6 && DateTime.Now.Hour < 12)
+        {
+            <span class="d-inline-block">Buenos Dias !!! <img src="~/images/Sun.png" /></span>
+        }
+        else if (DateTime.Now.Hour >= 12 && DateTime.Now.Hour < 18)
+        {
+            <span class="d-inline-block">Buenas Tardes !!! <img src="~/images/Sun.png" /></span>
+        }
+        else
+        {
+            <span class="d-inline-block">Buenas Noches !!! <img src="~/images/Moon.png" /></span>
+        }
+
+    </div>
+    <img src="~/img/card-backgrounds/cover-5-lg.png" class="cover" alt="cover">
+    <a href="#" onclick="return false;" class="pull-trigger-btn" data-action="toggle" data-class="list-filter-active" data-target=".page-sidebar" data-focus="nav_filter_input">
+        <i class="@(Settings.Theme.IconPrefix) fa-angle-down"></i>
+    </a>
+</div>

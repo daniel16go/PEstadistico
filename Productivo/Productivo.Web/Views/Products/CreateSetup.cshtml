@@ -1,0 +1,259 @@
+﻿@model Productivo.Core.ViewModels.Products.ProductBOMCreateViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Configuracion Productos</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="CreateSetup">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                        <input type="hidden" asp-for="ProductsId" value="@ViewBag.ProductId" />
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="InstallationsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="InstallationsId" id="installations-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Installation">
+                                                <option disabled selected value="">Seleccione una instalacion...</option>
+                                            </select>
+
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-installation" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="InstallationsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="MethodsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="MethodsId" id="methods-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Method">
+                                                <option disabled selected value="">Seleccione un metodo de costeo...</option>
+                                            </select>
+
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-method" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="MethodsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <form id="add-item-installation">
+                <div class="modal fade" id="modal-create-installation" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Instalaciones</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Installations.Code" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Installations.Code" id="installation-code" class="form-control" />
+                                                    <span asp-validation-for="Installations.Code" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label asp-for="Installations.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Installations.Name" id="installation-name" class="form-control" />
+                                                    <span asp-validation-for="Installations.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label asp-for="Installations.Remarks" class="control-label h4-Pandora"></label>
+                                                    <textarea asp-for="Installations.Remarks" id="installation-remarks" class="form-control"></textarea>
+                                                    <span asp-validation-for="Installations.Remarks" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-installation" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-method">
+                <div class="modal fade" id="modal-create-method" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Metodos</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Methods.Code" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Methods.Code" id="method-code" class="form-control" />
+                                                    <span asp-validation-for="Methods.Code" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label asp-for="Methods.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Methods.Name" id="method-name" class="form-control" />
+                                                    <span asp-validation-for="Methods.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label asp-for="Methods.Remarks" class="control-label h4-Pandora"></label>
+                                                <textarea asp-for="Methods.Remarks" id="method-remarks" class="form-control"></textarea>
+                                                <span asp-validation-for="Methods.Remarks" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                <a id="close-modal-method" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </form>
+
+    </div>
+</div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#add-item-installation").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _Code = $("#installation-code").val();
+            var _Name = $("#installation-name").val();
+            var _Remarks = $("#installation-remarks").val();
+
+            $.getJSON(window.location.pathname.replace('/CreateSetup', '/AddInstallations'),
+                {
+                    code: _Code,
+                    name: _Name,
+                    remarks: _Remarks,
+                },
+                function (data) {
+                    $("#close-modal-installation").click();
+                    var _id = data['id'];
+                    $("#installations-id").append(`<option value="${_id}">${_Name}</option>`);
+                    $('#add-item-installation')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-method").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _Code = $("#method-code").val();
+            var _Name = $("#method-name").val();
+            var _Remarks = $("#method-remarks").val();
+
+            $.getJSON(window.location.pathname.replace('/CreateSetup', '/AddMethods'),
+                {
+                    code: _Code,
+                    name: _Name,
+                    remarks: _Remarks,
+                },
+                function (data) {
+                    $("#close-modal-method").click();
+                    var _id = data['id'];
+                    $("#methods-id").append(`<option value="${_id}">${_Name}</option>`);
+                    $('#add-item-method')[0].reset();
+                }
+            );
+        });
+
+
+    </script>
+
+}

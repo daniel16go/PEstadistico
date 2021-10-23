@@ -1,0 +1,472 @@
+﻿@model IEnumerable<Productivo.Core.ViewModels.Calendars.CalendarViewModel>
+
+@foreach (var calendar in Model)
+{
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2>@calendar.Name</h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                        <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <div id="calendar_@calendar.Id"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--------------------------------------------ModalCode--------------------------------------------->
+    <form id="add-calendar-event">
+        <div class="modal fade" id="modal-create-event" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content" id="id-of-the-form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <div class="col-lg-12">
+                                <h2>Crear evento</h2>
+                            </div>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                                <input type="hidden" id="calendar-id" value="@calendar.Id" />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.Name" class="control-label h4-Pandora"></label>
+                                            <input asp-for="@calendar.CalendarEvents.Name" id="event-name" class="form-control" />
+                                            <span asp-validation-for="@calendar.CalendarEvents.Name" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.CalendarCategoriesId" class="control-label h4-Pandora"></label>
+                                            <select asp-for="@calendar.CalendarEvents.CalendarCategoriesId" id="event-categories-id" class="form-control"
+                                                    asp-items="@(List<SelectListItem>)ViewBag.CalendarCategories">
+                                                <option disabled selected value="">Seleccione una categoria...</option>
+                                            </select>
+                                            <span asp-validation-for="@calendar.CalendarEvents.CalendarCategoriesId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.EventStartDate" class="control-label h4-Pandora"></label>
+                                            <input asp-for="@calendar.CalendarEvents.EventStartDate" id="event-startdate" class="form-control" />
+                                            <span asp-validation-for="@calendar.CalendarEvents.EventStartDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.EventEndDate" class="control-label h4-Pandora"></label>
+                                            <input asp-for="@calendar.CalendarEvents.EventEndDate" id="event-enddate" class="form-control" />
+                                            <span asp-validation-for="@calendar.CalendarEvents.EventEndDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.EventRemember" class="control-label h4-Pandora"></label>
+                                            <div class="custom-control custom-switch mr-2 ">
+                                                <input type="checkbox" class="custom-control-input" name="gra-2" id="gra-2" checked="checked">
+                                                <label class="custom-control-label" for="gra-2"> </label>
+                                            </div>
+                                            <span asp-validation-for="@calendar.CalendarEvents.EventRemember" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.Remarks" class="control-label h4-Pandora"></label>
+                                            <textarea asp-for="@calendar.CalendarEvents.Remarks" id="event-remarks" rows="4" class="form-control"> </textarea>
+                                            <span asp-validation-for="@calendar.CalendarEvents.Remarks" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="submit" id="create-add-item" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>--->
+                            <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                            <a id="close-modal" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="info-calendar-event">
+        <div class="modal fade" id="modal-info-event" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content" id="id-of-the-form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <div class="col-lg-12">
+                                <h2>Evento</h2>
+                            </div>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                                <input type="hidden" id="event-i-id" value="" />
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="m-b-md">
+                                            <h2>Información</h2>
+                                        </div>
+                                        <div>
+                                            <hr />
+                                            <dl class="row">
+                                                <dt class="col-sm-4">
+                                                    <label asp-for="@calendar.CalendarEvents.Name" class="control-label h4-Pandora"></label>
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    <label id="event-i-name" class="control-label h4-Pandora"></label>
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    <label asp-for="@calendar.CalendarEvents.EventStartDate" class="control-label h4-Pandora"></label>
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    <label id="event-i-startDate" class="control-label h4-Pandora"></label>
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    <label asp-for="@calendar.CalendarEvents.EventEndDate" class="control-label h4-Pandora"></label>
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    <label id="event-i-endDate" class="control-label h4-Pandora"></label>
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    <label asp-for="@calendar.CalendarEvents.Remarks" class="control-label h4-Pandora"></label>
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    <label id="event-i-remarks" class="control-label h4-Pandora"></label>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-warning btn-sm"><i class="fal fa-edit"></i></button>|
+                            <button type="button" id="event-delete" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>|
+
+                            <a id="close-modal-info" class="h3-Productivo  btn btn-success btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <form id="edit-calendar-event">
+        <div class="modal fade" id="modal-edit-event" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content" id="id-of-the-form">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            <div class="col-lg-12">
+                                <h2>Editar evento</h2>
+                            </div>
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                                <input type="hidden" id="calendar-e-id" value="" />
+                                <input type="hidden" id="event-e-id" value="" />
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.Name" class="control-label h4-Pandora"></label>
+                                            <input asp-for="@calendar.CalendarEvents.Name" id="event-e-name" class="form-control" />
+                                            <span asp-validation-for="@calendar.CalendarEvents.Name" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.CalendarCategoriesId" class="control-label h4-Pandora"></label>
+                                            <select asp-for="@calendar.CalendarEvents.CalendarCategoriesId" id="event-e-categories-id" class="form-control"
+                                                    asp-items="@(List<SelectListItem>)ViewBag.CalendarCategories">
+                                                <option disabled selected value="">Seleccione una categoria...</option>
+                                            </select>
+                                            <span asp-validation-for="@calendar.CalendarEvents.CalendarCategoriesId" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.EventStartDate" class="control-label h4-Pandora"></label>
+                                            <input asp-for="@calendar.CalendarEvents.EventStartDate" id="event-e-startdate" class="form-control" />
+                                            <span asp-validation-for="@calendar.CalendarEvents.EventStartDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.EventEndDate" class="control-label h4-Pandora"></label>
+                                            <input asp-for="@calendar.CalendarEvents.EventEndDate" id="event-e-enddate" class="form-control" />
+                                            <span asp-validation-for="@calendar.CalendarEvents.EventEndDate" class="text-danger"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.EventRemember" class="control-label h4-Pandora"></label>
+                                            <div class="custom-control custom-switch mr-2 ">
+                                                <input type="checkbox" class="custom-control-input" name="e-gra-2" id="e-gra-2" checked="checked">
+                                                <label class="custom-control-label" for="e-gra-2"> </label>
+                                            </div>
+                                            <span asp-validation-for="@calendar.CalendarEvents.EventRemember" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label asp-for="@calendar.CalendarEvents.Remarks" class="control-label h4-Pandora"></label>
+                                            <textarea asp-for="@calendar.CalendarEvents.Remarks" id="event-e-remarks" rows="4" class="form-control"> </textarea>
+                                            <span asp-validation-for="@calendar.CalendarEvents.Remarks" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="submit" id="create-add-item" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>--->
+                            <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                            <a id="close-modal-edit" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+
+<partial name="_DeleteDialog" />
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <link rel="stylesheet" media="screen, print" href="/css/miscellaneous/fullcalendar/fullcalendar.bundle.css">
+    <script src="/js/dependency/moment/moment.js"></script>
+    <script src="/js/miscellaneous/fullcalendar/fullcalendar.bundle.js"></script>
+
+    <!---script de gestion del calendario-->
+    <script>
+        var todayDate = moment().startOf('day');
+        var YM = todayDate.format('YYYY-MM');
+        var YESTERDAY = todayDate.clone().subtract(1, 'day').format('YYYY-MM-DD');
+        var TODAY = todayDate.format('YYYY-MM-DD');
+        var TOMORROW = todayDate.clone().add(1, 'day').format('YYYY-MM-DD');
+        document.addEventListener('DOMContentLoaded', function () {
+            $.getJSON(window.location.pathname.replace('/Calendar', '/ListCalendar'), {},
+                function (data) {
+                    var calendarEvents = []
+                    $.each(data, function (index, rowv) {
+                        var calendarEl = document.getElementById('calendar_' + rowv);
+                        var calendar = new FullCalendar.Calendar(calendarEl, {
+                            plugins: ['dayGrid', 'list', 'timeGrid', 'interaction', 'bootstrap'],
+                            themeSystem: 'bootstrap',
+                            timeZone: 'UTC',
+                            locale: 'es',
+                            buttonText: {
+                                today: 'Hoy',
+                                month: 'Mes',
+                                week: 'Semana',
+                                day: 'Dia',
+                                list: 'Lista'
+                            },
+                            eventTimeFormat: {
+                                hour: 'numeric',
+                                minute: '2-digit',
+                                meridiem: 'short'
+                            },
+                            navLinks: true,
+                            header: {
+                                left: 'prev,next today addEventButton',
+                                center: 'title',
+                                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                            },
+                            footer: {
+                                left: '',
+                                center: '',
+                                right: ''
+                            },
+                            customButtons: {
+                                addEventButton: {
+                                    text: '+',
+                                    click: function () {
+                                        $("#modal-create-event").modal("show");
+                                        $("#calendar-id").val(rowv);
+                                    }
+                                }
+                            },
+                            editable: true,
+                            eventLimit: true,
+                            views: {
+                                sevenDays: {
+                                    type: 'agenda',
+                                    buttonText: '7 Days',
+                                    visibleRange: function (currentDate) {
+                                        return {
+                                            start: currentDate.clone().subtract(2, 'days'),
+                                            end: currentDate.clone().add(5, 'days'),
+                                        };
+                                    },
+                                    duration: { days: 7 },
+                                    dateIncrement: { days: 1 },
+                                },
+                            },
+                            events: calendarEvents,
+
+                            eventClick: function (info) {
+
+                                var eventId = info.event.id;
+                                $.getJSON(window.location.pathname.replace('/Calendar', '/GetCalendarEvents'), { id: eventId },
+                                    function (data) {
+                                        $("#modal-info-event").modal("show");
+                                        $("#event-i-name").html(data['name']);
+                                        $("#event-i-startDate").html(data['eventStartDate']);
+                                        $("#event-i-endDate").html(data['eventEndDate']);
+                                        $("#event-i-remarks").html(data['remarks']);
+                                        $('#event-i-id').val(eventId);
+                                    });
+                            },
+                            eventDrop: function (info) {
+                                $.getJSON(window.location.pathname.replace('/Calendar', '/CalendarEventsDrop'), {
+                                    id: info.event.id,
+                                    start: info.event.start.toISOString(),
+                                    end: info.event.end.toISOString()
+                                },
+                                    function (data) {
+                                        console.log(data);
+                                    }
+                                );
+                            }
+                        });
+                        $.getJSON(window.location.pathname.replace('/Calendar', '/ListCalendarEvents'), { id: rowv },
+                            function (data2) {
+                                $.each(data2, function (index, rowv2) {
+                                    calendar.addEvent({
+                                        id: rowv2['id'],
+                                        title: rowv2['name'],
+                                        start: rowv2['eventStartDate'],
+                                        end: rowv2['eventEndDate'],
+                                        color: rowv2['color'],
+                                    });
+                                })
+                            });
+                        calendar.render();
+
+                    })
+                }
+            );
+        });
+    </script>
+
+    <!---script control modals y delete-->
+    <script type="text/javascript">
+
+
+
+        $("#add-calendar-event").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _calendarId = $("#calendar-id").val();
+            var _name = $("#event-name").val();
+            var _calendarCategories = $("#event-categories-id").val();
+            var _startDate = $("#event-startdate").val();
+            var _endDate = $("#event-enddate").val();
+            var _remember = $('#gra-2').prop('checked');
+            var _remarks = $("#event-remarks").val();
+
+            $.getJSON(window.location.pathname.replace('/Calendar', '/AddCalendarEvents'),
+                {
+                    calendarId: _calendarId,
+                    name: _name,
+                    categoriesId: _calendarCategories,
+                    startDate: _startDate,
+                    endDate: _endDate,
+                    remember: _remember,
+                    remarks: _remarks
+                },
+                function (data) {
+                    $("#close-modal").click();
+                    $('#add-calendar-event')[0].reset();
+                    location.reload();
+                }
+            );
+        });
+
+        $("#info-calendar-event").on('submit', function (evt) {
+            evt.preventDefault();
+
+
+            eventId = $('#event-i-id').val();
+
+            $.getJSON(window.location.pathname.replace('/Calendar', '/GetCalendarEvents'), { id: eventId },
+                function (data) {
+                    $("#event-e-id").val(data['id']);
+                    $("#modal-edit-event").modal("show");
+                    $("#calendar-e-id").val(data['calendarsId']);
+                    $("#event-e-name").val(data['name']);
+                    $("#event-e-categories-id option[value=" + data['calendarCategoriesId'] + "]").attr("selected", true);
+                    $("#event-e-startdate").val(data['eventStartDate']);
+                    $("#event-e-enddate").val(data['eventEndDate']);
+                    $("#event-e-remarks").val(data['remarks']);
+                    $("#e-gra-2").prop("checked", data['eventRemember']);
+                }
+            );
+            $('#close-modal-info').click();
+
+        });
+
+        $("#edit-calendar-event").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _id = $("#event-e-id").val();
+            var _calendarId = $("#calendar-e-id").val();
+            var _name = $("#event-e-name").val();
+            var _calendarCategories = $("#event-e-categories-id").val();
+            var _startDate = $("#event-e-startdate").val();
+            var _endDate = $("#event-e-enddate").val();
+            var _remember = $('#e-gra-2').prop('checked');
+            var _remarks = $("#event-e-remarks").val();
+
+            $.getJSON(window.location.pathname.replace('/Calendar', '/EditCalendarEvents'),
+                {
+                    id: _id,
+                    calendarId: _calendarId,
+                    name: _name,
+                    categoriesId: _calendarCategories,
+                    startDate: _startDate,
+                    endDate: _endDate,
+                    remember: _remember,
+                    remarks: _remarks
+                },
+                function (data) {
+                    $("#close-modal-edit").click();
+                    $('#edit-calendar-event')[0].reset();
+                    location.reload();
+                }
+            );
+        });
+
+
+        var item_to_delete;
+        $('.deleteItem').click((e) => {
+            item_to_delete = $('#event-i-id').val();
+        });
+
+        $("#btnYesDelete").click(function (evt) {
+            item_to_delete = $('#event-i-id').val();
+            window.location.pathname = window.location.pathname.replace('/Calendar', '/DeleteEvent/') + item_to_delete;
+        });
+    </script>
+}

@@ -1,0 +1,1339 @@
+﻿@model Productivo.Core.ViewModels.Diagnostics.DiagnosticDetailViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Diagnostico & Modelo</h2>
+        <p>
+            <a asp-action="ExecutiveReport" asp-route-id="@Model.diagnostic.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Informe Ejecutivo Diagnostico" target="_blank"><i class="fal fa-print"></i></a>
+        </p>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#tab_diagnostic" role="tab">Info. General Diagnostico</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_diagnostic_detail" role="tab">De la habilidad del trabajador</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_diagnostic_estandares" role="tab">De los estándares</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_diagnostic_condiciondetrabajo" role="tab">De la condición de trabajo</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_diagnostic_condiciontecnica" role="tab">De la condición técnica</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_diagnostic_proceso" role="tab">Del proceso - Método</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_diagnostic_gerencias" role="tab">De la gestión gerencial</a></li>
+                        </ul>
+                        <div class="tab-content p-3">
+                            <!-- Diagnostico -->
+                            <div class="tab-pane fade show active" id="tab_diagnostic" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="m-b-md">
+                                            <h2>Información General Diagnostico</h2>
+                                        </div>
+                                        <hr />
+                                        <div class="float-left col-sm-6">
+                                            <dl class="row">
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.diagnostic.CodeDiagnostic)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.diagnostic.CodeDiagnostic)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.diagnostic.Name)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.diagnostic.Name)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.diagnostic.Status.Name)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.diagnostic.Status.Name)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.diagnostic.DiagDate)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.diagnostic.DiagDate)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.diagnostic.EndDiagDate)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.diagnostic.EndDiagDate)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.diagnostic.SubSectors.SubSector)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.diagnostic.SubSectors.SubSector)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.diagnostic.Employees.FullName)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.diagnostic.Employees.FullName)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.diagnostic.Remarks)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.diagnostic.Remarks)
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="float-right  col-sm-6">
+                                            <div class="justify-content-md-center text-center">
+                                                <div class="panel-content">
+                                                    <h2 class="colortitle-Productivo">Calificación Diagnostico</h2>
+                                                    <div id="chart-container2">Productivo Core Loading Data!!!</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <table class="table table-hover table-striped table-sm w-100">
+                                        <tbody>
+                                            <tr style="height: 23px;">
+                                                <td style="height: 23px;"><strong>Nivel</strong></td>
+                                                <td style="height: 23px;"><strong>Estado</strong></td>
+                                                <td style="height: 23px;"><strong>Descripcion Estado</strong></td>
+                                                <td style="height: 23px;"><strong>Margen Excelencia</strong></td>
+                                                <td style="height: 23px;"><strong>Codigo Color</strong></td>
+                                            </tr>
+                                            <tr style="height: 23px;">
+                                                <td style="height: 23px;">0</td>
+                                                <td style="height: 23px;">Inocente</td>
+                                                <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido</td>
+                                                <td style="height: 23px;">0</td>
+                                                <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                                            </tr>
+                                            <tr style="height: 23px;">
+                                                <td style="height: 23px;">1</td>
+                                                <td style="height: 23px;">Insatisfactorio</td>
+                                                <td style="height: 23px;">No existe evidencia,politica, criterio o estandar o manifiesto gerencial de la metodologia.</td>
+                                                <td style="height: 23px;">1 a 25</td>
+                                                <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                                            </tr>
+                                            <tr style="height: 23px;">
+                                                <td style="height: 23px;">2</td>
+                                                <td style="height: 23px;">Basico</td>
+                                                <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporadicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estandar, impera mas el criterio propio.</td>
+                                                <td style="height: 23px;">26 a 49</td>
+                                                <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                                            </tr>
+                                            <tr style="height: 23px;">
+                                                <td style="height: 23px;">3</td>
+                                                <td style="height: 23px;">Transicion</td>
+                                                <td style="height: 23px;">Existe trazabilidad de la accion, los resultados son evidentes en cuanto a un "antes" y un "despues", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendicion de cuentas</td>
+                                                <td style="height: 23px;">50 a 74</td>
+                                                <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                                            </tr>
+                                            <tr style="height: 23px;">
+                                                <td style="height: 23px;">4</td>
+                                                <td style="height: 23px;">Avanzado</td>
+                                                <td style="height: 23px;">Existe trazabilidad de la accion, los resultados son evidentes en cuanto a un "antes" y un "despues", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendicion de cuentas</td>
+                                                <td style="height: 23px;">75 a 94</td>
+                                                <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                                            </tr>
+                                            <tr style="height: 23px;">
+                                                <td style="height: 23px;">5</td>
+                                                <td style="height: 23px;">Clase Mundial</td>
+                                                <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tableto maestro</td>
+                                                <td style="height: 23px;">95 a 100</td>
+                                                <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                            <!-- De la habilidad del trabajador -->
+                            <div class="tab-pane fade" id="tab_diagnostic_detail" role="tabpanel">
+                                <h1 class="h1-Productivo">Evolución del Diagnostico - De la habilidad del trabajador</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.diagnosticDetails.Count == 0)
+                                        {
+                                            <h5>No hay registros del diagnostico asociados aun.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetails[0].ModelQuestions.QuestionName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetails[0].Execution)
+                                                        </th>
+                                                        <th>
+                                                            Peso
+                                                        </th>
+                                                        <th>
+                                                            Calificación
+                                                        </th>
+                                                        <th>
+                                                            Acciones
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.diagnosticDetails)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.QuestionName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.WeightQuestion)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:n2}", item.ModelQuestions.WeightQuestion * item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    @Html.ActionLink(" ", "Details", "DiagnosticDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Totales Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.Execution Puntos</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.WeightTotal </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.CalificationTotal </strong>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            <strong>% Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@string.Format("{0:n2}", (((Double.Parse(ViewBag.Execution)) / 45) * 100)) %</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> @string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotal))/5)*100)) %</strong>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        }
+                                        <!-- #region Analisis Diagnostico -->
+                                        @if ((Double.Parse(ViewBag.CalificationTotal)) != 0)
+                                        {
+                                            <h3 class="h3-Productivo">Analisis Parcial del Diagnostico</h3>
+                                            <div>
+                                                <table class="table table-hover table-striped table-sm w-100">
+                                                    <tbody>
+                                                        <tr style="height: 23px;">
+                                                            <td style="height: 23px;"><center><strong>Status</strong></center></td>
+                                                            <td style="height: 23px;"><strong>Nivel</strong></td>
+                                                            <td style="height: 23px;"><strong>Calificación</strong></td>
+                                                            <td style="height: 23px;"><strong>Diagnostico</strong></td>
+                                                        </tr>
+                                                        <tr style="height: 23px;">
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) >= 0 && (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) < 1)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Inocente</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) >= 1 && (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) <= 25)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Insatisfactorio</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) >= 26 && (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) <= 49)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Basico</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) >= 50 && (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) <= 74)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Transicion</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) >= 75 && (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) <= 94)
+                                                            {
+                                                               <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Avanzado</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) >= 95 && (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100) <= 100)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Clase Mundial</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                                                            }
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        }
+                                            <!-- #endregion -->
+                                        </div>
+                                </div>
+                                <p>
+                                    @if (Model.diagnostic.EndDiagDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar items", "Create", "DiagnosticDetails", new { diagnosticId = Model.diagnostic.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                        if (Model.diagnosticDetails.Count > 0)
+                                        {
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDiagnosticDialog">Finalizar Diagnostico</button>
+                                        }
+
+                                    }
+                                </p>
+
+                            </div>
+                            <!-- De los Estandares -->
+                            <div class="tab-pane fade" id="tab_diagnostic_estandares" role="tabpanel">
+                                <h1 class="h1-Productivo">Evolución del Diagnostico - De los estándares</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.diagnosticDetailsStandards.Count == 0)
+                                        {
+                                            <h5>No hay registros del diagnostico asociados aun.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsStandards[0].ModelQuestions.QuestionName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsStandards[0].Execution)
+                                                        </th>
+                                                        <th>
+                                                            Peso
+                                                        </th>
+                                                        <th>
+                                                            Calificación
+                                                        </th>
+                                                        <th>
+                                                            Acciones
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.diagnosticDetailsStandards)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.QuestionName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.WeightQuestion)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:n2}", item.ModelQuestions.WeightQuestion * item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    @Html.ActionLink(" ", "Details", "DiagnosticDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Totales Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.ExecutionStandards Puntos</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.WeightTotalStandards </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.CalificationTotalStandards </strong>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            <strong>% Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@string.Format("{0:n2}", (((Double.Parse(ViewBag.ExecutionStandards)) / 45) * 100)) %</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> @string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100)) %</strong>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        }
+                                        <!-- #region Analisis Diagnostico -->
+                                        @if ((Double.Parse(ViewBag.CalificationTotalStandards)) != 0)
+                                        {
+                                            <h3 class="h3-Productivo">Analisis Parcial del Diagnostico</h3>
+                                            <div>
+                                                <table class="table table-hover table-striped table-sm w-100">
+                                                    <tbody>
+                                                        <tr style="height: 23px;">
+                                                            <td style="height: 23px;"><center><strong>Status</strong></center></td>
+                                                            <td style="height: 23px;"><strong>Nivel</strong></td>
+                                                            <td style="height: 23px;"><strong>Calificación</strong></td>
+                                                            <td style="height: 23px;"><strong>Diagnostico</strong></td>
+                                                        </tr>
+                                                        <tr style="height: 23px;">
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) >= 0 && (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) < 1)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Inocente</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) >= 1 && (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) <= 25)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Insatisfactorio</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) >= 26 && (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) <= 49)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Basico</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) >= 50 && (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) <= 74)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Transicion</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) >= 75 && (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) <= 94)
+                                                            {
+                                                               <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Avanzado</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) >= 95 && (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100) <= 100)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Clase Mundial</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                                                            }
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        }
+                                            <!-- #endregion -->
+                                        </div>
+                                </div>
+                                <p>
+                                    @if (Model.diagnostic.EndDiagDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar items", "Create", "DiagnosticDetails", new { diagnosticId = Model.diagnostic.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                        if (Model.diagnosticDetailsStandards.Count > 0)
+                                        {
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDiagnosticDialog">Finalizar Diagnostico</button>
+                                        }
+
+                                    }
+                                </p>
+
+                            </div>
+                            <!-- De la condicion del trabajo -->
+                            <div class="tab-pane fade" id="tab_diagnostic_condiciondetrabajo" role="tabpanel">
+                                <h1 class="h1-Productivo">Evolución del Diagnostico - De la condición de trabajo</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.diagnosticDetailsWork.Count == 0)
+                                        {
+                                            <h5>No hay registros del diagnostico asociados aun.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsWork[0].ModelQuestions.QuestionName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsWork[0].Execution)
+                                                        </th>
+                                                        <th>
+                                                            Peso
+                                                        </th>
+                                                        <th>
+                                                            Calificación
+                                                        </th>
+                                                        <th>
+                                                            Acciones
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.diagnosticDetailsWork)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.QuestionName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.WeightQuestion)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:n2}", item.ModelQuestions.WeightQuestion * item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    @Html.ActionLink(" ", "Details", "DiagnosticDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Totales Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.ExecutionWork Puntos</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.WeightTotalWork </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.CalificationTotalWork </strong>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            <strong>% Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@string.Format("{0:n2}", (((Double.Parse(ViewBag.ExecutionWork)) / 45) * 100)) %</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> @string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100)) %</strong>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        }
+                                        <!-- #region Analisis Diagnostico -->
+                                        @if ((Double.Parse(ViewBag.CalificationTotalWork)) != 0)
+                                        {
+                                            <h3 class="h3-Productivo">Analisis Parcial del Diagnostico</h3>
+                                            <div>
+                                                <table class="table table-hover table-striped table-sm w-100">
+                                                    <tbody>
+                                                        <tr style="height: 23px;">
+                                                            <td style="height: 23px;"><center><strong>Status</strong></center></td>
+                                                            <td style="height: 23px;"><strong>Nivel</strong></td>
+                                                            <td style="height: 23px;"><strong>Calificación</strong></td>
+                                                            <td style="height: 23px;"><strong>Diagnostico</strong></td>
+                                                        </tr>
+                                                        <tr style="height: 23px;">
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) >= 0 && (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) < 1)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Inocente</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) >= 1 && (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) <= 25)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Insatisfactorio</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) >= 26 && (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) <= 49)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Basico</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) >= 50 && (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) <= 74)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Transicion</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) >= 75 && (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) <= 94)
+                                                            {
+                                                               <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Avanzado</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) >= 95 && (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100) <= 100)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Clase Mundial</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                                                            }
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        }
+                                            <!-- #endregion -->
+                                        </div>
+                                </div>
+                                <p>
+                                    @if (Model.diagnostic.EndDiagDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar items", "Create", "DiagnosticDetails", new { diagnosticId = Model.diagnostic.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                        if (Model.diagnosticDetailsWork.Count > 0)
+                                        {
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDiagnosticDialog">Finalizar Diagnostico</button>
+                                        }
+
+                                    }
+                                </p>
+
+                            </div>
+                            <!-- De la condicion tecnica -->
+                            <div class="tab-pane fade" id="tab_diagnostic_condiciontecnica" role="tabpanel">
+                                <h1 class="h1-Productivo">Evolución del Diagnostico - De la condición técnica</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.diagnosticDetailsTecnique.Count == 0)
+                                        {
+                                            <h5>No hay registros del diagnostico asociados aun.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsTecnique[0].ModelQuestions.QuestionName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsTecnique[0].Execution)
+                                                        </th>
+                                                        <th>
+                                                            Peso
+                                                        </th>
+                                                        <th>
+                                                            Calificación
+                                                        </th>
+                                                        <th>
+                                                            Acciones
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.diagnosticDetailsTecnique)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.QuestionName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.WeightQuestion)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:n2}", item.ModelQuestions.WeightQuestion * item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    @Html.ActionLink(" ", "Details", "DiagnosticDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Totales Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.ExecutionTecnique Puntos</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.WeightTotalTecnique </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.CalificationTotalTecnique </strong>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            <strong>% Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@string.Format("{0:n2}", (((Double.Parse(ViewBag.ExecutionTecnique)) / 45) * 100)) %</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> @string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100)) %</strong>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        }
+                                        <!-- #region Analisis Diagnostico -->
+                                        @if ((Double.Parse(ViewBag.CalificationTotalTecnique)) != 0)
+                                        {
+                                            <h3 class="h3-Productivo">Analisis Parcial del Diagnostico</h3>
+                                            <div>
+                                                <table class="table table-hover table-striped table-sm w-100">
+                                                    <tbody>
+                                                        <tr style="height: 23px;">
+                                                            <td style="height: 23px;"><center><strong>Status</strong></center></td>
+                                                            <td style="height: 23px;"><strong>Nivel</strong></td>
+                                                            <td style="height: 23px;"><strong>Calificación</strong></td>
+                                                            <td style="height: 23px;"><strong>Diagnostico</strong></td>
+                                                        </tr>
+                                                        <tr style="height: 23px;">
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) >= 0 && (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) < 1)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Inocente</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) >= 1 && (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) <= 25)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Insatisfactorio</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) >= 26 && (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) <= 49)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Basico</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) >= 50 && (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) <= 74)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Transicion</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) >= 75 && (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) <= 94)
+                                                            {
+                                                               <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Avanzado</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) >= 95 && (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100) <= 100)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Clase Mundial</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                                                            }
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        }
+                                            <!-- #endregion -->
+                                        </div>
+                                </div>
+                                <p>
+                                    @if (Model.diagnostic.EndDiagDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar items", "Create", "DiagnosticDetails", new { diagnosticId = Model.diagnostic.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                        if (Model.diagnosticDetailsTecnique.Count > 0)
+                                        {
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDiagnosticDialog">Finalizar Diagnostico</button>
+                                        }
+
+                                    }
+                                </p>
+
+                            </div>
+                            <!-- Del proceso - Metodo -->
+                            <div class="tab-pane fade" id="tab_diagnostic_proceso" role="tabpanel">
+                                <h1 class="h1-Productivo">Evolución del Diagnostico - Del proceso - Método</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.diagnosticDetailsMethod.Count == 0)
+                                        {
+                                            <h5>No hay registros del diagnostico asociados aun.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsMethod[0].ModelQuestions.QuestionName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsMethod[0].Execution)
+                                                        </th>
+                                                        <th>
+                                                            Peso
+                                                        </th>
+                                                        <th>
+                                                            Calificación
+                                                        </th>
+                                                        <th>
+                                                            Acciones
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.diagnosticDetailsMethod)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.QuestionName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.WeightQuestion)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:n2}", item.ModelQuestions.WeightQuestion * item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    @Html.ActionLink(" ", "Details", "DiagnosticDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Totales Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.ExecutionMethod Puntos</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.WeightTotalMethod </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.CalificationTotalMethod </strong>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            <strong>% Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@string.Format("{0:n2}", (((Double.Parse(ViewBag.ExecutionMethod)) / 45) * 100)) %</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> @string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100)) %</strong>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        }
+                                        <!-- #region Analisis Diagnostico -->
+                                        @if ((Double.Parse(ViewBag.CalificationTotalMethod)) != 0)
+                                        {
+                                            <h3 class="h3-Productivo">Analisis Parcial del Diagnostico</h3>
+                                            <div>
+                                                <table class="table table-hover table-striped table-sm w-100">
+                                                    <tbody>
+                                                        <tr style="height: 23px;">
+                                                            <td style="height: 23px;"><center><strong>Status</strong></center></td>
+                                                            <td style="height: 23px;"><strong>Nivel</strong></td>
+                                                            <td style="height: 23px;"><strong>Calificación</strong></td>
+                                                            <td style="height: 23px;"><strong>Diagnostico</strong></td>
+                                                        </tr>
+                                                        <tr style="height: 23px;">
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) >= 0 && (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) < 1)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Inocente</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) >= 1 && (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) <= 25)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Insatisfactorio</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) >= 26 && (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) <= 49)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Basico</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) >= 50 && (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) <= 74)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Transicion</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) >= 75 && (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) <= 94)
+                                                            {
+                                                               <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Avanzado</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                                                            }
+                                                            @if ((((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) >= 95 && (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100) <= 100)
+                                                            {
+                                                                <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                                                                <td style="height: 23px; ">Clase Mundial</td>
+                                                                <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100)) %</td>
+                                                                <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                                                            }
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        }
+                                            <!-- #endregion -->
+                                        </div>
+                                </div>
+                                <p>
+                                    @if (Model.diagnostic.EndDiagDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar items", "Create", "DiagnosticDetails", new { diagnosticId = Model.diagnostic.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                        if (Model.diagnosticDetailsMethod.Count > 0)
+                                        {
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDiagnosticDialog">Finalizar Diagnostico</button>
+                                        }
+
+                                    }
+                                </p>
+
+                            </div>
+                            <!-- De la gestion gerencias de la excelencia -->
+                            <div class="tab-pane fade" id="tab_diagnostic_gerencias" role="tabpanel">
+                                <h1 class="h1-Productivo">Evolución del Diagnostico - De la gestión gerencial</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.diagnosticDetailsManage.Count == 0)
+                                        {
+                                            <h5>No hay registros del diagnostico asociados aun.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsManage[0].ModelQuestions.QuestionName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.diagnosticDetailsManage[0].Execution)
+                                                        </th>
+                                                        <th>
+                                                            Peso
+                                                        </th>
+                                                        <th>
+                                                            Calificación
+                                                        </th>
+                                                        <th>
+                                                            Acciones
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.diagnosticDetailsManage)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.QuestionName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ModelQuestions.WeightQuestion)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:n2}", item.ModelQuestions.WeightQuestion * item.Execution)
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    @Html.ActionLink(" ", "Details", "DiagnosticDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Totales Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.ExecutionManage Puntos</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.WeightTotalManage </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.CalificationTotalManage </strong>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            <strong>% Diagnostico </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@string.Format("{0:n2}", (((Double.Parse(ViewBag.ExecutionManage)) / 45) * 100)) %</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> </strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong> @string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100)) %</strong>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        }
+                                        <!-- #region Analisis Diagnostico -->
+                                        @if ((Double.Parse(ViewBag.CalificationTotalManage)) != 0)
+                                        {
+                                        <h3 class="h3-Productivo">Analisis Parcial del Diagnostico</h3>
+                                        <div>
+                                            <table class="table table-hover table-striped table-sm w-100">
+                                                <tbody>
+                                                    <tr style="height: 23px;">
+                                                        <td style="height: 23px;"><center><strong>Status</strong></center></td>
+                                                        <td style="height: 23px;"><strong>Nivel</strong></td>
+                                                        <td style="height: 23px;"><strong>Calificación</strong></td>
+                                                        <td style="height: 23px;"><strong>Diagnostico</strong></td>
+                                                    </tr>
+                                                    <tr style="height: 23px;">
+                                                        @if ((((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) >= 0 && (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) < 1)
+                                                        {
+                                                            <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                                                            <td style="height: 23px; ">Inocente</td>
+                                                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100)) %</td>
+                                                            <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                                                        }
+                                                        @if ((((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) >= 1 && (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) <= 25)
+                                                        {
+                                                            <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                                                            <td style="height: 23px; ">Insatisfactorio</td>
+                                                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100)) %</td>
+                                                            <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                                                        }
+                                                        @if ((((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) >= 26 && (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) <= 49)
+                                                        {
+                                                            <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                                                            <td style="height: 23px; ">Basico</td>
+                                                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100)) %</td>
+                                                            <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                                                        }
+                                                        @if ((((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) >= 50 && (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) <= 74)
+                                                        {
+                                                            <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                                                            <td style="height: 23px; ">Transicion</td>
+                                                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100)) %</td>
+                                                            <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                                                        }
+                                                        @if ((((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) >= 75 && (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) <= 94)
+                                                        {
+                                                           <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                                                            <td style="height: 23px; ">Avanzado</td>
+                                                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100)) %</td>
+                                                            <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                                                        }
+                                                        @if ((((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) >= 95 && (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100) <= 100)
+                                                        {
+                                                            <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                                                            <td style="height: 23px; ">Clase Mundial</td>
+                                                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100)) %</td>
+                                                            <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                                                        }
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        }
+                                        <!-- #endregion -->
+                                    </div>
+                                </div>
+                                <p>
+                                    @if (Model.diagnostic.EndDiagDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar items", "Create", "DiagnosticDetails", new { diagnosticId = Model.diagnostic.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                        if (Model.diagnosticDetailsManage.Count > 0)
+                                        {
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDiagnosticDialog">Finalizar Diagnostico</button>
+                                        }
+
+                                    }
+                                </p>
+
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@{double GlobalCalification = 0;
+    double AvgCalificationTotal = (((Double.Parse(ViewBag.CalificationTotal)) / 5) * 100);
+    double AvgCalificationStandard = (((Double.Parse(ViewBag.CalificationTotalStandards)) / 5) * 100);
+    double AvgCalificationWork = (((Double.Parse(ViewBag.CalificationTotalWork)) / 5) * 100);
+    double AvgCalificationMethod = (((Double.Parse(ViewBag.CalificationTotalMethod)) / 5) * 100);
+    double AvgCalificationTecnique = (((Double.Parse(ViewBag.CalificationTotalTecnique)) / 5) * 100);
+    double AvgCalificationManage = (((Double.Parse(ViewBag.CalificationTotalManage)) / 5) * 100);
+    GlobalCalification = (AvgCalificationTotal + AvgCalificationStandard + AvgCalificationWork + AvgCalificationMethod + AvgCalificationTecnique + AvgCalificationManage) /6;
+        }
+
+<partial name="_ConfirmFinishDiagnostic" />
+
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // FinishDiagnostic
+            $("#btnYesConfirm").click(function () {
+                window.location.pathname = window.location.pathname.replace('/Details/', '/FinishDiagnostic/');
+            });
+
+        });
+    </script>
+
+    @*<script>
+            $(document).ready(function () {
+                var groupColumn = 0;
+                var table = $('#MyTable').DataTable({
+                    "searching": false,
+                    "paging": false,
+                    "bInfo": false,
+                    "columnDefs": [
+                        { "visible": false, "targets": groupColumn }
+                    ],
+                    "order": [[groupColumn, 'asc']],
+                    "displayLength": 40,
+                    "drawCallback": function (settings) {
+                        var api = this.api();
+                        var rows = api.rows({ page: 'current' }).nodes();
+                        var last = null;
+
+                        api.column(groupColumn, { page: 'current' }).data().each(function (group, i) {
+                            if (last !== group) {
+                                $(rows).eq(i).before(
+                                    '<tr class="group"><td colspan="5"><strong>' + group + '</strong></td></tr>'
+                                );
+
+                                last = group;
+                            }
+                        });
+                    }
+                });
+
+                // Order by the grouping
+                $('#MyTable tbody').on('click', 'tr.group', function () {
+                    var currentOrder = table.order()[0];
+                    if (currentOrder[0] === groupColumn && currentOrder[1] === 'asc') {
+                        table.order([groupColumn, 'desc']).draw();
+                    }
+                    else {
+                        table.order([groupColumn, 'asc']).draw();
+                    }
+                });
+            });
+        </script>*@
+
+
+<script type="text/javascript">
+
+        FusionCharts.ready(function () {
+
+
+             var fusioncharts = new FusionCharts({
+                type: 'angulargauge',
+                renderAt: 'chart-container2',
+                width: '100%',
+                height: '300',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "showBorder": "0",
+                        "showShadow": "0",
+                        "use3DLighting": "0",
+                        "showLabels": "0",
+                        "showValues": "0",
+                        "paletteColors": "#58E2C2, #F7E53B",
+                        "bgColor": "#ffffff",
+                        "bgAlpha": "100",
+                        "canvasBgAlpha": "0",
+                        "decimals": "0",
+                        "baseFont": "Arial",
+                        "setAdaptiveMin": "1",
+                        "baseFontColor": "#000000",
+                        "chartTopMargin": "0",
+                        "canvasTopMargin": "0",
+                        "chartBottomMargin": "70",
+                        "chartLeftMargin": "10",
+                        "chartRightMargin": "10",
+                        "showTickMarks": "0",
+                        "showTickValues": "0",
+                        "showLimits": "0",
+                        "majorTMAlpha": "0",
+                        "minorTMAlpha": "0",
+                        "pivotFillAlpha": "0",
+                        "showPivotBorder": "0",
+                        "gaugeouterradius": "150",
+                        "gaugeInnerradius": "125",
+                        "showGaugeBorder": "0",
+                        "gaugeFillMix": "{light+0}",
+                        "toolTipBgcolor": "#484E69",
+                        "toolTipPadding": "7",
+                        "toolTipBorderRadius": "3",
+                        "toolTipBorderAlpha": "30",
+                        "tooltipBorderThickness": "0.7",
+                        "toolTipColor": "#FDFDFD",
+                        "transposeAnimation": "1"
+                    },
+                    "annotations": {
+                        "groups": [{
+                            "items": [
+                                {
+                                    "id": "2",
+                                    "type": "text",
+                                    "text": "@string.Format("{0:n2}",GlobalCalification)%",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "1",
+                                    "fontSize": "45",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY"
+                                }, {
+                                    "id": "3",
+                                    "type": "text",
+                                    "text": "Min. 26 Puntos - Estado Basico",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "0",
+                                    "fontSize": "14",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY + 45"
+                                }]
+                        }]
+                    },
+
+                    "colorRange": {
+                        "color": [{
+                            "minValue": "0",
+                            "maxValue": "@string.Format("{0:n2}",GlobalCalification)",
+                            "code": "#58E2C2"
+                        },
+                        {
+                            "minValue": "0",
+                            "maxValue": "100",
+                            "code": "#48506E"
+                        }
+                        ]
+                    },
+                    "dials": {
+                        "dial": [{
+                            "value": "@string.Format("{0:n2}",GlobalCalification)",
+                            "alpha": "0",
+                            "borderAlpha": "0",
+                            "radius": "0",
+                            "baseRadius": "0",
+                            "rearExtension": "0",
+                            "baseWidth": "0",
+                            "showValue": "0"
+                        }]
+                    }
+
+                }
+            });
+            fusioncharts.render();
+        });
+</script>
+}
+

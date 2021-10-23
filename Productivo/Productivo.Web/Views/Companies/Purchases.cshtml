@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Productivo.Core.Entities.PlanPaymentEntity>
+
+@section HeadBlock {
+    <link rel="stylesheet" media="screen, print" href="~/css/datagrid/datatables/datatables.bundle.css">
+}
+<h1 class="h1-Productivo">Historico Planes Compañia</h1>
+<p>
+    <a asp-action="Purchase" asp-route-id="@ViewContext.RouteData.Values["id"]" class="h3-Productivo  btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+    <a asp-action="PurchasesReportPDF" asp-route-id="@ViewContext.RouteData.Values["id"]" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reporte PDF" target="_blank"><i class="fal fa-print"></i></a>
+</p>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Plans.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PurchaseDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PaymentTypes.Name)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Plans.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PurchaseDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PaymentTypes.Name)
+                                </td>
+                                <td>
+                                    <button data-id="@item.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por pagina",
+                    "emptyTable": "No hay registros para mostrar",
+                    "zeroRecords": "No se encontro nada - Lo siento.",
+                    "info": "Mostrando Pagina _PAGE_ de _PAGES_",
+                    "infoEmpty": "No existen registros disponibles",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "infoFiltered": "(Filtrado de _MAX_ registros totales)"
+                }
+            });
+            // Delete item
+            var item_to_delete;
+            $('.deleteItem').click((e) => {
+                item_to_delete = e.currentTarget.dataset.id;
+            });
+            $("#btnYesDelete").click(function () {
+                window.location.href = '/PlanPayments/Delete/' + item_to_delete;
+            });
+        });
+    </script>
+
+}

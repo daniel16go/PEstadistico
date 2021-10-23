@@ -1,0 +1,96 @@
+﻿@model Productivo.Core.Entities.EmailJobConfigEntity
+
+@section HeadBlock {
+    <link rel="stylesheet" media="screen, print" href="~/css/datagrid/datatables/datatables.bundle.css">
+}
+<h1 class="h1-Productivo">Configuracion del servicio de Correo</h1>
+<p>
+    @if (Model == null)
+    {
+        <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>}
+    else
+    {
+        <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Modificar"><i class="fal fa-edit"></i></a>
+        <button data-id="@Model.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog" title="Eliminar"><i class="fal fa-trash-alt"></i></button>
+    }
+</p>
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    @if (Model != null)
+                    {
+                        <div class="panel-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="control-label h4-Pandora"></label>
+                                        <label class="form-control">@Model.Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="SmtpHost" class="control-label h4-Pandora"></label>
+                                        <label class="form-control">@Model.SmtpHost</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="SmtpPort" class="control-label h4-Pandora"></label>
+                                        <label class="form-control">@Model.SmtpPort</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="EnableSSL" class="control-label h4-Pandora"></label>
+                                        <div class="custom-control custom-switch">
+                                            <input asp-for="EnableSSL" type="checkbox" class="custom-control-input" disabled  id="customSwitch2">
+                                            <label class="custom-control-label" for="customSwitch2"></label>
+                                        </div>
+                                        <span asp-validation-for="EnableSSL" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <p></p>
+                        </div>
+
+                    }
+                    else
+                    {
+                        <h5>Proceso no configurado</h5>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<partial name="_DeleteDialog" />
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+    <script type="text/javascript">
+            // Delete item
+            var item_to_delete;
+            $('.deleteItem').click((e) => {
+                item_to_delete = e.currentTarget.dataset.id;
+            });
+            $("#btnYesDelete").click(function () {
+                window.location.pathname = window.location.pathname.replace('/Index', '/Delete/') + item_to_delete;
+            });
+    </script>
+
+}

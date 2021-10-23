@@ -1,0 +1,717 @@
+﻿
+<html>
+<head>
+    <meta http-equiv="Refresh" content="300">
+    <script src="~/FusionCharts/fusioncharts.js"></script>
+    <script src="~/FusionCharts/themes/fusioncharts.theme.fusion.js"></script>
+
+    @*OEE*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Index', '/OeeGlobal'), {},
+                function (data) {
+                    var dataOEE = data;
+
+                    var fusioncharts = new FusionCharts({
+                        type: 'angulargauge',
+                        renderAt: 'chart-container-oeeglobal',
+                        width: '100%',
+                        height: '300',
+                        dataFormat: 'json',
+                        dataSource: {
+                            "chart": {
+                                "showBorder": "0",
+                                "showShadow": "0",
+                                "use3DLighting": "0",
+                                "showLabels": "0",
+                                "showValues": "0",
+                                "paletteColors": "#58E2C2, #F7E53B",
+                                "bgColor": "#ffffff",
+                                "bgAlpha": "100",
+                                "canvasBgAlpha": "0",
+                                "decimals": "0",
+                                "baseFont": "Arial",
+                                "setAdaptiveMin": "1",
+                                "baseFontColor": "#000000",
+                                "chartTopMargin": "0",
+                                "canvasTopMargin": "0",
+                                "chartBottomMargin": "70",
+                                "chartLeftMargin": "10",
+                                "chartRightMargin": "10",
+                                "showTickMarks": "0",
+                                "showTickValues": "0",
+                                "showLimits": "0",
+                                "majorTMAlpha": "0",
+                                "minorTMAlpha": "0",
+                                "pivotFillAlpha": "0",
+                                "showPivotBorder": "0",
+                                "gaugeouterradius": "150",
+                                "gaugeInnerradius": "125",
+                                "showGaugeBorder": "0",
+                                "gaugeFillMix": "{light+0}",
+                                "toolTipBgcolor": "#484E69",
+                                "toolTipPadding": "7",
+                                "toolTipBorderRadius": "3",
+                                "toolTipBorderAlpha": "30",
+                                "tooltipBorderThickness": "0.7",
+                                "toolTipColor": "#FDFDFD",
+                                "transposeAnimation": "1"
+                            },
+                            "annotations": {
+                                "groups": [{
+                                    "items": [
+                                        {
+                                            "id": "2",
+                                            "type": "text",
+                                            "text": dataOEE + "%",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "1",
+                                            "fontSize": "45",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY"
+                                        }, {
+                                            "id": "3",
+                                            "type": "text",
+                                            "text": "80% OEE Min.",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "0",
+                                            "fontSize": "25",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY + 45"
+                                        }]
+                                }]
+                            },
+
+                            "colorRange": {
+                                "color": [{
+                                    "minValue": "0",
+                                    "maxValue": dataOEE,
+                                    "code": "#58E2C2"
+                                },
+                                {
+                                    "minValue": dataOEE,
+                                    "maxValue": "100",
+                                    "code": "#48506E"
+                                }
+                                ]
+                            },
+                            "dials": {
+                                "dial": [{
+                                    "value": dataOEE,
+                                    "alpha": "0",
+                                    "borderAlpha": "0",
+                                    "radius": "0",
+                                    "baseRadius": "0",
+                                    "rearExtension": "0",
+                                    "baseWidth": "0",
+                                    "showValue": "0"
+                                }]
+                            }
+
+                        }
+                    });
+                    fusioncharts.render();
+                }
+            );
+
+
+        });
+    </script>
+    @*OEE Mes Actual*@
+    <script type="text/javascript">
+
+        FusionCharts.ready(function () {
+
+            $.getJSON(window.location.pathname.replace('/Index', '/OeeGlobal'), {},
+                function (data) {
+                    var dataOEE = data;
+                    var fusioncharts = new FusionCharts({
+                        type: 'angulargauge',
+                        renderAt: 'chart-container-oeemonthnow',
+                        width: '100%',
+                        height: '300',
+                        dataFormat: 'json',
+                        dataSource: {
+                            "chart": {
+                                "showBorder": "0",
+                                "showShadow": "0",
+                                "use3DLighting": "0",
+                                "showLabels": "0",
+                                "showValues": "0",
+                                "paletteColors": "#58E2C2, #F7E53B",
+                                "bgColor": "#ffffff",
+                                "bgAlpha": "100",
+                                "canvasBgAlpha": "0",
+                                "decimals": "0",
+                                "baseFont": "Arial",
+                                "setAdaptiveMin": "1",
+                                "baseFontColor": "#000000",
+                                "chartTopMargin": "0",
+                                "canvasTopMargin": "0",
+                                "chartBottomMargin": "70",
+                                "chartLeftMargin": "10",
+                                "chartRightMargin": "10",
+                                "showTickMarks": "0",
+                                "showTickValues": "0",
+                                "showLimits": "0",
+                                "majorTMAlpha": "0",
+                                "minorTMAlpha": "0",
+                                "pivotFillAlpha": "0",
+                                "showPivotBorder": "0",
+                                "gaugeouterradius": "150",
+                                "gaugeInnerradius": "125",
+                                "showGaugeBorder": "0",
+                                "gaugeFillMix": "{light+0}",
+                                "toolTipBgcolor": "#484E69",
+                                "toolTipPadding": "7",
+                                "toolTipBorderRadius": "3",
+                                "toolTipBorderAlpha": "30",
+                                "tooltipBorderThickness": "0.7",
+                                "toolTipColor": "#FDFDFD",
+                                "transposeAnimation": "1"
+                            },
+                            "annotations": {
+                                "groups": [{
+                                    "items": [
+                                        {
+                                            "id": "2",
+                                            "type": "text",
+                                            "text": dataOEE + "%",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "1",
+                                            "fontSize": "45",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY"
+                                        }, {
+                                            "id": "3",
+                                            "type": "text",
+                                            "text": "80% OEE Min.",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "0",
+                                            "fontSize": "25",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY + 45"
+                                        }]
+                                }]
+                            },
+
+                            "colorRange": {
+                                "color": [{
+                                    "minValue": "0",
+                                    "maxValue": dataOEE,
+                                    "code": "#58E2C2"
+                                },
+                                {
+                                    "minValue": dataOEE,
+                                    "maxValue": "100",
+                                    "code": "#48506E"
+                                }
+                                ]
+                            },
+                            "dials": {
+                                "dial": [{
+                                    "value": dataOEE,
+                                    "alpha": "0",
+                                    "borderAlpha": "0",
+                                    "radius": "0",
+                                    "baseRadius": "0",
+                                    "rearExtension": "0",
+                                    "baseWidth": "0",
+                                    "showValue": "0"
+                                }]
+                            }
+
+                        }
+                    });
+                    fusioncharts.render();
+                });
+        });
+    </script>
+    @*OEE Mes Anterior*@
+    <script type="text/javascript">
+
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Index', '/OeeLastMonth'), {},
+                function (data) {
+                    var dataOEELastMonth = data;
+                    var fusioncharts = new FusionCharts({
+                        type: 'angulargauge',
+                        renderAt: 'chart-container-oeelastmonth',
+                        width: '100%',
+                        height: '300',
+                        dataFormat: 'json',
+                        dataSource: {
+                            "chart": {
+                                "showBorder": "0",
+                                "showShadow": "0",
+                                "use3DLighting": "0",
+                                "showLabels": "0",
+                                "showValues": "0",
+                                "paletteColors": "#58E2C2, #F7E53B",
+                                "bgColor": "#ffffff",
+                                "bgAlpha": "100",
+                                "canvasBgAlpha": "0",
+                                "decimals": "0",
+                                "baseFont": "Arial",
+                                "setAdaptiveMin": "1",
+                                "baseFontColor": "#000000",
+                                "chartTopMargin": "0",
+                                "canvasTopMargin": "0",
+                                "chartBottomMargin": "70",
+                                "chartLeftMargin": "10",
+                                "chartRightMargin": "10",
+                                "showTickMarks": "0",
+                                "showTickValues": "0",
+                                "showLimits": "0",
+                                "majorTMAlpha": "0",
+                                "minorTMAlpha": "0",
+                                "pivotFillAlpha": "0",
+                                "showPivotBorder": "0",
+                                "gaugeouterradius": "150",
+                                "gaugeInnerradius": "125",
+                                "showGaugeBorder": "0",
+                                "gaugeFillMix": "{light+0}",
+                                "toolTipBgcolor": "#484E69",
+                                "toolTipPadding": "7",
+                                "toolTipBorderRadius": "3",
+                                "toolTipBorderAlpha": "30",
+                                "tooltipBorderThickness": "0.7",
+                                "toolTipColor": "#FDFDFD",
+                                "transposeAnimation": "1"
+                            },
+                            "annotations": {
+                                "groups": [{
+                                    "items": [
+                                        {
+                                            "id": "2",
+                                            "type": "text",
+                                            "text": dataOEELastMonth + "%",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "1",
+                                            "fontSize": "45",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY"
+                                        }, {
+                                            "id": "3",
+                                            "type": "text",
+                                            "text": "80% OEE Min.",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "0",
+                                            "fontSize": "25",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY + 45"
+                                        }]
+                                }]
+                            },
+
+                            "colorRange": {
+                                "color": [{
+                                    "minValue": "0",
+                                    "maxValue": dataOEELastMonth,
+                                    "code": "#58E2C2"
+                                },
+                                {
+                                    "minValue": dataOEELastMonth,
+                                    "maxValue": "100",
+                                    "code": "#48506E"
+                                }
+                                ]
+                            },
+                            "dials": {
+                                "dial": [{
+                                    "value": dataOEELastMonth,
+                                    "alpha": "0",
+                                    "borderAlpha": "0",
+                                    "radius": "0",
+                                    "baseRadius": "0",
+                                    "rearExtension": "0",
+                                    "baseWidth": "0",
+                                    "showValue": "0"
+                                }]
+                            }
+
+                        }
+                    });
+                    fusioncharts.render();
+                });
+        });
+    </script>
+    @*OEE Acumulador año*@
+    <script type="text/javascript">
+
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Index', '/OeeByYear'), {},
+                function (data) {
+                    var OeeByYear = data;
+                    var fusioncharts = new FusionCharts({
+                        type: 'angulargauge',
+                        renderAt: 'chart-container-oeexyear',
+                        width: '100%',
+                        height: '300',
+                        dataFormat: 'json',
+                        dataSource: {
+                            "chart": {
+                                "showBorder": "0",
+                                "showShadow": "0",
+                                "use3DLighting": "0",
+                                "showLabels": "0",
+                                "showValues": "0",
+                                "paletteColors": "#58E2C2, #F7E53B",
+                                "bgColor": "#ffffff",
+                                "bgAlpha": "100",
+                                "canvasBgAlpha": "0",
+                                "decimals": "0",
+                                "baseFont": "Arial",
+                                "setAdaptiveMin": "1",
+                                "baseFontColor": "#000000",
+                                "chartTopMargin": "0",
+                                "canvasTopMargin": "0",
+                                "chartBottomMargin": "70",
+                                "chartLeftMargin": "10",
+                                "chartRightMargin": "10",
+                                "showTickMarks": "0",
+                                "showTickValues": "0",
+                                "showLimits": "0",
+                                "majorTMAlpha": "0",
+                                "minorTMAlpha": "0",
+                                "pivotFillAlpha": "0",
+                                "showPivotBorder": "0",
+                                "gaugeouterradius": "150",
+                                "gaugeInnerradius": "125",
+                                "showGaugeBorder": "0",
+                                "gaugeFillMix": "{light+0}",
+                                "toolTipBgcolor": "#484E69",
+                                "toolTipPadding": "7",
+                                "toolTipBorderRadius": "3",
+                                "toolTipBorderAlpha": "30",
+                                "tooltipBorderThickness": "0.7",
+                                "toolTipColor": "#FDFDFD",
+                                "transposeAnimation": "1"
+                            },
+                            "annotations": {
+                                "groups": [{
+                                    "items": [
+                                        {
+                                            "id": "2",
+                                            "type": "text",
+                                            "text": OeeByYear + "%",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "1",
+                                            "fontSize": "45",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY"
+                                        }, {
+                                            "id": "3",
+                                            "type": "text",
+                                            "text": "80% OEE Min.",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "0",
+                                            "fontSize": "25",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY + 45"
+                                        }]
+                                }]
+                            },
+
+                            "colorRange": {
+                                "color": [{
+                                    "minValue": "0",
+                                    "maxValue": OeeByYear,
+                                    "code": "#58E2C2"
+                                },
+                                {
+                                    "minValue": OeeByYear,
+                                    "maxValue": "100",
+                                    "code": "#48506E"
+                                }
+                                ]
+                            },
+                            "dials": {
+                                "dial": [{
+                                    "value": OeeByYear,
+                                    "alpha": "0",
+                                    "borderAlpha": "0",
+                                    "radius": "0",
+                                    "baseRadius": "0",
+                                    "rearExtension": "0",
+                                    "baseWidth": "0",
+                                    "showValue": "0"
+                                }]
+                            }
+
+                        }
+                    });
+                    fusioncharts.render();
+                });
+        });
+    </script>
+    @*OEE x Maquina*@
+    <script type="text/javascript">
+
+        FusionCharts.ready(function () {
+            var fusioncharts = new FusionCharts({
+                type: 'angulargauge',
+                renderAt: 'chart-container-oeexmachine',
+                width: '100%',
+                height: '300',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "showBorder": "0",
+                        "showShadow": "0",
+                        "use3DLighting": "0",
+                        "showLabels": "0",
+                        "showValues": "0",
+                        "paletteColors": "#58E2C2, #F7E53B",
+                        "bgColor": "#ffffff",
+                        "bgAlpha": "100",
+                        "canvasBgAlpha": "0",
+                        "decimals": "0",
+                        "baseFont": "Arial",
+                        "setAdaptiveMin": "1",
+                        "baseFontColor": "#000000",
+                        "chartTopMargin": "0",
+                        "canvasTopMargin": "0",
+                        "chartBottomMargin": "70",
+                        "chartLeftMargin": "10",
+                        "chartRightMargin": "10",
+                        "showTickMarks": "0",
+                        "showTickValues": "0",
+                        "showLimits": "0",
+                        "majorTMAlpha": "0",
+                        "minorTMAlpha": "0",
+                        "pivotFillAlpha": "0",
+                        "showPivotBorder": "0",
+                        "gaugeouterradius": "150",
+                        "gaugeInnerradius": "125",
+                        "showGaugeBorder": "0",
+                        "gaugeFillMix": "{light+0}",
+                        "toolTipBgcolor": "#484E69",
+                        "toolTipPadding": "7",
+                        "toolTipBorderRadius": "3",
+                        "toolTipBorderAlpha": "30",
+                        "tooltipBorderThickness": "0.7",
+                        "toolTipColor": "#FDFDFD",
+                        "transposeAnimation": "1"
+                    },
+                    "annotations": {
+                        "groups": [{
+                            "items": [
+                                {
+                                    "id": "2",
+                                    "type": "text",
+                                    "text": "@ViewBag.OEE%",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "1",
+                                    "fontSize": "45",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY"
+                                }, {
+                                    "id": "3",
+                                    "type": "text",
+                                    "text": "80% OEE Min.",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "0",
+                                    "fontSize": "25",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY + 45"
+                                }]
+                        }]
+                    },
+
+                    "colorRange": {
+                        "color": [{
+                            "minValue": "0",
+                            "maxValue": "@ViewBag.OEE",
+                            "code": "#58E2C2"
+                        },
+                        {
+                            "minValue": "@ViewBag.OEE",
+                            "maxValue": "100",
+                            "code": "#48506E"
+                        }
+                        ]
+                    },
+                    "dials": {
+                        "dial": [{
+                            "value": "@ViewBag.OEE",
+                            "alpha": "0",
+                            "borderAlpha": "0",
+                            "radius": "0",
+                            "baseRadius": "0",
+                            "rearExtension": "0",
+                            "baseWidth": "0",
+                            "showValue": "0"
+                        }]
+                    }
+
+                }
+            });
+            fusioncharts.render();
+        });
+    </script>
+    @*OEE perdidas de proceso*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Index', '/OeeProcessLosses'), {  },
+                function (data) {
+                    var rowsM = "";
+                    rowsM += '<p style="font-size: 80PX">$ ' + data + "</p>";
+                    $("#process-losses").html(rowsM);
+                }
+            );
+        });
+    </script>
+
+</head>
+<body>
+
+
+    <div class="text-center">
+        <h1 class="display-4 colortitle-Productivo">OEE DashBoard</h1>
+        <p></p>
+
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">OEE Global</h2>
+                            <div id="chart-container-oeeglobal">Productivo Core Loading Data!!!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">OEE Mes actual</h2>
+                            <div id="chart-container-oeemonthnow">Productivo Core Loading Data!!!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">OEE Mes anterior</h2>
+                            <div id="chart-container-oeelastmonth">Productivo Core Loading Data!!!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">OEE acumulado por año</h2>
+                            <div id="chart-container-oeexyear">Productivo Core Loading Data!!!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">OEE x Maquina</h2>
+                            <div id="chart-container-oeexmachine">Productivo Core Loading Data!!!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">Pérdidas de proceso</h2>
+                            <hr />
+                            <strong id="process-losses"></strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+</body>
+</html>

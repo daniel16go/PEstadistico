@@ -1,0 +1,458 @@
+﻿@model Productivo.Core.ViewModels.ControlEPPDetails.ControlEPPDetailCreateViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Asignacion EPP</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now" />
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                        <input type="hidden" asp-for="ControlEPPsId" value="@ViewBag.ControlEPPId" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="EmployeesId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="EmployeesId" id="employee-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Employees">
+                                                <option disabled selected value="">Seleccione un empleado evaluador...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-employee" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="EmployeesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="AsignmentDateTime" class="control-label h4-Pandora"></label>
+                                    <input asp-for="AsignmentDateTime" class="form-control" />
+                                    <span asp-validation-for="AsignmentDateTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="ReturnDateTime" class="control-label h4-Pandora"></label>
+                                    <input asp-for="ReturnDateTime" class="form-control" />
+                                    <span asp-validation-for="ReturnDateTime" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="ProtectionElementsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="ProtectionElementsId" id="protection-elements-id" class="form-control"
+                                                    asp-items="@ViewBag.ProtectionElements">
+                                                <option disabled selected value="">Seleccione un EPP a asignar...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-protection-elements" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="ProtectionElementsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="Quantity" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Quantity" class="form-control" />
+                                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    @Html.ActionLink("Regresar", "Details", "EPPControls", new { id = ViewBag.OrderId }, new { @class = "h3-Productivo  btn btn-warning btn-sm" })
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!----------------------------------------------------------------------------------------------------------------------------->
+            <form id="add-item-employee">
+                <div class="modal fade" id="modal-create-employee" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Empleados</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.FirstName" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.FirstName" id="first-name" class="form-control" />
+                                                    <span asp-validation-for="Employees.FirstName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.SecondName" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.SecondName" id="second-name" class="form-control" />
+                                                    <span asp-validation-for="Employees.SecondName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.LastName1" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.LastName1" id="last-name1" class="form-control" />
+                                                    <span asp-validation-for="Employees.LastName1" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.LastName2" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.LastName2" id="last-name2" class="form-control" />
+                                                    <span asp-validation-for="Employees.LastName2" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.Address" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.Address" id="address" class="form-control" />
+                                                    <span asp-validation-for="Employees.Address" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.IdCode" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.IdCode" id="id-code" class="form-control" />
+                                                    <span asp-validation-for="Employees.IdCode" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.Phone1" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.Phone1" id="phone1" class="form-control" />
+                                                    <span asp-validation-for="Employees.Phone1" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.Phone2" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.Phone2" id="phone2" class="form-control" />
+                                                    <span asp-validation-for="Employees.Phone2" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.BirthDate" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.BirthDate" id="birthdate" class="form-control" />
+                                                    <span asp-validation-for="Employees.BirthDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.EmployeeTypesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Employees.EmployeeTypesId" id="employee-type-id" class="form-control" asp-
+                                                            asp-items="ViewBag.EmployeeType">
+                                                        <option disabled selected value="">Seleccione un tipo...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Employees.EmployeeTypesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.EmergencyName" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.EmergencyName" id="emergency-name" class="form-control" />
+                                                    <span asp-validation-for="Employees.EmergencyName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.EmergencyPhone" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.EmergencyPhone" id="emergency-phone" class="form-control" />
+                                                    <span asp-validation-for="Employees.EmergencyPhone" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-employee" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-protection-element">
+                <div class="modal fade" id="modal-create-protection-elements" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Preguntas Modelo</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.Code" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.Code" id="pe-code" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.Code" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.Name" id="pe-name" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.UnitsId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="ProtectionElements.UnitsId" id="pe-units-id" class="form-control" asp-
+                                                            asp-items="ViewBag.Units">
+                                                        <option disabled selected value="">Seleccione una unidad...</option>
+                                                    </select>
+                                                    <span asp-validation-for="ProtectionElements.UnitsId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.CodeERP" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.CodeERP" id="pe-code-erp" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.CodeERP" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.Minimum" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.Minimum" id="pe-minimum" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.Minimum" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.Maximum" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.Maximum" id="pe-maximum" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.Maximum" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.Factor1" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.Factor1" id="pe-factor1" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.Factor1" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.Factor2" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.Factor2" id="pe-factor2" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.Factor2" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.MaxDayAsignment" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.MaxDayAsignment" id="pe-max-day-asigment" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.MaxDayAsignment" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.Weight" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.Weight" id="pe-weight" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.Weight" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.ProtectionTypesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="ProtectionElements.ProtectionTypesId" id="pe-protection-type-id" class="form-control" asp-
+                                                            asp-items="ViewBag.ProtectionTypes">
+                                                        <option disabled selected value="">Seleccione un tipo de proteccion...</option>
+                                                    </select>
+                                                    <span asp-validation-for="ProtectionElements.ProtectionTypesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.ImageElement" class="control-label h4-Pandora"></label>
+                                                    <div class="custom-file">
+                                                        <input asp-for="ProtectionElements.ImageElement" id="pe-image-element" class="form-control custom-file-input" />
+                                                        <label class="custom-file-label">Seleccionar imagen...</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionElements.Remarks" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionElements.Remarks" id="pe-remarks" class="form-control" />
+                                                    <span asp-validation-for="ProtectionElements.Remarks" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-protection-elements" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#add-item-employee").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _firstName = $("#first-name").val();
+            var _secondName = $("#second-name").val();
+            var _lastName1 = $("#last-name1").val();
+            var _lastName2 = $("#last-name2").val();
+            var _address = $("#address").val();
+            var _idCode = $("#id-code").val();
+            var _phone1 = $("#phone1").val();
+            var _phone2 = $("#phone2").val();
+            var _birthDate = $("#birthdate").val();
+            var _employeeTypeId = $("#employee-type-id").val();
+            var _emergencyName = $("#emergency-name").val();
+            var _emergencyPhone = $("#emergency-phone").val();
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddEmployee'),
+                {
+                    idCode: _idCode,
+                    firstName: _firstName,
+                    secondName: _secondName,
+                    lastName1: _lastName1,
+                    lastName2: _lastName2,
+                    address: _address,
+                    phone1: _phone1,
+                    phone2: _phone2,
+                    birthDate: _birthDate,
+                    employeeTypesId: _employeeTypeId,
+                    emergencyName: _emergencyName,
+                    emergencyPhone: _emergencyPhone
+                },
+                function (data) {
+                    $("#close-modal-employee").click();
+                    var _id = data['id'];
+                    var _fullname = data['fullName'];
+                    $("#employee-id").append(`<option value="${_id}">${_fullname}</option>`);
+                    $('#add-item-employee')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-protection-element").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _code = $("#pe-code").val();
+            var _name = $("#pe-name").val();
+            var _unitsId = $("#pe-units-id").val();
+            var _codeERP = $("#pe-code-erp").val();
+            var _minimum = $("#pe-minimum").val();
+            var _maximum = $("#pe-maximum").val();
+            var _factor1 = $("#pe-factor1").val();
+            var _factor2 = $("#pe-factor2").val();
+            var _maxDayAsignment = $("#pe-max-day-asignment").val();
+            var _weight = $("#pe-weight").val();
+            var _protectionTypesId = $("#pe-protection-type-id").val();
+            var _remarks = $("#pe-remarks").val();
+            var _imageElement = $("#pe-image-element").val();
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddProtectionElements'),
+                {
+                    code: _code,
+                    name: _name,
+                    unitsId: _unitsId,
+                    codeERP: _codeERP,
+                    minimum: _minimum,
+                    maximum: _maximum,
+                    factor1: _factor1,
+                    factor2: _factor2,
+                    maxDayAsignment: _maxDayAsignment,
+                    weight: _weight,
+                    protectionTypesId: _protectionTypesId,
+                    remarks: _remarks,
+                    imageElement: _imageElement
+                },
+                function (data) {
+                    $("#close-modal-protection-elements").click();
+                    var _id = data['id'];
+                    $("#protection-elements-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-protection-element')[0].reset();
+                }
+            );
+        });
+    </script>
+}
+
+
+
+
+

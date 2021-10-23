@@ -1,0 +1,319 @@
+﻿@model Productivo.Core.ViewModels.ProtectionElements.ProtectionElementEditViewModel
+
+@{
+    var photopath = "~/images/SST/ProtectionElements/" + (Model.ExistingImagePath ?? "No-Image.png");
+}
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Elementos de Proteccion</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Update">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Code" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Code" class="form-control" />
+                                    <span asp-validation-for="Code" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="UnitsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="UnitsId" id="units-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Units">
+                                                <option disabled selected value="">Seleccione un tipo...</option>
+                                            </select>
+
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-unit" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="UnitsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="CodeERP" class="control-label h4-Pandora"></label>
+                                    <input asp-for="CodeERP" class="form-control" />
+                                    <span asp-validation-for="CodeERP" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Minimum" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Minimum" class="form-control" />
+                                    <span asp-validation-for="Minimum" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Maximum" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Maximum" class="form-control" />
+                                    <span asp-validation-for="Maximum" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Factor1" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Factor1" class="form-control" />
+                                    <span asp-validation-for="Factor1" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Factor2" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Factor2" class="form-control" />
+                                    <span asp-validation-for="Factor2" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="MaxDayAsignment" class="control-label h4-Pandora"></label>
+                                    <input asp-for="MaxDayAsignment" class="form-control" />
+                                    <span asp-validation-for="MaxDayAsignment" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Weight" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Weight" class="form-control" />
+                                    <span asp-validation-for="Weight" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="ProtectionTypesId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="ProtectionTypesId" id="protection-types-id" class="form-control" asp-
+                                                    asp-items="ViewBag.ProtectionTypes">
+                                                <option disabled selected value="">Seleccione un tipo de proteccion...</option>
+                                            </select>
+
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-protection-type" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="ProtectionTypesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="ImageElement" class="control-label h4-Pandora"></label>
+                                    <div class="custom-file">
+                                        <input asp-for="ImageElement" class="form-control custom-file-input" />
+                                        <label class="custom-file-label">Seleccionar imagen...</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Remarks" class="form-control" />
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-------------------------------------------------------ModalCode---------------------------------------------------------------->
+            <form id="add-item-unit">
+                <div class="modal fade" id="modal-create-unit" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Unidades</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Units.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Units.Name" id="unit-name" class="form-control" />
+                                                    <span asp-validation-for="Units.Name" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label asp-for="Units.Initials" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Units.Initials" id="unit-initials" class="form-control" />
+                                                    <span asp-validation-for="Units.Initials" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-unit" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-protection-type">
+                <div class="modal fade" id="modal-create-protection-type" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Tipos de proteccion</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionTypes.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="ProtectionTypes.Name" id="protection-type-name" class="form-control" />
+                                                    <span asp-validation-for="ProtectionTypes.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionTypes.ProtectionCategoriesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="ProtectionTypes.ProtectionCategoriesId" id="protection-type-protection-categories-id" class="form-control" asp-
+                                                            asp-items="ViewBag.ProtectionCategories">
+                                                        <option disabled selected value="">Seleccione una categoria...</option>
+                                                    </select>
+                                                    <span asp-validation-for="ProtectionTypes.ProtectionCategoriesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label asp-for="ProtectionTypes.Remarks" class="control-label h4-Pandora"></label>
+                                                    <textarea asp-for="ProtectionTypes.Remarks" id="protection-type-remarks" rows="4" class="form-control"> </textarea>
+                                                    <span asp-validation-for="ProtectionTypes.Remarks" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-protection-type" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script type="text/javascript">
+        $("#add-item-unit").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _Name = $("#unit-name").val();
+            var _Initial = $("#unit-initials").val();
+
+            $.getJSON(window.location.pathname.replace('/Update', '/AddUnits'),
+                {
+                    name: _Name,
+                    initials: _Initial
+                },
+                function (data) {
+                    $("#close-modal-unit").click();
+                    var _id = data['id'];
+                    $("#units-id").append(`<option value="${_id}">${_Name}</option>`);
+                    $('#add-item-unit')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-protection-type").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _Name = $("#protecton-type-name").val();
+            var _ProtectionCategoriesId = $("#protecton-type-protection-categiries-id").val();
+            var _Remarks = $("#protecton-type-remarks").val();
+
+            $.getJSON(window.location.pathname.replace('/Update', '/AddProtectionTypes'),
+                {
+                    Name: _Name,
+                    ProtectionCategoriesId: _ProtectionCategoriesId,
+                    Remarks: _Remarks
+                },
+                function (data) {
+                    $("#close-modal-protection-type").click();
+                    var _id = data['id'];
+                    $("#protection-types-id").append(`<option value="${_id}">${_Name}</option>`);
+                    $('#add-item-protection-type')[0].reset();
+                }
+            );
+        });
+
+    </script>
+}

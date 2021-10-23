@@ -1,0 +1,46 @@
+{
+    "currencies":[
+        {
+            "name": "Dolar Americano 2",
+            "initials": "USD2",
+            "factor": 0
+        },
+        {
+            "name": "Euro2",
+            "initials": "EUR2",
+            "factor": 0
+        },
+        {
+            "name": "Libra2",
+            "initials": "LIB2",
+            "factor": 0
+        },
+        {
+            "name": "Peso Colombiano2",
+            "initials": "COP2",
+            "factor": 0
+        }
+    ],
+    "units":[
+        {
+            "name": "Unidad2",
+            "initials": "UND2"
+        },
+        {
+            "name": "Docena2",
+            "initials": "DOC2"
+        },
+        {
+            "name": "Kilogramo2",
+            "initials": "KGS2"
+        },
+        {
+            "name": "Metros2",
+            "initials": "MTS2"
+        },
+        {
+            "name": "Tonelada2",
+            "initials": "TONs2"
+        }
+    ]
+}

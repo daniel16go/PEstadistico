@@ -1,0 +1,110 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200916011033_NewEntities.cs" />
+    <Compile Remove="Migrations\20200916011033_NewEntities.Designer.cs" />
+    <Compile Remove="Migrations\20201021004538_AddAvatarUserEntity.cs" />
+    <Compile Remove="Migrations\20201021004538_AddAvatarUserEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201101123721_CompanySectors.cs" />
+    <Compile Remove="Migrations\20201101123721_CompanySectors.Designer.cs" />
+    <Compile Remove="Migrations\20201101124341_CompanySectors2.cs" />
+    <Compile Remove="Migrations\20201101124341_CompanySectors2.Designer.cs" />
+    <Compile Remove="Migrations\20201101144100_CompanySectors3.cs" />
+    <Compile Remove="Migrations\20201101144100_CompanySectors3.Designer.cs" />
+    <Compile Remove="Migrations\20201101144401_CompanySectors4.cs" />
+    <Compile Remove="Migrations\20201101144401_CompanySectors4.Designer.cs" />
+    <Compile Remove="Migrations\20201104002659_PlanPaymentsEntity.cs" />
+    <Compile Remove="Migrations\20201104002659_PlanPaymentsEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201104003723_PlanPaymentsEntity2.cs" />
+    <Compile Remove="Migrations\20201104003723_PlanPaymentsEntity2.Designer.cs" />
+    <Compile Remove="Migrations\20201104004248_PlanPaymentsEntity2.cs" />
+    <Compile Remove="Migrations\20201104004248_PlanPaymentsEntity2.Designer.cs" />
+    <Compile Remove="Migrations\20201104011354_PlanPaymentsEntity.cs" />
+    <Compile Remove="Migrations\20201104011354_PlanPaymentsEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201104012045_PlanPaymentsEntity.cs" />
+    <Compile Remove="Migrations\20201104012045_PlanPaymentsEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201104012413_PlanPaymentsEntity.cs" />
+    <Compile Remove="Migrations\20201104012413_PlanPaymentsEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201104012611_PlanPaymentsEntity.cs" />
+    <Compile Remove="Migrations\20201104012611_PlanPaymentsEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201104012832_PlanPaymentsEntity.cs" />
+    <Compile Remove="Migrations\20201104012832_PlanPaymentsEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201104013044_PlanPaymentsEntity.cs" />
+    <Compile Remove="Migrations\20201104013044_PlanPaymentsEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201115165109_CategoryModelEntity.cs" />
+    <Compile Remove="Migrations\20201115165109_CategoryModelEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201115171359_CategoryModelEntity.cs" />
+    <Compile Remove="Migrations\20201115171359_CategoryModelEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201115172518_CategoryModelEntity.cs" />
+    <Compile Remove="Migrations\20201115172518_CategoryModelEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201115173046_PlansEntity.cs" />
+    <Compile Remove="Migrations\20201115173046_PlansEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201118234801_EvaluationCategoryEntity.cs" />
+    <Compile Remove="Migrations\20201118234801_EvaluationCategoryEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201119000922_EvaluationEntity.cs" />
+    <Compile Remove="Migrations\20201119000922_EvaluationEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201119001420_EvaluationEntity.cs" />
+    <Compile Remove="Migrations\20201119001420_EvaluationEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201119002514_EvaluationEntity.cs" />
+    <Compile Remove="Migrations\20201119002514_EvaluationEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201119003532_EvaluationEntity.cs" />
+    <Compile Remove="Migrations\20201119003532_EvaluationEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201119004111_EvaluationEntity.cs" />
+    <Compile Remove="Migrations\20201119004111_EvaluationEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201119005014_EvaluationEntity.cs" />
+    <Compile Remove="Migrations\20201119005014_EvaluationEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201129172923_IoTMachineRelation.cs" />
+    <Compile Remove="Migrations\20201129172923_IoTMachineRelation.Designer.cs" />
+    <Compile Remove="Migrations\20201129181402_ModelQuestionEntity.cs" />
+    <Compile Remove="Migrations\20201129181402_ModelQuestionEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201129181854_ModelQuestionEntity.cs" />
+    <Compile Remove="Migrations\20201129181854_ModelQuestionEntity.Designer.cs" />
+    <Compile Remove="Migrations\20201227142325_DiagnosticEntities.cs" />
+    <Compile Remove="Migrations\20201227142325_DiagnosticEntities.Designer.cs" />
+    <Compile Remove="Migrations\20201227145038_DiagnosticEntities.cs" />
+    <Compile Remove="Migrations\20201227145038_DiagnosticEntities.Designer.cs" />
+    <Compile Remove="Migrations\20201227152844_DiagnosticEntities2.cs" />
+    <Compile Remove="Migrations\20201227152844_DiagnosticEntities2.Designer.cs" />
+    <Compile Remove="Migrations\20201227153911_DiagnosticEntities2.cs" />
+    <Compile Remove="Migrations\20201227153911_DiagnosticEntities2.Designer.cs" />
+    <Compile Remove="Migrations\20210117143524_SurveyAnswersEntity.cs" />
+    <Compile Remove="Migrations\20210117143524_SurveyAnswersEntity.Designer.cs" />
+    <Compile Remove="Migrations\20210530231108_PackingListProdOrder.cs" />
+    <Compile Remove="Migrations\20210530231108_PackingListProdOrder.Designer.cs" />
+    <Compile Remove="Migrations\20210617232820_InitialDB.cs" />
+    <Compile Remove="Migrations\20210617232820_InitialDB.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Language" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.1.7" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.21" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>

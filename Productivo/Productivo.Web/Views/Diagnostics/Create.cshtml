@@ -1,0 +1,426 @@
+﻿@model Productivo.Core.ViewModels.Diagnostics.DiagnosticCreateViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Diagnostico & Modelo</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="CodeDiagnostic" class="control-label h4-Pandora"></label>
+                                    <input asp-for="CodeDiagnostic" class="form-control" />
+                                    <span asp-validation-for="CodeDiagnostic" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="DiagDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="DiagDate" class="form-control" />
+                                    <span asp-validation-for="DiagDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="StatusId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="StatusId" id="status-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Status">
+                                                <option disabled selected value="">Seleccione un status para el diagnostico...</option>
+                                            </select>
+
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-status" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="StatusId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="SubSectorsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="SubSectorsId" id="subsector-id" class="form-control" asp-
+                                                    asp-items="ViewBag.SubSectors">
+                                                <option disabled selected value="">Seleccione un subsector de evaluación...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-subsector" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="SubSectorsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="EmployeesId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="EmployeesId" id="employee-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Employees">
+                                                <option disabled selected value="">Seleccione un empleado evaluador...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-employee" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="EmployeesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-------------------------------------------------------ModalCode---------------------------------------------------------------->
+            <form id="add-item-status">
+                <div class="modal fade" id="modal-create-status" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Status</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Status.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Status.Name" id="status-name" class="form-control" />
+                                                    <span asp-validation-for="Status.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Status.Module" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Status.Module" id="status-module" class="form-control" />
+                                                    <span asp-validation-for="Status.Module" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-status" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-subsector">
+                <div class="modal fade" id="modal-create-subsector" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Sub-Sectores</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="SubSectors.SectorsId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="SubSectors.SectorsId" id="subsector-sector-id" class="form-control" asp-
+                                                            asp-items="ViewBag.Sectors">
+                                                        <option disabled selected value="">Seleccione un sector...</option>
+                                                    </select>
+                                                    <span asp-validation-for="SubSectors.SectorsId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="SubSectors.SubSector" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="SubSectors.SubSector" id="subsector-name" class="form-control" />
+                                                    <span asp-validation-for="SubSectors.SubSector" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-subsector" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-employee">
+                <div class="modal fade" id="modal-create-employee" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Empleados</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.FirstName" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.FirstName" id="first-name" class="form-control" />
+                                                    <span asp-validation-for="Employees.FirstName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.SecondName" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.SecondName" id="second-name" class="form-control" />
+                                                    <span asp-validation-for="Employees.SecondName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.LastName1" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.LastName1" id="last-name1" class="form-control" />
+                                                    <span asp-validation-for="Employees.LastName1" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.LastName2" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.LastName2" id="last-name2" class="form-control" />
+                                                    <span asp-validation-for="Employees.LastName2" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.Address" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.Address" id="address" class="form-control" />
+                                                    <span asp-validation-for="Employees.Address" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.IdCode" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.IdCode" id="id-code" class="form-control" />
+                                                    <span asp-validation-for="Employees.IdCode" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.Phone1" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.Phone1" id="phone1" class="form-control" />
+                                                    <span asp-validation-for="Employees.Phone1" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.Phone2" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.Phone2" id="phone2"class="form-control" />
+                                                    <span asp-validation-for="Employees.Phone2" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.BirthDate" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.BirthDate" id="birthdate" class="form-control" />
+                                                    <span asp-validation-for="Employees.BirthDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.EmployeeTypesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Employees.EmployeeTypesId" id="employee-type-id" class="form-control" asp-
+                                                            asp-items="ViewBag.EmployeeType">
+                                                        <option disabled selected value="">Seleccione un tipo...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Employees.EmployeeTypesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.EmergencyName" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.EmergencyName" id="emergency-name" class="form-control" />
+                                                    <span asp-validation-for="Employees.EmergencyName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <label asp-for="Employees.EmergencyPhone" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Employees.EmergencyPhone" id="emergency-phone" class="form-control" />
+                                                    <span asp-validation-for="Employees.EmergencyPhone" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-employee" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#add-item-status").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#status-name").val();
+            var _module = $("#status-module").val();
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddStatus'), { name: _name, module: _module},
+                function (data) {
+                    $("#close-modal-status").click();
+                    var _id = data['id'];
+                    $("#status-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-status')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-subsector").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#subsector-name").val();
+            var _sectorId = $("#subsector-sector-id").val();
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddSubSector'), { name: _name, sectorId: _sectorId },
+                function (data) {
+                    $("#close-modal-subsector").click();
+                    var _id = data['id'];
+                    $("#subsector-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-subsector')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-employee").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _firstName = $("#first-name").val();
+            var _secondName = $("#second-name").val();
+            var _lastName1 = $("#last-name1").val();
+            var _lastName2 = $("#last-name2").val();
+            var _address = $("#address").val();
+            var _idCode = $("#id-code").val();
+            var _phone1 = $("#phone1").val();
+            var _phone2 = $("#phone2").val();
+            var _birthDate = $("#birthdate").val();
+            var _employeeTypeId = $("#employee-type-id").val();
+            var _emergencyName = $("#emergency-name").val();
+            var _emergencyPhone = $("#emergency-phone").val();
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddEmployee'),
+                {
+                    idCode: _idCode,
+                    firstName: _firstName,
+                    secondName: _secondName,
+                    lastName1: _lastName1,
+                    lastName2: _lastName2,
+                    address: _address,
+                    phone1: _phone1,
+                    phone2: _phone2,
+                    birthDate: _birthDate,
+                    employeeTypesId: _employeeTypeId,
+                    emergencyName: _emergencyName,
+                    emergencyPhone: _emergencyPhone
+                },
+                function (data) {
+                    $("#close-modal-employee").click();
+                    var _id = data['id'];
+                    var _fullname = data['fullName'];
+                    $("#employee-id").append(`<option value="${_id}">${_fullname}</option>`);
+                    $('#add-item-employee')[0].reset();
+                }
+            );
+        });
+    </script>
+}

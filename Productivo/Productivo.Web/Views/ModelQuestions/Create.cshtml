@@ -1,0 +1,239 @@
+﻿@model Productivo.Core.ViewModels.ModelQuestions.ModelQuestionCreateViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Preguntas Modelo</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="QuestionName" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="QuestionName" rows="2" class="form-control"> </textarea>
+                                    <span asp-validation-for="QuestionName" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="EvaluationCategoriesId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="EvaluationCategoriesId" id="evaluation-categories-id" class="form-control" asp-
+                                                    asp-items="ViewBag.EvaluationCategories">
+                                                <option disabled selected value="">Seleccione una categoria de evaluación...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-evaluation-categories" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="EvaluationCategoriesId" class="text-danger"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="CategoryModelsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="CategoryModelsId" id="categories-id" class="form-control" asp-
+                                                    asp-items="ViewBag.CategoryModels">
+                                                <option disabled selected value="">Seleccione una categoria de modelo...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-categories-model" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="CategoryModelsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="WeightQuestion" class="control-label h4-Pandora"></label>
+                                    <input asp-for="WeightQuestion" class="form-control" />
+                                    <span asp-validation-for="WeightQuestion" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-------------------------------------------------------ModalCode---------------------------------------------------------------->
+            <form id="add-item-evaluation-categories">
+                <div class="modal fade" id="modal-create-evaluation-categories" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Categorias Evaluación</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="EvaluationCategories.EvaluationNameCategory" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="EvaluationCategories.EvaluationNameCategory" id="evaluation-categories-name" class="form-control" />
+                                                    <span asp-validation-for="EvaluationCategories.EvaluationNameCategory" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label asp-for="EvaluationCategories.Remarks" class="control-label h4-Pandora"></label>
+                                                    <textarea asp-for="EvaluationCategories.Remarks" id="evaluation-categories-remarks" rows="4" class="form-control"> </textarea>
+                                                    <span asp-validation-for="EvaluationCategories.Remarks" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-evaluation-categories" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-categories">
+                <div class="modal fade" id="modal-create-categories-model" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Categorias Modelos</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="CategoryModels.ScopeNameCategory" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="CategoryModels.ScopeNameCategory" id="categories-name" class="form-control" />
+                                                    <span asp-validation-for="CategoryModels.ScopeNameCategory" class="text-danger"></span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label asp-for="CategoryModels.Remarks" class="control-label h4-Pandora"></label>
+                                                    <textarea asp-for="CategoryModels.Remarks" id="categories-remarks" rows="4" class="form-control"> </textarea>
+                                                    <span asp-validation-for="CategoryModels.Remarks" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-categories" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#add-item-evaluation-categories").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#evaluation-categories-name").val();
+            var _remarks = $("#evaluation-categories-remarks").val();
+
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddEvaluationCategories'), { name: _name, remarks: _remarks },
+                function (data) {
+                    $("#close-modal-evaluation-categories").click();
+                    var _id = data['id'];
+                    $("#evaluation-categories-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-evaluation-categories')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-categories").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#categories-name").val();
+            var _remarks = $("#categories-remarks").val();
+
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddCategoryModels'), { name: _name, remarks: _remarks },
+                function (data) {
+                    $("#close-modal-categories").click();
+                    var _id = data['id'];
+                    $("#categories-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-categories')[0].reset();
+                }
+            );
+        });
+    </script>
+}

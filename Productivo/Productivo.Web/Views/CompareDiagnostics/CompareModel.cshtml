@@ -1,0 +1,125 @@
+﻿@model IDictionary<string, List<Productivo.Core.ViewModels.CompareModels.CompareModelViewModel>>
+
+@section HeadBlock {
+    <link rel="stylesheet" media="screen, print" href="~/css/datagrid/datatables/datatables.bundle.css">
+}
+<h1 class="h1-Productivo">Diagnostico & Modelo</h1>
+<p>
+    <a asp-action="ReportPDF" asp-route-id="@ViewBag.idDiagnostic" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reporte PDF" target="_blank"><i class="fal fa-print"></i></a>
+</p>
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <h2 class="h1-Productivo">@ViewBag.SubSectorTittle</h2>
+                    <hr size="2" />
+                    @foreach (string key in Model.Keys)
+                    {
+                        decimal totalScore = 0;
+                        decimal totalIdealScore = 0;
+
+                        <h5 class="h1-Productivo">@key</h5>
+                        <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                            <thead>
+                                <tr>
+                                    <th style="width: 60%;">
+                                        @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].QuestionName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].DiagnosticExecution)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].IdealExecution)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].Difference)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].Compliance)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].Score)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].IdealScore)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model[key])
+                                {
+                                    totalScore += item.Score;
+                                    totalIdealScore += item.IdealScore;
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.QuestionName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DiagnosticExecution)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdealExecution)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Difference)
+                                        </td>
+                                        <td>
+                                            % @Html.DisplayFor(modelItem => item.Compliance)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Score)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IdealScore)
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>
+                                        <h5><strong>TOTAL:</strong></h5>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <h5><strong>@totalScore.ToString("F")</strong></h5>
+                                    </td>
+                                    <td>
+                                        <h5><strong>@totalIdealScore.ToString("F")</strong></h5>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr size="2" />
+
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+
+}
+

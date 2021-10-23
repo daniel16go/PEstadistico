@@ -1,0 +1,489 @@
+﻿@model Productivo.Core.ViewModels.Diagnostics.ExecutiveReportViewModel
+
+@{
+    Layout = null;
+    //ViewData["Title"] = "Productivo / Reporte Ejecutivo - Diagnostico & Modelo";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" media="screen, print" href="~/css/Productivo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Productivo / Reporte Ejecutivo - Diagnostico & Modelo</title>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="~/images/Productivo Small.png" width="100" height="100" />
+        </div>
+        <div class="col-sm-8 text-right">
+            <h2>Reporte Ejecutivo - Diagnostico & Modelo</h2>
+            <h3>Productivo Operations</h3>
+        </div>
+    </div>
+    <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.diagnostic.Name)
+                </th>
+                <th>
+                    Fecha Inicial Diag.
+                </th>
+                <th>
+                    Fecha Final Diag.
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.diagnostic.SubSectors.SubSector)
+                </th>
+                <th>
+                    Evaluador
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.diagnostic.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.diagnostic.DiagDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.diagnostic.EndDiagDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.diagnostic.SubSectors.SubSector)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.diagnostic.Employees.FullName)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    @if ((Double.Parse(Model.CalificationTotal)) != 0)
+    {
+        <div>
+            <table class="table table-hover table-striped table-sm w-100">
+                <tbody>
+                    <tr>
+                        <td colspan="4" style="height: 23px;"><center><strong>De la habilidad del trabajador</strong></center></td>
+                    </tr>
+                    <tr style="height: 23px;">
+                        <td style="height: 23px;"><center><strong>Status</strong></center></td>
+                        <td style="height: 23px;"><strong>Nivel</strong></td>
+                        <td style="height: 23px;"><strong>Calificación</strong></td>
+                        <td style="height: 23px;"><strong>Diagnostico</strong></td>
+                    </tr>
+                    <tr style="height: 23px;">
+                        @if ((((Double.Parse(Model.CalificationTotal)) / 5) * 100) >= 0 && (((Double.Parse(Model.CalificationTotal)) / 5) * 100) < 1)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px;">Inocente</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotal)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotal)) / 5) * 100) >= 1 && (((Double.Parse(Model.CalificationTotal)) / 5) * 100) <= 25)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Insatisfactorio</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotal)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotal)) / 5) * 100) >= 26 && (((Double.Parse(Model.CalificationTotal)) / 5) * 100) <= 49)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Basico</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotal)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotal)) / 5) * 100) >= 50 && (((Double.Parse(Model.CalificationTotal)) / 5) * 100) <= 74)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Transicion</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotal)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotal)) / 5) * 100) >= 75 && (((Double.Parse(Model.CalificationTotal)) / 5) * 100) <= 94)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Avanzado</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotal)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotal)) / 5) * 100) >= 95 && (((Double.Parse(Model.CalificationTotal)) / 5) * 100) <= 100)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Clase Mundial</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotal)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if ((Double.Parse(Model.CalificationTotalStandards)) != 0)
+    {
+        <div>
+            <table class="table table-hover table-striped table-sm w-100">
+                <tbody>
+                    <tr>
+                        <td colspan="4" style="height: 23px;"><center><strong>De los estándares</strong></center></td>
+                    </tr>
+
+                    <tr style="height: 23px;">
+                        <td style="height: 23px; color:white"><center><strong>Status</strong></center></td>
+                        <td style="height: 23px; color:white"><strong>Nivel</strong></td>
+                        <td style="height: 23px; color:white"><strong>Calificación</strong></td>
+                        <td style="height: 23px; color:white"><strong>Diagnostico</strong></td>
+                    </tr>
+                    <tr style="height: 23px;">
+                        @if ((((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) >= 0 && (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) < 1)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; width: 30px">Inocente</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) >= 1 && (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) <= 25)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; width: 30px">Insatisfactorio</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) >= 26 && (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) <= 49)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; width: 30px">Basico</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) >= 50 && (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) <= 74)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; width: 30px">Transicion</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) >= 75 && (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) <= 94)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; width: 30px">Avanzado</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) >= 95 && (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100) <= 100)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; width: 30px">Clase Mundial</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalStandards)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+
+    @if ((Double.Parse(Model.CalificationTotalWork)) != 0)
+    {
+        <div>
+            <table class="table table-hover table-striped table-sm w-100">
+                <tbody>
+                    <tr>
+                        <td colspan="4" style="height: 23px;"><center><strong>De la condición de trabajo</strong></center></td>
+                    </tr>
+
+                    <tr style="height: 23px;">
+                        <td style="height: 23px; color:white"><center><strong>Status</strong></center></td>
+                        <td style="height: 23px; color:white"><strong>Nivel</strong></td>
+                        <td style="height: 23px; color:white"><strong>Calificación</strong></td>
+                        <td style="height: 23px; color:white"><strong>Diagnostico</strong></td>
+                    </tr>
+                    <tr style="height: 23px;">
+                        @if ((((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) >= 0 && (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) < 1)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Inocente</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) >= 1 && (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) <= 25)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Insatisfactorio</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) >= 26 && (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) <= 49)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Basico</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) >= 50 && (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) <= 74)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Transicion</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) >= 75 && (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) <= 94)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Avanzado</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) >= 95 && (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100) <= 100)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Clase Mundial</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalWork)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if ((Double.Parse(Model.CalificationTotalTecnique)) != 0)
+    {
+        <div>
+            <table class="table table-hover table-striped table-sm w-100">
+                <tbody>
+                    <tr>
+                        <td colspan="4" style="height: 23px;"><center><strong>De la condición técnica</strong></center></td>
+                    </tr>
+
+                    <tr style="height: 23px;">
+                        <td style="height: 23px; color:white"><center><strong>Status</strong></center></td>
+                        <td style="height: 23px; color:white"><strong>Nivel</strong></td>
+                        <td style="height: 23px; color:white"><strong>Calificación</strong></td>
+                        <td style="height: 23px; color:white"><strong>Diagnostico</strong></td>
+                    </tr>
+                    <tr style="height: 23px;">
+                        @if ((((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) >= 0 && (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) < 1)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Inocente</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) >= 1 && (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) <= 25)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Insatisfactorio</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) >= 26 && (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) <= 49)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Basico</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) >= 50 && (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) <= 74)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Transicion</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) >= 75 && (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) <= 94)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Avanzado</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) >= 95 && (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100) <= 100)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Clase Mundial</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalTecnique)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if ((Double.Parse(Model.CalificationTotalMethod)) != 0)
+    {
+        <div>
+            <table class="table table-hover table-striped table-sm w-100">
+                <tbody>
+                    <tr>
+                        <td colspan="4" style="height: 23px;"><center><strong>Del proceso - Método</strong></center></td>
+                    </tr>
+
+                    <tr style="height: 23px;">
+                        <td style="height: 23px; color:white"><center><strong>Status</strong></center></td>
+                        <td style="height: 23px; color:white"><strong>Nivel</strong></td>
+                        <td style="height: 23px; color:white"><strong>Calificación</strong></td>
+                        <td style="height: 23px; color:white"><strong>Diagnostico</strong></td>
+                    </tr>
+                    <tr style="height: 23px;">
+                        @if ((((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) >= 0 && (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) < 1)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Inocente</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) >= 1 && (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) <= 25)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Insatisfactorio</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) >= 26 && (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) <= 49)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Basico</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) >= 50 && (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) <= 74)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Transicion</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) >= 75 && (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) <= 94)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Avanzado</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) >= 95 && (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100) <= 100)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Clase Mundial</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalMethod)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+    @if ((Double.Parse(Model.CalificationTotalManage)) != 0)
+    {
+        <div>
+            <table class="table table-hover table-striped table-sm w-100">
+                <tbody>
+                    <tr>
+                        <td colspan="4" style="height: 23px;"><center><strong>De la gestión gerencial</strong></center></td>
+                    </tr>
+
+                    <tr style="height: 23px;">
+                        <td style="height: 23px; color:white"><center><strong>Status</strong></center></td>
+                        <td style="height: 23px; color:white"><strong>Nivel</strong></td>
+                        <td style="height: 23px; color:white"><strong>Calificación</strong></td>
+                        <td style="height: 23px; color:white"><strong>Diagnostico</strong></td>
+                    </tr>
+                    <tr style="height: 23px;">
+                        @if ((((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) >= 0 && (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) < 1)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/RedPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Inocente</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No se ejecuta, el marco conceptual no se ha concebido. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) >= 1 && (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) <= 25)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/OrangePoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Insatisfactorio</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">No existe evidencia,política, criterio ó estándar ó manifiesto gerencial de la metodología.</td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) >= 26 && (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) <= 49)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/PinkPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Basico</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Hay ejecuciones de mejora, son acciones esporádicas - no se evidencia un manifiesto gerencial de excelencia, no obedecen a un estándar, impera más el criterio propio. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) >= 50 && (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) <= 74)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/YellowPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Transicion</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Se ha definido la política, criterios ó estándares de trabajo, el manifiesto gerencial es evidente y se ha desplegado a todos los involucrados. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) >= 75 && (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) <= 94)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/LightGreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Avanzado</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Existe trazabilidad de la acción, los resultados son evidentes en cuanto a un "antes" y un "después", hace parte del rol y la responsabilidad, la mejora es evidente, el STAFF hace rendición de cuentas. </td>
+                        }
+                        @if ((((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) >= 95 && (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100) <= 100)
+                        {
+                            <td style="height: 23px;"><center><img src="~/Images/GreenPoint.png" height="25" width="25" /></center></td>
+                            <td style="height: 23px; ">Clase Mundial</td>
+                            <td style="height: 23px;">@string.Format("{0:n2}", (((Double.Parse(Model.CalificationTotalManage)) / 5) * 100)) %</td>
+                            <td style="height: 23px;">Es criterio de desempeño medido por la gerencia, se encuentra en el manual de funciones, y tiene criterio de experto entrenador, dispone de recursos y acciones centrados en mejora en el tablero maestroo. </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+
+    <p></p>
+    <p></p>
+    <p></p>
+
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th></th>
+                </tr>
+                <tr>
+                    <th>________________________________</th>
+                </tr>
+                <tr>
+                    <th>Firma Consultor / Evaluador</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

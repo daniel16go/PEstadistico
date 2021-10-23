@@ -1,0 +1,121 @@
+﻿@model IDictionary<string, List<Productivo.Core.ViewModels.CompareModels.CompareModelViewModel>>
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Pandora + / Diagnostico vs Modelo ideal";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" media="screen, print" href="~/css/Productivo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Productivo / Diagnostico vs Modelo ideal</title>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="~/images/Productivo Small.png" width="100" height="100" />
+        </div>
+        <div class="col-sm-8 text-right">
+            <h2>Diagnostico vs Modelo ideal
+            </h2>
+        </div>
+    </div>
+    <div class="panel-container show">
+        <div class="panel-content">
+            @foreach (string key in Model.Keys)
+            {
+                decimal totalScore = 0;
+                decimal totalIdealScore = 0;
+
+                <th style="width: 50%;">
+                    @key
+                </th>
+                <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">
+                                @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].QuestionName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].DiagnosticExecution)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].IdealExecution)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].Difference)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].Compliance)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].Score)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model[Model.Keys.FirstOrDefault()][0].IdealScore)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model[key])
+                        {
+                            totalScore += item.Score;
+                            totalIdealScore += item.IdealScore;
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.QuestionName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DiagnosticExecution)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdealExecution)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Difference)
+                                </td>
+                                <td>
+                                    % @Html.DisplayFor(modelItem => item.Compliance)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Score)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdealScore)
+                                </td>
+                            </tr>
+                        }
+                        <tr>
+                            <td>
+                                <h5><strong>TOTAL:</strong></h5>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                                <h5><strong>@totalScore.ToString("F")</strong></h5>
+                            </td>
+                            <td>
+                                <h5><strong>@totalIdealScore.ToString("F")</strong></h5>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr size="2" />
+
+            }
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+﻿@model Dictionary<Productivo.Core.Entities.EmployeeEntity, string[]>
+<html>
+<head>
+    <meta http-equiv="Refresh" content="300">
+    <script src="~/FusionCharts/fusioncharts.js"></script>
+    <script src="~/FusionCharts/themes/fusioncharts.theme.fusion.js"></script>
+    @*Total encuestas*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Dashboard', '/TotalEmployeeSurveys'), {},
+                function (data) {
+                    var rowsM = "";
+                    console.log(data);
+                    rowsM += '<p style="font-size: 50PX; text-align:center;">' + data + "</p>";
+                    $("#total-survey").html(rowsM);
+                }
+            );
+        });
+    </script>
+
+    @*Total Accesos*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Dashboard', '/TotalEmployeeAccess'), {},
+                function (data) {
+                    var rowsM = "";
+                    console.log(data);
+                    rowsM += '<p style="font-size: 50PX; text-align:center;">' + data + "</p>";
+                    $("#total-access").html(rowsM);
+                }
+            );
+        });
+    </script>
+
+    @*Total restringidos*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Dashboard', '/TotalEmployeeNotAccess'), {},
+                function (data) {
+                    var rowsM = "";
+                    console.log(data);
+                    rowsM += '<p style="font-size: 50PX; text-align:center;">' + data + "</p>";
+                    $("#total-no-access").html(rowsM);
+                }
+            );
+        });
+    </script>
+
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2></h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                        <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <div class="col-sm-12 d-flex justify-content-center">
+                            <div class="form-group">
+                                <h2 class="colortitle-Productivo">Encuestas realizadas el @DateTime.Now.ToString("dd/MM/yyyy")</h2>
+                                <hr />
+                                <strong id="total-survey"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-6">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2></h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                        <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <div class="col-sm-12 d-flex justify-content-center">
+                            <div class="form-group">
+                                <h2 class="colortitle-Productivo">Ingresos autorizados</h2>
+                                <hr />
+                                <strong id="total-access"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2></h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                        <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <div class="col-sm-12 d-flex justify-content-center">
+                            <div class="form-group">
+                                <h2 class="colortitle-Productivo">Ingresos rechazados</h2>
+                                <hr />
+                                <strong id="total-no-access"></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2></h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                        <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        @if (Model.Keys.Count == 0)
+                        {
+                            <h5>No hay encuestas para el dia de hoy.</h5>
+                        }
+                        else
+                        {
+                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().Key.FullName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("Fecha")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayName("Acceso")
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Key.FullName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Value[0])
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Value[1])
+                                            </td>
+
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+</html>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+    <script type="text/javascript">
+
+    </script>
+
+}
+

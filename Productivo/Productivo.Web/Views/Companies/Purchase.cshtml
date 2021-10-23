@@ -1,0 +1,103 @@
+﻿@model Productivo.Core.ViewModels.Companies.PurchasePlanCreateViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Compra Planes Compañia</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Purchase">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                             <div class="row">
+                                 <div class="col-md-4">
+                                     <div class="form-group">
+                                         <label asp-for="CompanyId" class="control-label h4-Pandora"></label>
+                                         <select asp-for="CompanyId" class="form-control" asp-
+                                                 asp-items="ViewBag.Companies">
+                                             <option disabled selected value="">Seleccione una compañia...</option>
+                                         </select>
+                                         <span asp-validation-for="CompanyId" class="text-danger"></span>
+                                     </div>
+                                 </div>
+                                 <div class="col-md-4">
+                                     <div class="form-group">
+                                         <label asp-for="PlansId" class="control-label h4-Pandora"></label>
+                                         <select asp-for="PlansId" class="form-control" asp-
+                                                 asp-items="ViewBag.Plans">
+                                             <option disabled selected value="">Seleccione un plan...</option>
+                                         </select>
+                                         <span asp-validation-for="PlansId" class="text-danger"></span>
+                                     </div>
+                                 </div>
+
+                                 <div class="col-md-4">
+                                     <div class="form-group">
+                                         <label asp-for="PurchaseDate" class="control-label h4-Pandora"></label>
+                                         <input asp-for="PurchaseDate" class="form-control" />
+                                         <span asp-validation-for="PurchaseDate" class="text-danger"></span>
+                                     </div>
+                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label asp-for="PaymentTypesId" class="control-label h4-Pandora"></label>
+                                        <select asp-for="PaymentTypesId" class="form-control" asp-
+                                                asp-items="ViewBag.PaymentTypes">
+                                            <option disabled selected value="">Seleccione una forma de pago...</option>
+                                        </select>
+                                        <span asp-validation-for="PaymentTypesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <p></p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                        <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var filename = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(filename);
+            });
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+﻿@model Productivo.Core.ViewModels.ProductionOrders.ProductionOrderProcessLossesSearch
+
+@section HeadBlock {
+    <link rel="stylesheet" media="screen, print" href="~/css/datagrid/datatables/datatables.bundle.css">
+}
+<h1 class="h1-Productivo">Pérdidas de proceso - OEE</h1>
+<p>
+    @Html.ActionLink(" ", "ProcessLossesReportPDF", "ProductionOrders", new { FirstDate = Model.FirstDate, LastDate = Model.LastDate}, new { @class = "btn btn-info btn-sm fal fa-print" })
+</p>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="ProcessLosses" method="get">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="FirstDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="FirstDate" class="form-control" />
+                                    <span asp-validation-for="FirstDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="LastDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="LastDate" class="form-control" />
+                                    <span asp-validation-for="LastDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (!Model.PoProcessLosses.IsNullOrEmpty())
+{
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2></h2>
+                    <div class="panel-toolbar">
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PoProcessLosses[0].Order)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PoProcessLosses[0].StopName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PoProcessLosses[0].DownTime)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PoProcessLosses[0].StopCost)
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.PoProcessLosses)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Order)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.StopName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DownTime)
+                                        </td>
+                                        <td>
+                                            <strong>$ @Html.DisplayFor(modelItem => item.StopCost)</strong>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td>
+                                        <strong>TOTAL:</strong>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <strong>$ @Html.DisplayFor(model => model.totalCost)</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+<partial name="_DeleteDialog" />
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+
+}
+

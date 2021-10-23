@@ -1,0 +1,243 @@
+﻿@model Productivo.Core.ViewModels.CalendarEvents.CalendarEventCreateViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Eventos de Calendario</h2>
+    </div>
+</div>
+
+<form id="add-event-calendar">
+    <div class="modal fade" id="modal-create-calendar" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="panel-container show">
+            <div class="panel-content">
+                <form enctype="multipart/form-data" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                    <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                    <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                    <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                    <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Name" class="control-label h4-Pandora"></label>
+                                <input asp-for="Name" class="form-control" />
+                                <span asp-validation-for="Name" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label asp-for="CalendarsId" class="control-label h4-Pandora"></label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <select asp-for="CalendarsId" id="calendar-id" class="form-control"
+                                                asp-items="@(List<SelectListItem>)ViewBag.Calendars">
+                                            <option disabled selected value="">Seleccione un calendario...</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-calendar" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <span asp-validation-for="CalendarsId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label asp-for="CalendarCategoriesId" class="control-label h4-Pandora"></label>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <select asp-for="CalendarCategoriesId" id="calendar-categories-id" class="form-control"
+                                                asp-items="@(List<SelectListItem>)ViewBag.CalendarCategories">
+                                            <option disabled selected value="">Seleccione una categoria...</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <p>
+                                            <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-calendar-categories" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <span asp-validation-for="CalendarCategoriesId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="EventStartDate" class="control-label h4-Pandora"></label>
+                                <input asp-for="EventStartDate" class="form-control" />
+                                <span asp-validation-for="EventStartDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="EventStartTime" class="control-label h4-Pandora"></label>
+                                <input asp-for="EventStartTime" class="form-control" />
+                                <span asp-validation-for="EventStartTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="EventEndDate" class="control-label h4-Pandora"></label>
+                                <input asp-for="EventEndDate" class="form-control" />
+                                <span asp-validation-for="EventEndDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="EventEndTime" class="control-label h4-Pandora"></label>
+                                <input asp-for="EventEndTime" class="form-control" />
+                                <span asp-validation-for="EventEndTime" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="EventRemember" class="control-label h4-Pandora"></label>
+                                <input asp-for="EventRemember" class="form-control" />
+                                <span asp-validation-for="EventRemember" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                <span asp-validation-for="Remarks" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-------------------------------------------------------ModalCode---------------------------------------------------------------->
+            <form id="add-item-calendar">
+                <div class="modal fade" id="modal-create-calendar" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Calendario</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Calendars.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Calendars.Name" id="calendar-name" class="form-control" />
+                                                    <span asp-validation-for="Calendars.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-calendar" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form id="add-item-calendar-categories">
+                <div class="modal fade" id="modal-create-calendar-categories" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Categorias Calendario</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="CalendarCategories.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="CalendarCategories.Name" id="calendar-categories-name" class="form-control" />
+                                                    <span asp-validation-for="CalendarCategories.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-calendar-categories" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</form>
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#add-item-calendar").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#calendar-name").val();
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddCalendar'),
+                {
+                    Name: _name,
+                },
+                function (data) {
+                    $("#close-modal-calendar").click();
+                    var _id = data['id'];
+                    $("#calendar-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-calendar')[0].reset();
+                }
+            );
+        });
+        $("#add-item-calendar-categories").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#calendar-categories-name").val();
+
+
+            $.getJSON(window.location.pathname.replace('/Create', '/AddCalendarCategories'),
+                {
+                    Name: _name,
+                },
+                function (data) {
+                    $("#close-modal-calendar-categories").click();
+                    var _id = data['id'];
+                    $("#calendar-categories-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-calendar-categories')[0].reset();
+                }
+            );
+        });
+    </script>
+}

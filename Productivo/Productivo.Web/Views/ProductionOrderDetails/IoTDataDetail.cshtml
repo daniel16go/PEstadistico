@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Productivo.Core.ViewModels.ProductionOrderDetails.IoTDataDetailViewModel>
+
+<html>
+<head>
+    <meta http-equiv="Refresh" content="300">
+    <script src="~/FusionCharts/fusioncharts.js"></script>
+    <script src="~/FusionCharts/themes/fusioncharts.theme.fusion.js"></script>
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+
+            $.getJSON(window.location.href.replace('/IoTDataDetail/', '/getMachinesList/'), {},
+                function (data) {
+                    $.each(data, function (index, rowv) {
+                        $.getJSON(window.location.href.replace('/IoTDataDetail/', '/getVariableList/'), { machineId: rowv["machinesId"] },
+                            function (variable) {
+                                $.each(variable, function (index, variableLine) {
+                                    var _startDate = '@ViewBag.StartTime';
+                                    var _endDate = '@ViewBag.EndTime';
+                                    var char_name = "chart-container-" + rowv["machinesId"] + "|" + variableLine["id"];
+                                    console.log(char_name);
+
+                                    $.getJSON(window.location.href.replace('/IoTDataDetail/', '/LastRecordsDataSearch/'), { iotId: variableLine["codeIoT"], variableName: variableLine["name"], startDate: _startDate, endDate: _endDate },
+                                        function (iotData) {
+                                            var Data = [];
+                                            var Chart = iotData["chart"];
+
+                                            for (let i = 0; i < iotData["categories"].length; i++) {
+                                                Data.push(JSON.parse(JSON.stringify({ label: iotData["categories"][i], value: iotData["data"][i] })));
+                                            }
+                                            var myChart = new FusionCharts({
+                                                type: "line",
+                                                renderAt: char_name,
+                                                width: "100%",
+                                                height: "400",
+                                                dataFormat: "json",
+                                                dataSource: {
+                                                    chart: Chart,
+                                                    data: Data
+                                                }
+                                            }).render();
+                                    });
+                                })
+
+                            });
+                    })
+                });
+        });
+
+    </script>
+</head>
+<body>
+
+
+
+    @if (Model.Count() == 0)
+    {
+        <h5>No hay registros de produccion asociados aun en la orden.</h5>
+    }
+    else
+    {
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="panel-1" class="panel">
+                        <div class="panel-hdr">
+                            <h2>@item.Machine.Name</h2>
+                            <div class="panel-toolbar">
+                                <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                                <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                                <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                            </div>
+                        </div>
+                        <div class="panel-container show">
+                            <div class="panel-content">
+                                @foreach (var variable in item.Variables)
+                                {
+                                    <div class="panel-hdr">
+                                        <h4>@variable.Name</h4>
+                                    </div>
+                                    <div class="panel-container show">
+                                        <div class="panel-content">
+                                            <div id="chart-container-@item.Machine.Id|@variable.Id">Productivo Core Loading Data!!!</div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                @Html.ActionLink("Regresar", "Details", "ProductionOrders", new { id = ViewBag.OrderId }, new { @class = "h3-Productivo  btn btn-warning btn-sm glyphicon glyphicon-step-backward", title = "Regresar" })
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+﻿@model Productivo.Core.ViewModels.RawMaterials.RawMaterialEditViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Materias Primas</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Update">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="" />
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="RawCode" class="control-label h4-Pandora"></label>
+                                    <input asp-for="RawCode" class="form-control" />
+                                    <span asp-validation-for="RawCode" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="WarehouseDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="WarehouseDate" class="form-control" />
+                                    <span asp-validation-for="WarehouseDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="RawMaterialTypesId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="RawMaterialTypesId" id="raw-material-types-id" class="form-control" asp-
+                                                    asp-items="ViewBag.RawMaterialTypes">
+                                                <option disabled selected value="">Seleccione un tipo de materia prima...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-raw-material-type" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="RawMaterialTypesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="WHLocationsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="WHLocationsId" id="whlocations-id" class="form-control" asp-
+                                                    asp-items="ViewBag.WHLocations">
+                                                <option disabled selected value="">Seleccione una ubicacion en el almacen...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-whlocation" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="WHLocationsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-------------------------------------------------------ModalCode---------------------------------------------------------------->
+            <form id="add-item-raw-material-type">
+                <div class="modal fade" id="modal-create-raw-material-type" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Tipos de Materia Prima</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="RawMaterialTypes.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="RawMaterialTypes.Name" id="raw-material-type-name" class="form-control" />
+                                                    <span asp-validation-for="RawMaterialTypes.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-raw-material-type" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-whlocation">
+                <div class="modal fade" id="modal-create-whlocation" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Ubicaciones de almacen</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="WHLocations.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="WHLocations.Name" id="whlocation-name" class="form-control" />
+                                                    <span asp-validation-for="WHLocations.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="WHLocations.Position" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="WHLocations.Position" id="whlocation-position" class="form-control" />
+                                                    <span asp-validation-for="WHLocations.Position" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="WHLocations.Remarks" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="WHLocations.Remarks" id="whlocation-remarks" class="form-control" />
+                                                    <span asp-validation-for="WHLocations.Remarks" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-whlocation" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+    <script type="text/javascript">
+        $("#add-item-raw-material-type").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#raw-material-type-name").val();
+
+            $.getJSON(window.location.pathname.replace('/Update', '/AddRawMaterialTypes'), { name: _name },
+                function (data) {
+                    $("#close-modal-raw-material-type").click();
+                    var _id = data['id'];
+                    $("#raw-material-types-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-raw-material-type')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-whlocation").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#whlocation-name").val();
+            var _position = $("#whlocation-position").val();
+            var _remarks = $("#whlocation-remarks").val();
+
+            $.getJSON(window.location.pathname.replace('/Update', '/AddWhLocations'),
+                {
+                    name: _name,
+                    position: _position,
+                    remarks: _remarks
+                },
+                function (data) {
+                    $("#close-modal-whlocation").click();
+                    var _id = data['id'];
+                    $("#whlocations-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-whlocation')[0].reset();
+                }
+            );
+        });
+    </script>
+}

@@ -1,0 +1,137 @@
+﻿@model Productivo.Core.ViewModels.ControlEPPs.ControlEPPDetailViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Control EPP</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#tab_epp_detail" role="tab">Asignacion EPP</a></li>
+                        </ul>
+                        <div class="tab-content p-1">
+                            <!-- ASIGNACION EPP -->
+                            <div class="tab-pane fade show active" id="tab_epp_detail" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="m-b-md">
+                                            <h2>Información</h2>
+                                        </div>
+                                        <hr />
+                                        <div class="panel-content">
+                                            @if (Model.controlEPPDetails.Count == 0)
+                                            {
+                                                <h5>No hay registros de asignacion de EPP's.</h5>
+                                            }
+                                            else
+                                            {
+                                                <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.controlEPPDetails[0].Employees.FullName)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.controlEPPDetails[0].AsignmentDateTime)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.controlEPPDetails[0].ReturnDateTime)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.controlEPPDetails[0].ProtectionElements.Name)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.controlEPPDetails[0].Quantity)
+                                                            </th>
+                                                            <th>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model.controlEPPDetails)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.Employees.FullName)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.AsignmentDateTime)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ReturnDateTime)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.ProtectionElements.Name)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.Quantity)
+                                                                </td>
+                                                                <td>
+                                                                    <div class="btn-group">
+                                                                        @Html.ActionLink(" ", "Details", "ControlEPPDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                                    </div>
+
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <p></p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                        @Html.ActionLink("Adicionar Asignacion", "Create", "EPPControlDetails", new { controlEPPId = Model.controlEPP.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<partial name="_ConfirmFinishDate" />
+
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // FinishOrder
+            $("#btnYesConfirm").click(function () {
+                window.location.pathname = window.location.pathname.replace('/Details/', '/FinishProductionOrder/');
+            });
+
+        });
+    </script>
+
+
+}
+

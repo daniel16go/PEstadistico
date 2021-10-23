@@ -1,0 +1,101 @@
+﻿@model Productivo.Core.ViewModels.Security.RegisterVM
+
+@{
+    Layout = "_LayoutLogin";
+}
+
+
+<div class="page-inner bg-brand-gradient">
+    <div class="page-content-wrapper bg-transparent m-0">
+        <div class="height-10 w-100 shadow-lg px-4 bg-brand-gradient">
+            <div class="d-flex align-items-center container p-0">
+            </div>
+        </div>
+        <div class="flex-1" style="background: url(/img/svg/pattern-1.svg) no-repeat center bottom fixed; background-size: cover;">
+            <div class="container py-12 py-lg-5 my-lg-5 px-4 px-sm-0">
+                <div class="col-md-12">
+                    <center>
+                        <div class="card p-4 rounded-plus bg-faded">
+                            <div class="middle-box text-center loginscreen  animated fadeInDown">
+                                <div>
+                                    <div>
+                                        <img src="~/images/Logos/Productivo Small.png" height="150" width="150" />
+                                    </div>
+                                    <p></p>
+                                    <h2 class="h3-Productivo-Titulo-Blue-2">Productivo Core - Operations</h2>
+                                    <p>
+                                        <h3 class="h4-Productivo-Titulo-Blue-2">Ligero & Poderoso</h3>
+                                    </p>
+
+                                    <form enctype="multipart/form-data" asp-action="Register">
+                                        <hr />
+                                        <div asp-validation-summary="All" class="text-danger"></div>
+                                        <div class="form-group">
+                                            <label asp-for="Email" class="control-label .h4-Productivo-Bold-Blue"></label>
+                                            <input asp-for="Email" class="form-control" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Password" class="control-label .h4-Productivo-Bold-Blue"></label>
+                                            <input asp-for="Password" class="form-control" />
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="ConfirmPassword" class="control-label .h4-Productivo-Bold-Blue"></label>
+                                            <input asp-for="ConfirmPassword" class="form-control" />
+                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="FirstName" class="control-label .h4-Productivo-Bold-Blue"></label>
+                                            <input asp-for="FirstName" class="form-control" />
+                                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="CompanyId" class="control-label .h4-Productivo-Bold-Blue"></label>
+                                            <input asp-for="CompanyId" class="form-control" />
+                                            <span asp-validation-for="CompanyId" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="Position" class="control-label .h4-Productivo-Bold-Blue"></label>
+                                            <input asp-for="Position" class="form-control" />
+                                            <span asp-validation-for="Position" class="text-danger"></span>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label asp-for="FilePath" class="control-label .h4-Productivo-Bold-Blue"></label>
+                                            <div class="custom-file">
+                                                <input asp-for="FilePath" type="file" class="custom-file-input">
+                                                <label asp-for="FilePath" class="custom-file-label text-truncate">Seleccionar archivo...</label>
+                                            </div>
+                                        </div>
+
+                                            <button type="submit" class="h3-Productivo  btn btn-primary"> Registrar Usuario</button>
+
+                                            <a asp-action="ListUsers" asp-controller="Administration" class="h3-Productivo  btn btn-warning "> Regresar</a>
+
+                                    </form>
+                                </div>
+                                <p></p>
+                                <p></p>
+                                <p class="m-t"> <small class="copyright-Pandora">Development By Productivo Group S.A.S. &copy; 2020</small> </p>
+                            </div>
+                        </div>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on('change', function () {
+                let fileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').addClass("selected").html(fileName);
+            });
+        });
+    </script>
+
+}

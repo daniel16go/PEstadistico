@@ -1,0 +1,753 @@
+﻿@model Productivo.Core.ViewModels.ProductionOrders.ProductionOrderDetailViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Ordenes de Produccion</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    @if (@ViewBag.msg != null)
+                    {
+                        <hr />
+                        <div id="message-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="fal fa-trash-alt"></i></span>
+                            </button>
+                            <strong>Error </strong> @ViewBag.msg
+                        </div>
+                    }
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#tab_production_order" role="tab">Info. General</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_order_detail" role="tab">Produccion</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_production_info" role="tab">Insumos</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_production_order_process" role="tab">Procesos</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_production_stop" role="tab">Paradas</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_production_order_file" role="tab">Archivos</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_production_order_logistic" role="tab">Logistica</a></li>
+                        </ul>
+                        <div class="tab-content p-3">
+                            <!-- PRODUCTION ORDER -->
+                            <div class="tab-pane fade show active" id="tab_production_order" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="m-b-md">
+                                            <h2>Información</h2>
+                                        </div>
+                                        <hr />
+                                        <div class="float-left col-sm-6">
+                                            <dl class="row">
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.ProdDate)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.ProdDate)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.ProdStartDate)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.ProdStartDate)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.ProdFinishDate)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.ProdFinishDate)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.Order)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.Order)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.Status.Name)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.Status.Name)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.Lot)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.Lot)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.Products.Name)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.Products.Name)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.Shifts.Name)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.Shifts.Name)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.MinPackageWeight)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.MinPackageWeight)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.MaxPackageWeight)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.MaxPackageWeight)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.Lenght)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.Lenght)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.LenghtTolerance)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.LenghtTolerance)
+                                                </dd>
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.productionOrder.Remarks)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.productionOrder.Remarks)
+                                                </dd>
+
+                                            </dl>
+                                        </div>
+                                        <div class="float-right  col-sm-6">
+                                            <div class="justify-content-md-center text-center">
+                                                <div class="panel-content">
+                                                    <h2 class="colortitle-Productivo">OEE Produccion</h2>
+                                                    <div id="chart-container2">Productivo Core Loading Data!!!</div>
+                                                </div>
+                                                <div class="panel-content">
+                                                    <h2 class="colortitle-Productivo">Pérdidas de proceso</h2>
+                                                    <p style="font-size: 80PX">$  <strong>@ViewBag.ProcessLosses </strong> </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PRODUCTION ORDER DETAIL -->
+                            <div class="tab-pane fade" id="tab_order_detail" role="tabpanel">
+                                <h1 class="h1-Productivo">Evolución de producción</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.productionOrderDetails.Count == 0)
+                                        {
+                                            <h5>No hay registros de produccion asociados aun en la orden de producción.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderDetails[0].Employees.FullName)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderDetails[0].StartDateTime)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderDetails[0].FinishDateTime)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderDetails[0].TuneUp)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderDetails[0].ProdQuantity)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderDetails[0].OddmentQuantity)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderDetails[0].WasteQuantity)
+                                                        </th>
+                                                        <th>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.productionOrderDetails)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Employees.FullName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.StartDateTime)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.FinishDateTime)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.TuneUp)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ProdQuantity)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.OddmentQuantity)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.WasteQuantity)
+                                                            </td>
+                                                            <td>
+                                                                <div class="btn-group">
+                                                                    @Html.ActionLink(" ", "Details", "ProductionOrderDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square", data_toggle = "tooltip", data_placement = "top", title = "Detalle Registro Produccion " })
+                                                                    @Html.ActionLink(" ", "Statistics", "ProductionOrderDetails", new { id = item.Id }, new { @class = "btn btn-danger btn-sm fal fa-analytics", data_toggle = "tooltip", data_placement = "top", title = "OEE Registro Produccion" })
+                                                                    @Html.ActionLink(" ", "IoTDataDetail", "ProductionOrderDetails", new { id = item.Id }, new { @class = "btn btn-success btn-sm fal fa-chart-line", data_toggle = "tooltip", data_placement = "top", title = "IoT Data" })
+                                                                    @Html.ActionLink(" ", "Quality", "ProductionOrderDetails", new { id = item.Id }, new { @class = "btn btn-primary btn-sm fal fa-ruler-triangle", data_toggle = "tooltip", data_placement = "top", title = "Caso Calidad" })
+
+                                                                </div>
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Totales Produccion </strong>
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.TimePickingUp Minutos</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.TotalProduction</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.TotalOddment</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.TotalWast</strong>
+                                                        </th>
+                                                        <th>
+                                                        </th>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @if (Model.productionOrder.ProdFinishDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar Evolucion Prod.", "Create", "ProductionOrderDetails", new { orderId = Model.productionOrder.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                        if (Model.productionOrderDetails.Count > 0)
+                                        {
+                                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDialog">Finalizar orden</button>
+                                        }
+
+                                    }
+                                </p>
+
+                            </div>
+                            <!-- PRODUCTION INFO -->
+                            <div class="tab-pane fade" id="tab_production_info" role="tabpanel">
+                                <h1 class="h1-Productivo">Consumo de insumos</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.productionInfos.Count == 0)
+                                        {
+                                            <h5>No hay insumos consumidos aun en la orden de producción.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionInfos[0].Products.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionInfos[0].DeliveryDate)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionInfos[0].Quantity)
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.productionInfos)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Products.Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.DeliveryDate)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Quantity)
+                                                            </td>
+                                                            <td>
+                                                                @Html.ActionLink(" ", "Details", "ProductionInfos", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square", data_toggle = "tooltip", data_placement = "top", title = "Detalle Insumos Produccion" })
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @if (Model.productionOrder.ProdFinishDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar Insumos", "Create", "ProductionInfos", new { orderId = Model.productionOrder.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                    }
+                                </p>
+                            </div>
+                            <!-- PRODUCTION ORDER PROCESS -->
+                            <div class="tab-pane fade " id="tab_production_order_process" role="tabpanel">
+                                <h1 class="h1-Productivo">Evolucion de procesos</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.productionOrderProcesses.Count == 0)
+                                        {
+                                            <h5>No hay procesos asociados aun en la orden de producción.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderProcesses[0].Machines.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderProcesses[0].ScheduleDate)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderProcesses[0].Employees.FullName)
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.productionOrderProcesses)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Machines.Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ScheduleDate)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Employees.FullName)
+                                                            </td>
+                                                            <td>
+                                                                @Html.ActionLink(" ", "Details", "ProductionOrderProcesses", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square", data_toggle = "tooltip", data_placement = "top", title = "Detalle Procesos Produccion" })
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @if (Model.productionOrder.ProdFinishDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar Procesos", "Create", "ProductionOrderProcesses", new { orderId = Model.productionOrder.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                    }
+                                </p>
+                            </div>
+                            <!-- PRODUCTION STOPS -->
+                            <div class="tab-pane fade" id="tab_production_stop" role="tabpanel">
+                                <h1 class="h1-Productivo">Paradas</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.productionStops.Count == 0)
+                                        {
+                                            <h5>No hay paradas asociadas aun en la orden de producción.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionStops[0].Stops.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionStops[0].Machines.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionStops[0].StartDateTime)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionStops[0].FinishDateTime)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionStops[0].Employees.FullName)
+                                                        </th>
+                                                        <th>
+                                                            <strong>Tiempo(Minutos)</strong>
+                                                        </th>
+                                                        <th>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.productionStops)
+                                                    {
+                                                        ViewBag.StopTime = ((TimeSpan)(item.FinishDateTime - item.StartDateTime)).TotalMinutes.ToString("F"); ;
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Stops.Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Machines.Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.StartDateTime)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.FinishDateTime)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Employees.FullName)
+                                                            </td>
+                                                            <td>
+                                                                @ViewBag.StopTime
+                                                            </td>
+                                                            <td>
+                                                                @Html.ActionLink(" ", "Details", "ProductionStops", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square", data_toggle = "tooltip", data_placement = "top", title = "Detalle Paradas Produccion" })
+                                                                @Html.ActionLink(" ", "StopKnow", "ProductionStops", new { id = item.Id }, new { @class = "btn btn-success btn-sm fal fa-books", data_toggle = "tooltip", data_placement = "top", title = "Base Conocimiento Parada" })
+
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Total</strong>
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+                                                            <strong>@ViewBag.TotalStopTime</strong>
+                                                        </th>
+                                                        <th>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @if (Model.productionOrder.ProdFinishDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar Paradas", "Create", "ProductionStops", new { orderId = Model.productionOrder.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                    }
+                                </p>
+                            </div>
+                            <!-- PRODUCTION ORDER FILES -->
+                            <div class="tab-pane fade" id="tab_production_order_file" role="tabpanel">
+                                <h1 class="h1-Productivo">Archivos</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.productionOrderFiles.Count == 0)
+                                        {
+                                            <h5>No hay archivos asociados aun en la orden de producción.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderFiles[0].TypeFile)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderFiles[0].LoadDate)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderFiles[0].Remarks)
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.productionOrderFiles)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.TypeFile)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.LoadDate)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Remarks)
+                                                            </td>
+                                                            <td>
+                                                                @Html.ActionLink(" ", "Details", "ProductionOrderFiles", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square", data_toggle = "tooltip", data_placement = "top", title = "Detalle Archivos Produccion" })
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @if (Model.productionOrder.ProdFinishDate == null)
+                                    {
+                                        @Html.ActionLink("Adicionar Archivos", "Create", "ProductionOrderFiles", new { orderId = Model.productionOrder.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                    }
+                                </p>
+                            </div>
+                            <!-- PRODUCTION ORDER LOGISTIC -->
+                            <div class="tab-pane fade" id="tab_production_order_logistic" role="tabpanel">
+                                <h1 class="h1-Productivo">Logistica</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.productionOrderProcesses.Count == 0)
+                                        {
+                                            <h5>No hay datos asociados aun en la orden de producción.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrder.Order)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrder.Status.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrderProcesses[0].Machines.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.productionOrder.ExpectedQuantity)
+                                                        </th>
+                                                        <th>
+                                                            <strong>Unidades Producidas</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>Unidades Malas</strong>
+                                                        </th>
+                                                        <th>
+                                                            <strong>Unidades Buenas</strong>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.productionOrderProcesses)
+                                                    {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => Model.productionOrder.Order)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => Model.productionOrder.Status.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Machines.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => Model.productionOrder.ExpectedQuantity)
+                                                        </td>
+                                                        <td>
+                                                            <div class="unidades-producidas-@item.MachinesId"></div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="unidades-malas-@item.MachinesId"></div>
+                                                        </td>
+                                                        <td>
+                                                            <div class="unidades-buenas-@item.MachinesId"></div>
+                                                        </td>
+                                                    </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_ConfirmFinishDate" />
+
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // FinishOrder
+            $("#btnYesConfirm").click(function () {
+                window.location.pathname = window.location.pathname.replace('/Details/', '/FinishProductionOrder/');
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        @* OEE *@
+        FusionCharts.ready(function () {
+             var fusioncharts = new FusionCharts({
+                type: 'angulargauge',
+                renderAt: 'chart-container2',
+                width: '100%',
+                height: '150',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "showBorder": "0",
+                        "showShadow": "0",
+                        "use3DLighting": "0",
+                        "showLabels": "0",
+                        "showValues": "0",
+                        "paletteColors": "#58E2C2, #F7E53B",
+                        "bgColor": "#ffffff",
+                        "bgAlpha": "100",
+                        "canvasBgAlpha": "0",
+                        "decimals": "0",
+                        "baseFont": "Arial",
+                        "setAdaptiveMin": "1",
+                        "baseFontColor": "#000000",
+                        "chartTopMargin": "0",
+                        "canvasTopMargin": "0",
+                        "chartBottomMargin": "70",
+                        "chartLeftMargin": "10",
+                        "chartRightMargin": "10",
+                        "showTickMarks": "0",
+                        "showTickValues": "0",
+                        "showLimits": "0",
+                        "majorTMAlpha": "0",
+                        "minorTMAlpha": "0",
+                        "pivotFillAlpha": "0",
+                        "showPivotBorder": "0",
+                        "gaugeouterradius": "70",
+                        "gaugeInnerradius": "62.5",
+                        "showGaugeBorder": "0",
+                        "gaugeFillMix": "{light+0}",
+                        "toolTipBgcolor": "#484E69",
+                        "toolTipPadding": "7",
+                        "toolTipBorderRadius": "3",
+                        "toolTipBorderAlpha": "30",
+                        "tooltipBorderThickness": "0.7",
+                        "toolTipColor": "#FDFDFD",
+                        "transposeAnimation": "1"
+                    },
+                    "annotations": {
+                        "groups": [{
+                            "items": [
+                                {
+                                    "id": "2",
+                                    "type": "text",
+                                    "text": "@ViewBag.OEE%",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "1",
+                                    "fontSize": "25",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY"
+                                }, {
+                                    "id": "3",
+                                    "type": "text",
+                                    "text": "80% OEE Min.",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "0",
+                                    "fontSize": "25",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY + 45"
+                                }]
+                        }]
+                    },
+
+                    "colorRange": {
+                        "color": [{
+                            "minValue": "0",
+                            "maxValue": "@ViewBag.OEE",
+                            "code": "#58E2C2"
+                        },
+                        {
+                            "minValue": "0",
+                            "maxValue": "100",
+                            "code": "#48506E"
+                        }
+                        ]
+                    },
+                    "dials": {
+                        "dial": [{
+                            "value": "@ViewBag.OEE",
+                            "alpha": "0",
+                            "borderAlpha": "0",
+                            "radius": "0",
+                            "baseRadius": "0",
+                            "rearExtension": "0",
+                            "baseWidth": "0",
+                            "showValue": "0"
+                        }]
+                    }
+
+                }
+            });
+            fusioncharts.render();
+        });
+
+        
+    </script>
+}
+

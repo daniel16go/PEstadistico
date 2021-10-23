@@ -1,0 +1,277 @@
+﻿@model Productivo.Core.ViewModels.Customers.CustomerCreateViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Clientes</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="Code" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Code" class="form-control" />
+                                    <span asp-validation-for="Code" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label asp-for="Name" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Latitude" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Latitude" class="form-control" />
+                                    <span asp-validation-for="Latitude" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Longitude" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Longitude" class="form-control" />
+                                    <span asp-validation-for="Longitude" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="Initials" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Initials" class="form-control" />
+                                    <span asp-validation-for="Initials" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label asp-for="CustomerTypesId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="CustomerTypesId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.CustomerTypes">
+                                        <option disabled selected value="">Seleccione un tipo de cliente...</option>
+                                    </select>
+                                    <div class="col-md-5">
+                                        <span asp-validation-for="CustomerTypesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="CreditLimit" class="control-label h4-Pandora"></label>
+                                    <input asp-for="CreditLimit" class="form-control" />
+                                    <span asp-validation-for="CreditLimit" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="BlockId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="BlockId" class="form-control" asp-items="@Html.GetEnumSelectList<Productivo.Core.Enums.BlockEnum>()">
+                                        <option selected="selected" value="">Seleccione un tipo de bloqueo para el cliente...</option>
+                                    </select>
+                                    <span asp-validation-for="BlockId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label asp-for="VendorsId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="VendorsId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.Vendors">
+                                        <option disabled selected value="">Seleccione un vendedor...</option>
+                                    </select>
+                                    <div class="col-md-5">
+                                        <span asp-validation-for="VendorsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label asp-for="InstallationsId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="InstallationsId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.Installations">
+                                        <option disabled selected value="">Seleccione una instalacion...</option>
+                                    </select>
+                                    <div class="col-md-5">
+                                        <span asp-validation-for="InstallationsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label asp-for="InvoiceDeliveryId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="InvoiceDeliveryId" class="form-control" asp-items="@Html.GetEnumSelectList<Productivo.Core.Enums.InvoiceDeliveryEnum>()">
+                                        <option selected="selected" value="">Seleccione un tipo de entrega de facturacion...</option>
+                                    </select>
+                                    <span asp-validation-for="InvoiceDeliveryId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label asp-for="TaxesId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="TaxesId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.Taxes">
+                                        <option disabled selected value="">Seleccione un tipo de impuesto...</option>
+                                    </select>
+                                    <div class="col-md-5">
+                                        <span asp-validation-for="TaxesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="form-group">
+                                    <label asp-for="InvoiceCopies" class="control-label h4-Pandora"></label>
+                                    <input asp-for="InvoiceCopies" class="form-control" />
+                                    <span asp-validation-for="InvoiceCopies" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    <label asp-for="CurrenciesId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="CurrenciesId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.Currencies">
+                                        <option disabled selected value="">Seleccione una moneda de negociacion...</option>
+                                    </select>
+                                    <div class="col-md-5">
+                                        <span asp-validation-for="CurrenciesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PricesListsId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="PricesListsId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.PriceLists">
+                                        <option disabled selected value="">Seleccione una lista de precios...</option>
+                                    </select>
+                                    <div class="col-md-6">
+                                        <span asp-validation-for="PricesListsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DiscountListsId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="DiscountListsId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.DiscountLists">
+                                        <option disabled selected value="">Seleccione una lista de descuentos...</option>
+                                    </select>
+                                    <div class="col-md-6">
+                                        <span asp-validation-for="DiscountListsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DownPaymentPercentage" class="control-label h4-Pandora"></label>
+                                    <input asp-for="DownPaymentPercentage" class="form-control" />
+                                    <span asp-validation-for="DownPaymentPercentage" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DownPaymentApId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="DownPaymentApId" class="form-control" asp-items="@Html.GetEnumSelectList<Productivo.Core.Enums.DownPaymentApEnum>()">
+                                        <option selected="selected" value="">Seleccione un tipo de aplicacion del anticipo...</option>
+                                    </select>
+                                    <span asp-validation-for="DownPaymentApId" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PaymentTermsId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="PaymentTermsId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.PaymentTerms">
+                                        <option disabled selected value="">Seleccione una forma de pago...</option>
+                                    </select>
+                                    <div class="col-md-6">
+                                        <span asp-validation-for="PaymentTermsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="PaymentMethodsId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="PaymentMethodsId" id="countries-id" class="form-control" asp-
+                                            asp-items="ViewBag.PaymentMethods">
+                                        <option disabled selected value="">Seleccione un metodo de pago...</option>
+                                    </select>
+                                    <div class="col-md-6">
+                                        <span asp-validation-for="PaymentMethodsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Remarks" class="control-label h4-Pandora"></label>
+                                    <textarea asp-for="Remarks" rows="4" class="form-control"> </textarea>
+                                    <span asp-validation-for="Remarks" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

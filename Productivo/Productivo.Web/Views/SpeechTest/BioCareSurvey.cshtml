@@ -1,0 +1,220 @@
+﻿@model Productivo.Core.ViewModels.BioCareSurveyAnswers.BioCareSurveyAnswerCreateViewModel
+
+<div class="text-center">
+    <h1 class="display-4 colortitle-Productivo">Productivo Bio-Care - Encuesta Sintomas</h1>
+    <p></p>
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2></h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                        <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+                        <div class="col-sm-12">
+                            <div id="sendData" class="alert alert-success" role="alert">
+                                <strong>Encuesta terminada</strong>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 d-flex justify-content-center">
+
+                            <div class="form-group">
+                                <label asp-for="EmployeesId" class="control-label h4-Pandora"></label>
+                                <input id="employeeId" class="form-control" onkeypress="return keyPressCheck(event)" />
+                                <span id="document-error" class="text-danger"></span>
+                                <br />
+                                <img id="mic-state" src="~/Images/GrayPoint.png" class="profile-image rounded-circle" alt="">
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="row">
+                            <div class="col-sm-10">
+                                <div>
+                                    <dl class="row">
+                                        <dt class="col-sm-10 d-flex justify-content-lg-start">
+                                            <label asp-for="Temperature" class="control-label h4-Pandora"></label>
+                                        </dt>
+                                        <dd class="col-sm-2">
+                                            <input id="temperature" asp-for="Temperature" class="form-control" />
+                                            <span asp-validation-for="Temperature" class="text-danger"></span>
+                                        </dd>
+                                        @foreach (var question in Model.Questions)
+                                        {
+                                            <dt class="col-sm-10 d-flex justify-content-lg-start">
+                                                <label class="control-label h4-Pandora">@question.QuestionName</label>
+                                            </dt>
+                                            <dd class="col-sm-2">
+                                                <input id="q-@question.Id" class="form-control" readonly />
+                                            </dd>
+                                        }
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section ScriptsBlock {
+    <script type="text/javascript">
+        const questions = [];
+        const responses = [];
+        let index = 0;
+        let start_survey = 0;
+        let access = 1;
+        let wordRecognition = 1;
+        const question = document.getElementById('question');
+
+        let recognition = new webkitSpeechRecognition();
+        let speech = new SpeechSynthesisUtterance();
+        let id = 0;
+        let img = document.getElementById("mic-state");
+        let msgError = document.getElementById("document-error");
+        document.getElementById("employeeId").focus();
+        document.getElementById("sendData").style.display = 'none';
+
+
+        recognition.lang = 'es-ES';
+        recognition.continuous = false;
+        recognition.interimResult = false;
+        recognition.start();
+        //obtiene las preguntas
+        $.getJSON(window.location.pathname.replace('/BioCareSurvey', '/Survey'), {},
+            function (data) {
+                $.each(data, function (index, rowv) {
+                    console.log(rowv);
+                    questions.push(rowv);
+                })
+
+                console.log(questions);
+            }
+        );
+
+        //Definicion de eventos
+        speech.onend = (event) => {
+            recognition.start();
+        }
+
+        recognition.onresult = (event) => {
+
+            if (start_survey !== 0) {
+                wordRecognition = 1;
+                console.log("Start-survey " + start_survey)
+                const result = event.results;
+                const textdata = result[0][0].transcript;
+
+                if (textdata === "sí") {
+                    access = 0;
+                }
+
+                if (textdata === "sí" || textdata === "no") {
+                    let id = "q-" + questions[index].id;
+                    let response = document.getElementById(id);
+                    response.value = textdata;
+                    responses.push(questions[index].id + ":" + textdata);
+                } else {
+                    wordRecognition = 0;
+                }
+
+            } 
+
+        }
+
+        recognition.onend = function () {
+            if (start_survey !== 0) {
+                img.src = img.src.replace("BluePoint", "GrayPoint");
+                console.log('Reconocimiento finalizado');
+                if (index < (questions.length - 1)) {
+                    if (wordRecognition === 1) {
+                        index += 1;
+                    }
+                    setTimeout("startRecognition()", 1000);
+                } else {
+                    console.log([questions, responses]);
+                    sendAnswerData();
+
+                    if (access === 1) {
+                        speechText("Encuesta terminada, Bienvenido.");
+                    } else {
+                        speechText("Encuesta finalizada, usted no esta autorizado para ingresar.");
+                    }
+
+                    document.getElementById("sendData").style.display = 'block';
+                    setTimeout("location.reload()", 3000);
+                }
+            }
+        };
+
+        recognition.onstart = function () {
+            if (start_survey !== 0) {
+                console.log('Reconocimiento iniciado');
+                img.src = img.src.replace("GrayPoint", "BluePoint");
+            } else {
+                recognition.stop();
+            }
+        }
+
+
+        //Funciones personalizadas para el desarrollo
+        function keyPressCheck(e) {
+            msgError.innerHTML = "";
+            if (e.keyCode == 13) {
+                start_survey = 1;
+                access = 1;
+                let EmployeeId = document.getElementById("employeeId").value;
+                $.getJSON(window.location.pathname.replace('/BioCareSurvey', '/CheckDocument'), { document: EmployeeId },
+                    function (data) {
+                        if (data === 'failed') {
+                            msgError.innerHTML = "Documento no registrado.";
+                        } else {
+                            id = data;
+                            console.log("ID encuesta :" + data);
+                            startSurvey();
+                        }
+                    }
+                );
+
+            }
+        }
+
+        function startSurvey() {
+            index = 0;
+            responses.splice(0);
+            console.log("Inicio Test encuesta sin contacto");
+            startRecognition();
+        }
+
+        function startRecognition() {
+            console.log("Inicia reconocimeinto");
+            var dataQuestion = questions[index].questionName;
+            speechText(dataQuestion);
+        }
+
+        function sendAnswerData() {
+
+            let Temperature = document.getElementById("temperature").value;
+            $.post(window.location.pathname.replace('/BioCareSurvey', '/Answers'), { employeesId: id, temperature: Temperature, data: responses },);
+
+        }
+
+        function speechText(dataText) {
+            console.log('Speech : ' + dataText);
+            speech.text = dataText;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pich = 1;
+            window.speechSynthesis.speak(speech);
+        }
+
+
+    </script>
+}

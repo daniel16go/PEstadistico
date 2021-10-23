@@ -1,0 +1,701 @@
+﻿
+<html>
+<head>
+    <meta http-equiv="Refresh" content="300">
+    <script src="~/FusionCharts/fusioncharts.js"></script>
+    <script src="~/FusionCharts/themes/fusioncharts.theme.fusion.js"></script>
+
+    @*Entregas Dia*@
+    <script type="text/javascript">
+
+        FusionCharts.ready(function () {
+            var fusioncharts = new FusionCharts({
+                type: 'angulargauge',
+                renderAt: 'chart-container',
+                width: '100%',
+                height: '300',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "showBorder": "0",
+                        "showShadow": "0",
+                        "use3DLighting": "0",
+                        "showLabels": "0",
+                        "showValues": "0",
+                        "paletteColors": "#58E2C2, #F7E53B",
+                        "bgColor": "#ffffff",
+                        "bgAlpha": "100",
+                        "canvasBgAlpha": "0",
+                        "decimals": "0",
+                        "baseFont": "Arial",
+                        "setAdaptiveMin": "1",
+                        "baseFontColor": "#000000",
+                        "chartTopMargin": "0",
+                        "canvasTopMargin": "0",
+                        "chartBottomMargin": "70",
+                        "chartLeftMargin": "10",
+                        "chartRightMargin": "10",
+                        "showTickMarks": "0",
+                        "showTickValues": "0",
+                        "showLimits": "0",
+                        "majorTMAlpha": "0",
+                        "minorTMAlpha": "0",
+                        "pivotFillAlpha": "0",
+                        "showPivotBorder": "0",
+                        "gaugeouterradius": "150",
+                        "gaugeInnerradius": "125",
+                        "showGaugeBorder": "0",
+                        "gaugeFillMix": "{light+0}",
+                        "transposeAnimation": "1"
+                    },
+                    "annotations": {
+                        "groups": [{
+                            "items": [
+                                {
+                                    "id": "2",
+                                    "type": "text",
+                                    "text": "78%",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "1",
+                                    "fontSize": "45",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY"
+                                }, {
+                                    "id": "3",
+                                    "type": "text",
+                                    "text": "70% 5S Min",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "0",
+                                    "fontSize": "25",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY + 45"
+                                }]
+                        }]
+                    },
+
+                    "colorRange": {
+                        "color": [{
+                            "minValue": "1",
+                            "maxValue": "100",
+                            "code": "#58E2C2"
+                        },
+                        {
+                            "minValue": "3",
+                            "maxValue": "200",
+                            "code": "#48506E"
+                        }
+                        ]
+                    },
+                    "dials": {
+                        "dial": [{
+                            "value": "72",
+                            "alpha": "0",
+                            "borderAlpha": "0",
+                            "radius": "0",
+                            "baseRadius": "0",
+                            "rearExtension": "0",
+                            "baseWidth": "0",
+                            "showValue": "0"
+                        }]
+                    }
+
+                }
+            });
+            fusioncharts.render();
+        });
+    </script>
+
+    @*OEE*@
+    <script type="text/javascript">
+
+        FusionCharts.ready(function () {
+
+            $.getJSON(window.location.pathname.replace('/Index', '/OeeGlobal'), {},
+                function (data) {
+                    var dataOEE = data;
+
+                    var fusioncharts = new FusionCharts({
+                        type: 'angulargauge',
+                        renderAt: 'chart-container2',
+                        width: '100%',
+                        height: '300',
+                        dataFormat: 'json',
+                        dataSource: {
+                            "chart": {
+                                "showBorder": "0",
+                                "showShadow": "0",
+                                "use3DLighting": "0",
+                                "showLabels": "0",
+                                "showValues": "0",
+                                "paletteColors": "#58E2C2, #F7E53B",
+                                "bgColor": "#ffffff",
+                                "bgAlpha": "100",
+                                "canvasBgAlpha": "0",
+                                "decimals": "0",
+                                "baseFont": "Arial",
+                                "setAdaptiveMin": "1",
+                                "baseFontColor": "#000000",
+                                "chartTopMargin": "0",
+                                "canvasTopMargin": "0",
+                                "chartBottomMargin": "70",
+                                "chartLeftMargin": "10",
+                                "chartRightMargin": "10",
+                                "showTickMarks": "0",
+                                "showTickValues": "0",
+                                "showLimits": "0",
+                                "majorTMAlpha": "0",
+                                "minorTMAlpha": "0",
+                                "pivotFillAlpha": "0",
+                                "showPivotBorder": "0",
+                                "gaugeouterradius": "150",
+                                "gaugeInnerradius": "125",
+                                "showGaugeBorder": "0",
+                                "gaugeFillMix": "{light+0}",
+                                "toolTipBgcolor": "#484E69",
+                                "toolTipPadding": "7",
+                                "toolTipBorderRadius": "3",
+                                "toolTipBorderAlpha": "30",
+                                "tooltipBorderThickness": "0.7",
+                                "toolTipColor": "#FDFDFD",
+                                "transposeAnimation": "1"
+                            },
+                            "annotations": {
+                                "groups": [{
+                                    "items": [
+                                        {
+                                            "id": "2",
+                                            "type": "text",
+                                            "text": dataOEE + "%",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "1",
+                                            "fontSize": "45",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY"
+                                        }, {
+                                            "id": "3",
+                                            "type": "text",
+                                            "text": "80% OEE Min.",
+                                            "align": "center",
+                                            "font": "Arial",
+                                            "bold": "0",
+                                            "fontSize": "25",
+                                            "color": "#000000",
+                                            "x": "$chartcenterX",
+                                            "y": "$chartCenterY + 45"
+                                        }]
+                                }]
+                            },
+
+                            "colorRange": {
+                                "color": [{
+                                    "minValue": "0",
+                                    "maxValue": dataOEE,
+                                    "code": "#58E2C2"
+                                },
+                                {
+                                    "minValue": dataOEE,
+                                    "maxValue": "100",
+                                    "code": "#48506E"
+                                }
+                                ]
+                            },
+                            "dials": {
+                                "dial": [{
+                                    "value": dataOEE,
+                                    "alpha": "0",
+                                    "borderAlpha": "0",
+                                    "radius": "0",
+                                    "baseRadius": "0",
+                                    "rearExtension": "0",
+                                    "baseWidth": "0",
+                                    "showValue": "0"
+                                }]
+                            }
+
+                        }
+                    });
+                    fusioncharts.render();
+                }
+            );
+
+
+        });
+    </script>
+
+    @*MT PRODUCIDAS UN 1
+        <script type="text/javascript">
+            FusionCharts.ready(function () {
+                var fusioncharts = new FusionCharts({
+                    type: 'hlineargauge',
+                    renderAt: 'chart-container5',
+                    width: '100%',
+                    height: '150',
+                    dataFormat: 'json',
+                    dataSource: {
+                        "chart": {
+                            "showValues": "0",
+                            "showBorder": "0",
+                            "baseFontColor": "#000000",
+                            "baseFont": "Arial",
+                            "showTickMarks": "0",
+                            "showTickValues": "0",
+                            "pointerRadius": "0",
+                            "pointerBgAlpha": "0",
+                            "pointerBorderAlpha": "0",
+                            "gaugeFillMix": "{light+0}",
+                            "showValue": "0",
+                            "showGaugeBorder": "0",
+                            "chartTopMargin": "70",
+                            "chartBottomMargin": "70",
+                            "chartLeftMargin": "20",
+                            "chartRightMargin": "20",
+                            "bgColor": "#ffffff",
+                            "bgAlpha": "100",
+                            "canvasBgAlpha": "0",
+                            "transposeAnimation": "1"
+                        },
+                        "colorRange": {
+                            "color": [{
+                                "minValue": "0",
+                                "maxValue": "@ViewBag.LastMTGlobal",
+                                "code": "#92C35F"
+                            },
+                            {
+                                "minValue": "@ViewBag.LastMTGlobal",
+                                "maxValue": "@ViewBag.LastMTGlobalMeta",
+                                "code": "#48526F"
+                            }
+                            ]
+                        },
+                        "annotations": {
+                            "groups": [{
+                                "items": [
+                                    {
+                                        "id": "2",
+                                        "type": "text",
+                                        "text": "MT Producidas UN 1",
+                                        "fontSize": "16",
+                                        "bold": "1",
+                                        "color": "#000000",
+                                        "align": "Left",
+                                        "x": "$canvasStartX",
+                                        "y": "$canvasStartY - 40"
+                                    },
+                                    {
+                                        "id": "3",
+                                        "type": "text",
+                                        "text": "Meta",
+                                        "fontSize": "11",
+                                        "bold": "0",
+                                        "color": "#000000",
+                                        "align": "Right",
+                                        "x": "$canvasEndX",
+                                        "y": "$canvasStartY - 10"
+                                    },
+                                    {
+                                        "id": "4",
+                                        "type": "text",
+                                        "text": "@ViewBag.LastMTGlobal MT",
+                                        "fontSize": "13",
+                                        "bold": "1",
+                                        "color": "#000000",
+                                        "align": "Left",
+                                        "x": "$canvasStartX",
+                                        "y": "$canvasEndY + 13"
+                                    },
+                                    {
+                                        "id": "5",
+                                        "type": "text",
+                                        "text": "@ViewBag.LastMTGlobalMeta MT",
+                                        "fontSize": "13",
+                                        "bold": "1",
+                                        "color": "#000000",
+                                        "align": "Right",
+                                        "x": "$canvasEndX",
+                                        "y": "$canvasEndY + 13"
+                                    }]
+                            }]
+                        }
+                    }
+                });
+                fusioncharts.render();
+            });
+        </script>*@
+
+    @*MT PRODUCIDAS UN 2*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+
+            $.getJSON(window.location.pathname.replace('/Index', '/MTproduccidas'), {},
+                function (data) {
+                    var MTProducidas = data;
+                    var fusioncharts = new FusionCharts({
+                        type: 'hlineargauge',
+                        renderAt: 'chart-container4',
+                        width: '100%',
+                        height: '150',
+                        dataFormat: 'json',
+                        dataSource: {
+                            "chart": {
+                                "showValues": "0",
+                                "showBorder": "0",
+                                "forcedecimals": "0",
+                                "baseFontColor": "#000000",
+                                "baseFont": "Arial",
+                                "showTickMarks": "0",
+                                "showTickValues": "0",
+                                "pointerRadius": "0",
+                                "pointerBgAlpha": "0",
+                                "pointerBorderAlpha": "0",
+                                "gaugeFillMix": "{light+0}",
+                                "showValue": "0",
+                                "showGaugeBorder": "0",
+                                "chartTopMargin": "70",
+                                "chartBottomMargin": "70",
+                                "chartLeftMargin": "20",
+                                "chartRightMargin": "20",
+                                "bgColor": "#ffffff",
+                                "bgAlpha": "100",
+                                "canvasBgAlpha": "0",
+                                "transposeAnimation": "1"
+                            },
+                            "colorRange": {
+                                "color": [{
+                                    "minValue": "0",
+                                    "maxValue": MTProducidas + "",
+                                    "code": "#92C35F"
+                                },
+                                {
+                                    "minValue": MTProducidas + "",
+                                    "maxValue": (MTProducidas + (MTProducidas / 2)) + "",
+                                    "code": "#48526F"
+                                }
+                                ]
+                            },
+                            "annotations": {
+                                "groups": [{
+                                    "items": [
+                                        {
+                                            "id": "2",
+                                            "type": "text",
+                                            "text": "MT Producidas",
+                                            "fontSize": "16",
+                                            "bold": "1",
+                                            "color": "#000000",
+                                            "align": "Left",
+                                            "x": "$canvasStartX",
+                                            "y": "$canvasStartY - 40"
+                                        },
+                                        {
+                                            "id": "3",
+                                            "type": "text",
+                                            "text": "Meta",
+                                            "fontSize": "11",
+                                            "bold": "0",
+                                            "color": "#000000",
+                                            "align": "Right",
+                                            "x": "$canvasEndX",
+                                            "y": "$canvasStartY - 10"
+                                        },
+                                        {
+                                            "id": "4",
+                                            "type": "text",
+                                            "text": MTProducidas + " MT",
+                                            "fontSize": "13",
+                                            "bold": "1",
+                                            "color": "#000000",
+                                            "align": "Left",
+                                            "x": "$canvasStartX",
+                                            "y": "$canvasEndY + 13"
+                                        },
+                                        {
+                                            "id": "5",
+                                            "type": "text",
+                                            "text": MTProducidas + " MT",
+                                            "fontSize": "13",
+                                            "bold": "1",
+                                            "color": "#000000",
+                                            "align": "Right",
+                                            "x": "$canvasEndX",
+                                            "y": "$canvasEndY + 13"
+
+
+                                        }]
+                                }]
+                            }
+                        }
+                    });
+                    fusioncharts.render();
+                });
+
+
+
+        });
+    </script>
+
+    @*TIEMPO X TIPOS PARADA*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Index', '/Performance'), { calculateType: 'StopByType' },
+                function (data) {
+                    var StopTypes = [];
+                    $.each(data, function (index, rowv) {
+                        if (StopTypes.length <= 10) {
+                            StopTypes.push(JSON.parse(JSON.stringify({ label: index, value: rowv })));
+                        }
+                    })
+                    var fusioncharts = new FusionCharts({
+                        type: 'column2d',
+                        renderAt: 'chart-container6',
+                        width: '100%',
+                        height: '300',
+                        dataFormat: 'json',
+                        dataSource: {
+                            "chart": {
+                                "theme": "fusion",
+                                "showLabels": "1",
+                                "showValues": "1"
+                            },
+                            "data": StopTypes
+                        }
+                    });
+                    fusioncharts.render();
+                }
+            );
+        });
+    </script>
+
+    @*TIEMPO PARADA X OPERADOR*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Index', '/Performance'), { calculateType: 'StopByOperator' },
+                function (data) {
+                    var rows = "";
+                    $.each(data, function (index, rowv) {
+
+                        rows += "<tr><td>" + index + "</td><td>" + rowv + " Min.</td></tr>";
+                    })
+                    $("#tbody-stopbyoperator").html(rows);
+                }
+            );
+        });
+    </script>
+
+    @*TIEMPO PARADA X MAQUINA*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Index', '/Performance'), { calculateType: 'StopByMachine' },
+                function (data) {
+                    var rowsM = "";
+                    $.each(data, function (index, rowv) {
+                        rowsM += "<tr><td>" + index + "</td><td>" + rowv + " Min.</td></tr>";
+                    })
+                    $("#tbody-stopbymachine").html(rowsM);
+                }
+            );
+        });
+    </script>
+
+    @*TIEMPO ALISTAMIENTO*@
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            $.getJSON(window.location.pathname.replace('/Index', '/Performance'), { calculateType: 'TotalTuneUpTime' },
+                function (data) {
+                    var rowsM = "";
+                    $.each(data, function (index, rowv) {
+                        rowsM += '<p style="font-size: 80PX">' + rowv + " Min.</p>";
+                    })
+                    $("#tuneup-time").html(rowsM);
+                }
+            );
+        });
+    </script>
+</head>
+<body>
+
+    <div class="text-center">
+        <h1 class="display-4 colortitle-Productivo">Productivo Operation Board</h1>
+        <p></p>
+
+        <div class="row">
+            <div class="col-xl-6">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">OEE Global</h2>
+                            <div id="chart-container2">Productivo Core Loading Data!!!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">Estado 5s Global @System.DateTime.Today.ToShortDateString()</h2>
+                            <div id="chart-container">Productivo Core Loading Data!!!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-8">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">Total Paradas @System.DateTime.Today.ToShortDateString()</h2>
+                            <div id="chart-container6">Productivo Core Loading Data!!!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">MT Producidas @System.DateTime.Today.ToShortDateString()</h2>
+                            <div id="chart-container4">Productivo Core Loading Data!!!</div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xl-4">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">Tiempo Paradas/maquina</h2>
+                            <hr />
+                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <p>Maquina</p>
+                                        </th>
+                                        <th>
+                                            <p>Tiempo</p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-stopbymachine">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <h2 class="colortitle-Productivo">Tiempo Paradas/Operador</h2>
+                            <hr />
+
+                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <p>Operador</p>
+                                        </th>
+                                        <th>
+                                            <p>Tiempo</p>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody-stopbyoperator">
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-4">
+                <div id="panel-1" class="panel">
+                    <div class="panel-hdr">
+                        <h2></h2>
+                        <div class="panel-toolbar">
+                            <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                            <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                            <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                        </div>
+                    </div>
+                    <div class="panel-container show">
+                        <h2 class="colortitle-Productivo">Tiempo de alistamiento</h2>
+                        <hr />
+                        <strong id="tuneup-time"></strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+</body>
+</html>

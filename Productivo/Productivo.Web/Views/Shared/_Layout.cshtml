@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<partial name="_CopyrightHeader" />
+<html lang="en">
+<head>
+    <partial name="_Head" />
+    @RenderSection("HeadBlock", required: false)
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
+    <script type="text/javascript">
+
+
+        function notification() {
+
+            var _userId = "@userManager.GetUserAsync(User).Result.Id";
+            var _companyId = @userManager.GetUserAsync(User).Result.CompanyId;
+            var url = "@Url.Action( "NotificationActive", "IoTDataAlertNotification")";
+
+            $.getJSON(url, { UserId: _userId, CompanyId: _companyId },
+                function (data) {
+                    var count = 0;
+                    var list = '';
+                    $.each(data, function (index, rowv) {
+                        count++;
+                        var id = rowv['id'];
+                        var msg = rowv['subject'].split(';');
+
+                        var subject = msg[0];
+                        var content = msg[1];
+                        var color = msg[2];
+                        var urlNotification = "/IoTDataAlertNotification/Details";
+
+                        var item = '<li><a href="[url]/[id]" class="d-flex align-items-center "><span class="status"><div id="circulo" style="width:25px; height: 25px; background:[color]; border-radius: 100%;"></div></span><span class="d-flex flex-column flex-1 ml-1"><span class="name">[subject]</span><span class="msg-a fs-sm">[content]</span></span></a></li>';
+
+                        item = item.replace('[id]', id);
+                        item = item.replace('[url]', urlNotification);
+                        item = item.replace('[subject]', subject);
+                        item = item.replace('[content]', content);
+                        item = item.replace('[color]', color);
+                        list += item;
+                    })
+                    $('#notification-list').html(list);
+
+                    var url = "@Url.Action( "NotificationActive", "CalendarEvents")";
+
+                    var list = '';
+
+                    $.getJSON(url, { UserId: _userId, CompanyId: _companyId },
+                        function (data2) {
+                            $.each(data2, function (index, rowv2) {
+
+                                count++;
+                                var urlDetail = "/CalendarEvents/Details";
+                                var id = rowv2['id'];
+                                var name = rowv2['name'];
+                                var color = rowv2['color'];
+                                var content = rowv2['remarks'];
+
+                                var item = '<li><a href="[url]/[id]" class="d-flex align-items-center "><span class="status"><div id="circulo" style="width:25px; height: 25px; background:[color]; border-radius: 100%;"></div></span><span class="d-flex flex-column flex-1 ml-1"><span class="name">[name]</span><span class="msg-a fs-sm">[content]</span></span></a></li>';
+
+                                item = item.replace('[id]', id);
+                                item = item.replace('[url]', urlDetail);
+                                item = item.replace('[name]', name);
+                                item = item.replace('[content]', content);
+                                item = item.replace('[color]', color);
+                                list += item;
+                            })
+                            $('#event-list').html(list);
+
+                            $('#icon-count-notification').html(count);
+                            if (count == 1) {
+                                $('#panel-count-notification').html(count + '<small class="mb-0 opacity-80"> Notificacion</small>')
+                            } else {
+                                $('#panel-count-notification').html(count + '<small class="mb-0 opacity-80"> Notificaciones</small>')
+                            }
+
+                        });
+                }
+            );
+        }
+        notification()
+        setInterval('notification()', 30000);
+    </script>
+
+
+</head>
+<body class="mod-bg-1 mod-nav-link mod-nav-link @ViewBag.PreemptiveClass">
+    <partial name="_ScriptsLoadingSaving" />
+    <div class="page-wrapper">
+        <div class="page-inner">
+            <partial name="_LeftPanel" />
+            <div class="page-content-wrapper">
+                <partial name="_PageHeader" />
+                <main id="js-page-content" role="main" class="page-content">
+                    @if (ViewBag.PreemptiveClass?.Length > 0)
+                    {
+                    }
+                    else
+                    {
+                        <partial name="_PageBreadcrumb" />
+                        <div class="subheader"><partial name="_PageHeading" />@RenderSection("Subheaderblock", required: false)</div>
+                    }
+                    @RenderBody()
+                </main>
+                <partial name="_PageContentOverlay" />
+                <partial name="_PageFooter" />
+                <partial name="_ShortcutModal" />
+                <partial name="_ColorProfileReference" />
+            </div>
+        </div>
+    </div>
+    <partial name="_ShortcutMenu" />
+    <partial name="_ShortcutMessenger" />
+    <partial name="_PageSettings" />
+    <partial name="_GoogleAnalytics" />
+    <partial name="_ScriptsBasePlugins" />
+    @RenderSection("ScriptsBlock", required: false)
+</body>
+</html>
+

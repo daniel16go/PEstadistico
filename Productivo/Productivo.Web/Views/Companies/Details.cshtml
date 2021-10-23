@@ -1,0 +1,171 @@
+﻿@model Productivo.Core.Entities.CompanyEntity
+
+@{
+    var photopath = "~/images/Logos/Companies/" + (Model.LogoPath ?? "NoImage.png");
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-_qxJ_UJgPxkT1hCG-WGO4WRCktejn8M"></script>
+    <script type="text/javascript">
+    function DisplayGoogleMap() {
+
+        //Set the Latitude and Longitude of the Map
+        var myAddress = new google.maps.LatLng(@Html.DisplayFor(model => model.Latitude),   @Html.DisplayFor(model => model.Longitude));
+
+        //Create Options or set different Characteristics of Google Map
+        var mapOptions = {
+            center: myAddress,
+            zoom: 15,
+            minZoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        //Display the Google map in the div control with the defined Options
+        var map = new google.maps.Map(document.getElementById("myDiv"), mapOptions);
+
+        //Set Marker on the Map
+        var marker = new google.maps.Marker({
+            position: myAddress,
+            animation: google.maps.Animation.BOUNCE,
+        });
+
+        marker.setMap(map);
+    }
+        window.onload = DisplayGoogleMap;
+    </script>
+</head>
+<body>
+
+    <div class="row wrapper border-bottom page-heading">
+        <div class="col-sm-4">
+            <h2>Compañias</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12">
+            <div id="panel-1" class="panel">
+                <div class="panel-hdr">
+                    <h2></h2>
+                    <div class="panel-toolbar">
+                        <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                        <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                        <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                    </div>
+                </div>
+                <div class="panel-container show">
+                    <div class="panel-content">
+
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="m-b-md">
+                                    <h2>Información</h2>
+                                    <img src="@photopath" asp-append-version="true" width="50" height="50" />
+                                </div>
+                                <div>
+                                    <hr />
+                                    <dl class="row">
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.Code)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.Code)
+                                        </dd>
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.Name)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.Name)
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.Owner)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.Owner)
+                                        </dd>
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.Plans.Name)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.Plans.Name)
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.Latitude)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.Latitude)
+                                        </dd>
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.Longitude)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.Longitude)
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.ConfigMode)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.ConfigMode)
+                                        </dd>
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.PathWeb)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.PathWeb)
+                                        </dd>
+                                    </dl>
+                                    <dl class="row">
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.Sectors.Sector)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.Sectors.Sector)
+                                        </dd>
+                                        <dt class="col-sm-4">
+                                            @Html.DisplayNameFor(model => model.SubSectors.SubSector)
+                                        </dt>
+                                        <dd class="col-sm-8">
+                                            @Html.DisplayFor(model => model.SubSectors.SubSector)
+                                        </dd>
+                                    </dl>
+                                </div>
+                                <div>
+                                    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-success btn-sm">Editar</a> |
+                                    <a asp-action="Index" class="h3-Pandora  btn btn-secondary btn-sm">Regresar</a> |
+                                    @if (!Model.SeederLoad ?? true)
+                                    {<a asp-action="CallSeeder" class="btn btn-info btn-sm">Seeder</a>}
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="m-b-md">
+                                    <h4>Mapa</h4>
+                                </div>
+                                <div id="myDiv" style="width:100%;height:300px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

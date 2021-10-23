@@ -1,0 +1,64 @@
+<div class="dropdown-header bg-trans-gradient d-flex flex-row py-4 rounded-top">
+    <div class="d-flex flex-row align-items-center mt-1 mb-1 color-white">
+        <span class="mr-2">
+            <img src="~/Images/Avatars/@userManager.GetUserAsync(User).Result.FilePath" class="rounded-circle profile-image" alt="">
+        </span>
+        <div class="info-card-text">
+            <div class="fs-lg text-truncate text-truncate-lg">@userManager.GetUserAsync(User).Result.FirstName</div>
+            <span class="text-truncate text-truncate-md opacity-80">@userManager.GetUserAsync(User).Result.Email</span>
+        </div>
+    </div>
+</div>
+<div class="dropdown-divider m-0"></div>
+<a href="#" class="dropdown-item" data-action="app-reset">
+    <span data-i18n="drpdwn.reset_layout">Reset UI</span>
+</a>
+<a href="#" class="dropdown-item" data-toggle="modal" data-target=".js-modal-settings">
+    <span data-i18n="drpdwn.settings">Configuracion</span>
+</a>
+<div class="dropdown-divider m-0"></div>
+<a href="#" class="dropdown-item" data-action="app-fullscreen">
+    <span data-i18n="drpdwn.fullscreen">Fullscreen</span>
+    <i class="float-right text-muted fw-n">F11</i>
+</a>
+<a href="#" class="dropdown-item" data-action="app-print">
+    <span data-i18n="drpdwn.print">Imprimir</span>
+    <i class="float-right text-muted fw-n">Ctrl + P</i>
+</a>
+<div class="dropdown-multilevel dropdown-multilevel-left">
+    <div class="dropdown-item">
+        Idioma
+    </div>
+    <div class="dropdown-menu">
+        <a href="#?lang=en" class="dropdown-item active" data-action="lang" data-lang="en">English (US)</a>
+        <a href="#?lang=es" class="dropdown-item" data-action="lang" data-lang="es">Español</a>
+    </div>
+</div>
+<div class="dropdown-divider m-0"></div>
+
+@if (signInManager.IsSignedIn(User))
+    {
+<a class="dropdown-item fw-500 pt-3 pb-3">
+    <form method="post" asp-action="Logout" asp-controller="Account">
+        <button type="submit" class="h3-Productivo-Black btn btn-link btn-sm">
+            Log out @User.Identity.Name
+        </button>
+    </form>
+</a>
+}
+else
+{
+    <li>
+        <a href="@Url.Action("Register", "Account")">
+            <i class="fa fa-user-secret"></i> Registrar
+        </a>
+    </li>
+
+    <li>
+        <a href="@Url.Action("Login", "Account")">
+            <i class="fa fa-sign-in"></i> Login
+        </a>
+    </li>
+}
+
+

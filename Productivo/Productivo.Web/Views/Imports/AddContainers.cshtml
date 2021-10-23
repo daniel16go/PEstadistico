@@ -1,0 +1,114 @@
+﻿@model Productivo.Core.ViewModels.Imports.AddContainersViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Ordenes de Compra - Contenedores</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="AddContainers">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
+                        <input type="hidden" asp-for="ImportsId" />
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Container" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Container" class="form-control" />
+                                    <span asp-validation-for="Container" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="BL" class="control-label h4-Pandora"></label>
+                                    <input asp-for="BL" class="form-control" />
+                                    <span asp-validation-for="BL" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="ContainerTypesId" class="control-label h4-Pandora"></label>
+                                    <select asp-for="ContainerTypesId" class="form-control"
+                                            asp-items="@(List<SelectListItem>)ViewBag.ContainerTypes">
+                                        <option disabled selected value="">Seleccione un tipo de contenedor...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="InitialDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="InitialDate" type="date" asp-format="{0:dd-MM-yyyy}" class="form-control" />
+                                    <span asp-validation-for="InitialDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="FinalDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="FinalDate" type="date" asp-format="{0:dd-MM-yyyy}" class="form-control" />
+                                    <span asp-validation-for="FinalDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Booking" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Booking" class="form-control" />
+                                    <span asp-validation-for="Booking" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="GrossWeight" class="control-label h4-Pandora"></label>
+                                    <input asp-for="GrossWeight" class="form-control" />
+                                    <span asp-validation-for="GrossWeight" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ContainerLoadType" class="control-label h4-Pandora"></label>
+                                    <select asp-for="ContainerLoadType" class="form-control" asp-items="@Html.GetEnumSelectList<Productivo.Core.Entities.ContainerEntity.ContainerLoad>()">
+                                        <option selected="selected" value="">Seleccione como esta cargado el contenedor...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

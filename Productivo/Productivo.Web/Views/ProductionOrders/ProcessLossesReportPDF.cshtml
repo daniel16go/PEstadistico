@@ -1,0 +1,82 @@
+﻿@model Productivo.Core.ViewModels.ProductionOrders.ProductionOrderProcessLossesSearch
+
+@{
+    Layout = null;
+    ViewData["Title"] = "Pandora + / Pérdidas de proceso - OEE";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" media="screen, print" href="~/css/Productivo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Productivo / Pérdidas de proceso</title>
+</head>
+<body>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <img src="~/images/Productivo Small.png" width="100" height="100" />
+        </div>
+        <div class="col-sm-8 text-right">
+            <h2>Pérdidas de proceso - OEE</h2>
+        </div>
+    </div>
+    <div class="panel-container show">
+        <div class="panel-content">
+            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PoProcessLosses[0].Order)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PoProcessLosses[0].StopName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PoProcessLosses[0].DownTime)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PoProcessLosses[0].StopCost)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.PoProcessLosses)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Order)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StopName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DownTime)
+                            </td>
+                            <td>
+                                <strong>$ @Html.DisplayFor(modelItem => item.StopCost)</strong>
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            <strong>TOTAL:</strong>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                            <strong>$ @Html.DisplayFor(model => model.totalCost)</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+</html>

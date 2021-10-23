@@ -1,0 +1,761 @@
+﻿@model Productivo.Core.ViewModels.Payments.PaymentEditViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Pagos</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <form enctype="multipart/form-data" asp-action="Update">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="CreateDate" value="" />
+                        <input type="hidden" asp-for="LastUpdateDate" value="@DateTime.Now.ToString("MM-dd-yyyy")" />
+                        <input type="hidden" asp-for="CreateUserId" value="" />
+                        <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
+                        <input type="hidden" asp-for="CompanyId" value="" />
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="ImportsId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="ImportsId" id="imports-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Imports">
+                                                <option disabled selected value="">Seleccione un tipo...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-import" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="ImportsId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="BanksId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="BanksId" id="banks-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Banks">
+                                                <option disabled selected value="">Seleccione un tipo...</option>
+                                            </select>
+
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-bank" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="BanksId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="PaymentTypesId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="PaymentTypesId" id="payment-types-id" class="form-control" asp-
+                                                    asp-items="ViewBag.PaymentTypes">
+                                                <option disabled selected value="">Seleccione un tipo...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-payment-types" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="PaymentTypesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <label asp-for="CurrenciesId" class="control-label h4-Pandora"></label>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <select asp-for="CurrenciesId" id="currencies-id" class="form-control" asp-
+                                                    asp-items="ViewBag.Currencies">
+                                                <option disabled selected value="">Seleccione un tipo...</option>
+                                            </select>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="modal" data-target="#modal-create-currencies" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <span asp-validation-for="CurrenciesId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="Amount" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Amount" class="form-control" />
+                                    <span asp-validation-for="Amount" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="PaymentDate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="PaymentDate" class="form-control" />
+                                    <span asp-validation-for="PaymentDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="ChangeRate" class="control-label h4-Pandora"></label>
+                                    <input asp-for="ChangeRate" class="form-control" />
+                                    <span asp-validation-for="ChangeRate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-------------------------------------------------------ModalCode---------------------------------------------------------------->
+            <form id="add-item-import">
+                <div class="modal fade" id="modal-create-import" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Ordenes de Compra</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Order" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.Order" id="import-order" class="form-control" />
+                                                    <span asp-validation-for="Imports.Order" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Amount" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.Amount" id="import-amount" class="form-control" />
+                                                    <span asp-validation-for="Imports.Amount" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.SuppliersId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.SuppliersId" id="import-supplier-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.Suppliers">
+                                                        <option disabled selected value="">Seleccione un proveedor...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.SuppliersId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.CurrenciesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.CurrenciesId" id="import-currencies-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.Currencies">
+                                                        <option disabled selected value="">Seleccione una moneda...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.CurrenciesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.PurchaseDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.PurchaseDate" id="import-purchasedate" class="form-control" value=0 />
+                                                    <span asp-validation-for="Imports.PurchaseDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.ShipmentDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.ShipmentDate" id="import-shipmentdate" class="form-control" />
+                                                    <span asp-validation-for="Imports.ShipmentDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.PaymentTermsId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.PaymentTermsId" id="import-payment-terms-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.PaymentTerms">
+                                                        <option disabled selected value="">Seleccione una forma de pago...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.PaymentTermsId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Insurance" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.Insurance" id="import-insurance" class="form-control" />
+                                                    <span asp-validation-for="Imports.Insurance" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Liquidacion" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.Liquidacion" id="import-liquidacion" class="form-control" />
+                                                    <span asp-validation-for="Imports.Liquidacion" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Eta" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.Eta" id="import-eta" class="form-control" />
+                                                    <span asp-validation-for="Imports.Eta" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Notes" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.Notes" id="import-notes" class="form-control" />
+                                                    <span asp-validation-for="Imports.Notes" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Goods" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.Goods" id="import-goods" class="form-control" />
+                                                    <span asp-validation-for="Imports.Goods" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.StatusId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.StatusId" id="import-status-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.Status">
+                                                        <option disabled selected value="">Seleccione un status...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.StatusId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.WarehouseDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.WarehouseDate" id="import-warehousedate" class="form-control" />
+                                                    <span asp-validation-for="Imports.WarehouseDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.PortDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.PortDate" id="import-portdate" class="form-control" />
+                                                    <span asp-validation-for="Imports.PortDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.StartPortsId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.StartPortsId" id="import-start-ports-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.StartPorts">
+                                                        <option disabled selected value="">Seleccione un puerto origen...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.StartPortsId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.FinishPortsId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.FinishPortsId" id="import-finish-ports-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.FinishPorts">
+                                                        <option disabled selected value="">Seleccione un puerto destino...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.FinishPortsId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.DO" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.DO" id="import-do" class="form-control" />
+                                                    <span asp-validation-for="Imports.DO" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.TransportCompaniesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.TransportCompaniesId" id="import-transport-companies-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.TransportCompanies">
+                                                        <option disabled selected value="">Seleccione una empresa de transporte...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.TransportCompaniesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.ShipmentCompaniesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.ShipmentCompaniesId" id="import-shipment-companies-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.ShipmentCompanies">
+                                                        <option disabled selected value="">Seleccione una naviera...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.ShipmentCompaniesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.IncotermsId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.IncotermsId" id="import-incoterms-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.Incoterms">
+                                                        <option disabled selected value="">Seleccione un incoterm...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.IncotermsId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.CustomsAgenciesId" class="control-label h4-Pandora"></label>
+                                                    <select asp-for="Imports.CustomsAgenciesId" id="import-customs-agencies-id" class="form-control"
+                                                            asp-items="@(List<SelectListItem>)ViewBag.CustomsAgencies">
+                                                        <option disabled selected value="">Seleccione una agencia de aduana...</option>
+                                                    </select>
+                                                    <span asp-validation-for="Imports.CustomsAgenciesId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Totalton" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.Totalton" id="import-totalton" class="form-control" />
+                                                    <span asp-validation-for="Imports.Totalton" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.OC" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.OC" id="import-oc" class="form-control" />
+                                                    <span asp-validation-for="Imports.OC" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.EA" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.EA" id="import-ea" class="form-control" />
+                                                    <span asp-validation-for="Imports.EA" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.Dollar" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.Dollar" id="import-dollar" class="form-control" />
+                                                    <span asp-validation-for="Imports.Dollar" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.DollarSim" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.DollarSim" id="import-dollarsim" class="form-control" />
+                                                    <span asp-validation-for="Imports.DollarSim" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.DepositDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.DepositDate" id="import-depositdate" class="form-control" />
+                                                    <span asp-validation-for="Imports.DepositDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.DueDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.DueDate" id="import-duedate" class="form-control" />
+                                                    <span asp-validation-for="Imports.DueDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.DocsAgencyDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.DocsAgencyDate" id="import-docsagencydate" class="form-control" />
+                                                    <span asp-validation-for="Imports.DocsAgencyDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.TransportDeliverDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.TransportDeliverDate" id="import-transportdeliverdate" class="form-control" />
+                                                    <span asp-validation-for="Imports.TransportDeliverDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.CustomsAuthDate" class="control-label h4-Pandora"></label>
+                                                    <input type="date" asp-for="Imports.CustomsAuthDate" id="import-customsauthdate" class="form-control" />
+                                                    <span asp-validation-for="Imports.CustomsAuthDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Imports.TRMCosts" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Imports.TRMCosts" id="import-trmcosts" class="form-control" />
+                                                    <span asp-validation-for="Imports.TRMCosts" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-import" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-bank">
+                <div class="modal fade" id="modal-create-bank" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Bancos</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Banks.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Banks.Name" id="bank-name" class="form-control" />
+                                                    <span asp-validation-for="Banks.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-bank" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-payment-types">
+                <div class="modal fade" id="modal-create-payment-types" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Tipos de pagos</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="PaymentTypes.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="PaymentTypes.Name" id="payment-types-name" class="form-control" />
+                                                    <span asp-validation-for="PaymentTypes.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-payment-types" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form id="add-item-currencies">
+                <div class="modal fade" id="modal-create-currencies" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Monedas</h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Currencies.Name" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Currencies.Name" id="currencies-name" class="form-control" />
+                                                    <span asp-validation-for="Currencies.Name" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Currencies.Initials" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Currencies.Initials" id="currencies-initials" class="form-control" />
+                                                    <span asp-validation-for="Currencies.Initials" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="Currencies.Factor" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="Currencies.Factor" id="currencies-factor" class="form-control" />
+                                                    <span asp-validation-for="Currencies.Factor" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
+                                    <a id="close-modal-currencies" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $("#add-item-import").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _Order = $("#import-order").val();
+            var _SuppliersId = $("#import-supplier-id").val();
+            var _Amount = $("#import-amount").val();
+            var _CurrenciesId = $("#import-currencies-id").val();
+            var _PurchaseDate = $("#import-purchasedate").val();
+            var _ShipmentDate = $("#import-shipmentdate").val();
+            var _PaymentTermsId = $("#import-payment-terms-id").val();
+            var _Liquidacion = $("#import-liquidacion").val();
+            var _Insurance = $("#import-insurance").val();
+            var _Eta = $("#import-eta").val();
+            var _Notes = $("#import-notes").val();
+            var _Goods = $("#import-goods").val();
+            var _StatusId = $("#import-status-id").val();
+            var _WarehouseDate = $("#import-warehousedate").val();
+            var _PortDate = $("#import-portdate").val();
+            var _StartPortsId = $("#import-start-ports-id").val();
+            var _FinishPortsId = $("#import-finish-ports-id").val();
+            var _DO = $("#import-do").val();
+            var _TransportCompaniesId = $("#import-transport-companies-id").val();
+            var _ShipmentCompaniesId = $("#import-shipment-companies-id").val();
+            var _IncotermsId = $("#import-incoterms-id").val();
+            var _CustomsAgenciesId = $("#import-customs-agencies-id").val();
+            var _Totalton = $("#import-totalton").val();
+            var _OC = $("#import-oc").val();
+            var _EA = $("#import-ea").val();
+            var _Dollar = $("#import-dollar").val();
+            var _DollarSim = $("#import-dollarsim").val();
+            var _DepositDate = $("#import-depositdate").val();
+            var _DueDate = $("#import-duedate").val();
+            var _DocsAgencyDate = $("#import-docsagencydate").val();
+            var _TransportDeliverDate = $("#import-transportdeliverdate").val();
+            var _CustomsAuthDate = $("#import-customsauthdate").val();
+            var _TRMCosts = $("#import-trmcosts").val();
+
+            $.getJSON(window.location.pathname.replace('/Update', '/AddImports'),
+                {
+                    Order: _Order,
+                    SuppliersId: _SuppliersId,
+                    Amount: _Amount,
+                    CurrenciesId: _CurrenciesId,
+                    PurchaseDate: _PurchaseDate,
+                    ShipmentDate: _ShipmentDate,
+                    PaymentTermsId: _PaymentTermsId,
+                    Liquidacion: _Liquidacion,
+                    Insurance: _Insurance,
+                    Eta: _Eta,
+                    Notes: _Notes,
+                    Goods: _Goods,
+                    StatusId: _StatusId,
+                    WarehouseDate: _WarehouseDate,
+                    PortDate: _PortDate,
+                    StartPortsId: _StartPortsId,
+                    FinishPortsId: _FinishPortsId,
+                    DO: _DO,
+                    TransportCompaniesId: _TransportCompaniesId,
+                    ShipmentCompaniesId: _ShipmentCompaniesId,
+                    IncotermsId: _IncotermsId,
+                    CustomsAgenciesId: _CustomsAgenciesId,
+                    Totalton: _Totalton,
+                    OC: _OC,
+                    EA: _EA,
+                    Dollar: _Dollar,
+                    DollarSim: _DollarSim,
+                    DepositDate: _DepositDate,
+                    DueDate: _DueDate,
+                    DocsAgencyDate: _DocsAgencyDate,
+                    TransportDeliverDate: _TransportDeliverDate,
+                    CustomsAuthDate: _CustomsAuthDate,
+                    TRMCosts: _TRMCosts
+                },
+                function (data) {
+                    $("#close-modal-import").click();
+                    var _id = data['id'];
+                    $("#imports-id").append(`<option value="${_id}">${_Order}</option>`);
+                    $('#add-item-import')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-bank").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#bank-name").val();
+
+            $.getJSON(window.location.pathname.replace('/Update', '/AddBanks'),
+                { Name: _name},
+                function (data) {
+                    $("#close-modal-bank").click();
+                    var _id = data['id'];
+                    $("#banks-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-bank')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-payment-types").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#payment-types-name").val();
+
+            $.getJSON(window.location.pathname.replace('/Update', '/AddPaymentTypes'),
+                { Name: _name },
+                function (data) {
+                    $("#close-modal-payment-types").click();
+                    var _id = data['id'];
+                    $("#payment-types-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-payment-types')[0].reset();
+                }
+            );
+        });
+
+        $("#add-item-currencies").on('submit', function (evt) {
+            evt.preventDefault();
+
+            var _name = $("#currencies-name").val();
+            var _initial = $("#currencies-initials").val();
+            var _factor = $("#currencies-factor").val();
+
+            $.getJSON(window.location.pathname.replace('/Update', '/AddCurrencies'),
+                {
+                    Name: _name,
+                    Initials: _initial,
+                    Factor: _factor
+                },
+                function (data) {
+                    $("#close-modal-currencies").click();
+                    var _id = data['id'];
+                    $("#currencies-id").append(`<option value="${_id}">${_name}</option>`);
+                    $('#add-item-currencies')[0].reset();
+                }
+            );
+        });
+    </script>
+}

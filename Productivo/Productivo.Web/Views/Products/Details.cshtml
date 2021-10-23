@@ -1,0 +1,290 @@
+﻿@model Productivo.Core.ViewModels.Products.ProductDetailViewModel
+
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-sm-4">
+        <h2>Productos</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+
+            <div class="panel-container show">
+                <div class="panel-content">
+                    @if (@ViewBag.msg != null)
+                    {
+                        <hr />
+                        <div id="message-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="fal fa-trash-alt"></i></span>
+                            </button>
+                            <strong>Error </strong> @ViewBag.msg
+                        </div>
+                    }
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#tab_general" role="tab">Info. General</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_setup" role="tab">Configuracion</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_components" role="tab">Componentes / Lista de Materiales</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_files" role="tab">Archivos</a></li>
+                        </ul>
+                        <div class="tab-content p-3">
+                            <!-- PRODUCTS HEADER -->
+                            <div class="tab-pane fade show active" id="tab_general" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="m-b-md">
+                                            <h2>Información</h2>
+                                        </div>
+                                        <hr />
+                                        <div class="float-left col-sm-6">
+                                            <dl class="row">
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Code)
+                                                </dt>
+                                                <dd class="col-sm-6" id="product-code">
+                                                    @Html.DisplayFor(model => model.products.Code)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Units.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.Units.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.CodeERP)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.CodeERP)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Minimum)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.Minimum)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Maximum)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.Maximum)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Factor1)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.Factor1)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Factor2)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.Factor2)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Weight)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.Weight)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.ProductTypes.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.ProductTypes.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.products.Shapes.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.products.Shapes.Name)
+                                                </dd>
+
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PRODUCTS SETUP -->
+                            <div class="tab-pane fade" id="tab_setup" role="tabpanel">
+                                <h1 class="h1-Productivo">Configuracion Producto</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.boms.Count == 0)
+                                        {
+                                            <h5>No hay configuracion del producto aun asignado.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.boms[0].Installations.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.boms[0].Methods.Name)
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.boms)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Installations.Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Methods.Name)
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @if (Model.boms.Count == 0)
+                                    {
+                                        @Html.ActionLink("Adicionar Configuracion", "CreateSetup", "Products", new { productId = Model.products.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                    }
+                            </div>
+                            <!-- PRODUCT COMPONENTS - BOMS -->
+                            <div class="tab-pane fade" id="tab_components" role="tabpanel">
+                                <h1 class="h1-Productivo">Componentes - Lista de Materiales</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.bomdetails.Count == 0)
+                                        {
+                                            <h5>No hay componentes del producto aun asignados.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.bomdetails[0].ComponentsId)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.bomdetails[0].BaseQuantity)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.bomdetails[0].RequiredQuantity)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.bomdetails[0].AdicionalQuantity)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.bomdetails[0].WastePercentage)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.bomdetails[0].ActivationDateTime)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.bomdetails[0].InactivationDateTime)
+                                                        </th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.bomdetails)
+                                                    {
+                                                        <tr>
+                                                            <td id="components-name-@item.ComponentsId">
+                                                                
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.BaseQuantity)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.RequiredQuantity)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.AdicionalQuantity)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.WastePercentage)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ActivationDateTime)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.InactivationDateTime)
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+
+                                    @Html.ActionLink("Adicionar Componentes", "CreateBOM", "Products", new { productId = Model.products.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                            </div>
+                            <!-- PRODUCTS FILES -->
+                            <div class="tab-pane fade" id="tab_files" role="tabpanel">
+                                <h1 class="h1-Productivo">Archivos Productos</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function () {
+            var productId = '@Model.products.Id';
+            $.getJSON(window.location.pathname.replace('/Details', '/GetNameComponents'), { id: productId},
+                function (data) {
+                    console.log(data);
+                    $.each(data, function (index, rowv) {
+                        var idComponent = '#components-name-' + rowv['id'];
+                        $(idComponent).html(rowv['name']);
+                    })
+                });
+
+        });
+
+    </script>
+
+}
+

@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Productivo.Core.Entities.PackingListEntity>
+
+@section HeadBlock {
+    <link rel="stylesheet" media="screen, print" href="~/css/datagrid/datatables/datatables.bundle.css">
+}
+<h1 class="h1-Productivo">Lista de Empaque</h1>
+<p>
+    <a asp-action="ReportPDFPK" asp-route-importId="@ViewBag.IdImpo" asp-route-importdetailsId="@ViewBag.IdImpoDetail" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reporte PDF" target="_blank"><i class="fal fa-print"></i></a>
+</p>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Heat)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Package)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Pieces)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.GrossWeight)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.NetWeight)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Remarks)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Heat)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Package)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Pieces)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.GrossWeight)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.NetWeight)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Remarks)
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <p><a asp-action="Details" asp-route-id="@ViewBag.IdImpo" class="h3-Pandora  btn btn-secondary btn-sm">Regresar</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_DeleteDialog" />
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#MyTable').DataTable({
+                "language": {
+                    "lengthMenu": "Mostrando _MENU_ registros por pagina",
+                    "emptyTable": "No hay registros para mostrar",
+                    "zeroRecords": "No se encontro nada - Lo siento.",
+                    "info": "Mostrando Pagina _PAGE_ de _PAGES_",
+                    "infoEmpty": "No existen registros disponibles",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "infoFiltered": "(Filtrado de _MAX_ registros totales)"
+                }
+            });
+            // Delete item
+            var item_to_delete;
+            $('.deleteItem').click((e) => {
+                item_to_delete = e.currentTarget.dataset.id;
+            });
+            $("#btnYesDelete").click(function () {
+                window.location.pathname = window.location.pathname.replace('/Index', '/Delete/') + item_to_delete;
+            });
+        });
+    </script>
+
+}

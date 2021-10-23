@@ -1,0 +1,667 @@
+﻿@model Productivo.Core.ViewModels.Imports.ImportDetailViewModel
+
+@section HeadBlock {
+    <link rel="stylesheet" media="screen, print" href="~/css/datagrid/datatables/datatables.bundle.css">
+}
+<h1 class="h1-Productivo">Ordenes de Compra</h1>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    @if (@ViewBag.msg != null)
+                    {
+                        <hr />
+                        <div id="message-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="fal fa-trash-alt"></i></span>
+                            </button>
+                            <strong>Error </strong> @ViewBag.msg
+                        </div>
+                    }
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#tab_import" role="tab">Info. General</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_import_detail" role="tab">Detalle</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_import_containers" role="tab">Contenedores</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_import_comunications" role="tab">Comunicaciones</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_import_payments" role="tab">Pagos</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_import_file" role="tab">Archivos</a></li>
+                        </ul>
+                        <div class="tab-content p-3">
+                            <!-- IMPORTS HEADER -->
+                            <div class="tab-pane fade show active" id="tab_import" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="m-b-md">
+                                            <h2>Información</h2>
+                                        </div>
+                                        <hr />
+                                        <div class="float-left col-sm-6">
+                                            <dl class="row">
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Order)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Order)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Suppliers.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Suppliers.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Amount)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Amount)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Currencies.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Currencies.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.PaymentTerms.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.PaymentTerms.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Liquidacion)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Liquidacion)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Insurance)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Insurance)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Notes)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Notes)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Goods)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Goods)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Status.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Status.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.StartPorts.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.StartPorts.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.FinishPorts.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.FinishPorts.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.DO)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.DO)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.TransportCompanies.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.TransportCompanies.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.ShipmentCompanies.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.ShipmentCompanies.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Incoterms.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Incoterms.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.CustomsAgencies.Name)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.CustomsAgencies.Name)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Totalton)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Totalton)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.OC)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.OC)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.EA)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.EA)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.Dollar)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.Dollar)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.DollarSim)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.DollarSim)
+                                                </dd>
+                                                <dt class="col-sm-6">
+                                                    @Html.DisplayNameFor(model => model.imports.TRMCosts)
+                                                </dt>
+                                                <dd class="col-sm-6">
+                                                    @Html.DisplayFor(model => model.imports.TRMCosts)
+                                                </dd>
+
+                                            </dl>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-lg-4 m-b-lg">
+                                        <div id="vertical-timeline" class="vertical-container light-timeline no-margins">
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon red-bg">
+                                                    <i class="fal fa-money-bill"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.DueDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.DueDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon navy-bg">
+                                                    <i class="fal fa-shopping-cart"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.PurchaseDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.PurchaseDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon blue-bg">
+                                                    <i class="fal fa-ship"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.ShipmentDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.ShipmentDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon lazur-bg">
+                                                    <i class="fal fa-globe"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.Eta)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.Eta)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon yellow-bg">
+                                                    <i class="fal fa-anchor"></i>
+                                                </div>
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.PortDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.PortDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon navy-bg">
+                                                    <i class="fal fa-file-archive"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.DocsAgencyDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.DocsAgencyDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon blue-bg">
+                                                    <i class="fal fa-user-secret"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.CustomsAuthDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.CustomsAuthDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon lazur-bg">
+                                                    <i class="fal fa-truck"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.TransportDeliverDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.TransportDeliverDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon yellow-bg">
+                                                    <i class="fal fa-industry"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.WarehouseDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.WarehouseDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="vertical-timeline-block">
+                                                <div class="vertical-timeline-icon red-bg">
+                                                    <i class="fal fa-th-large"></i>
+                                                </div>
+
+                                                <div class="vertical-timeline-content">
+                                                    <h2>@Html.DisplayNameFor(model => model.imports.DepositDate)</h2>
+                                                    <p>
+                                                        @Html.DisplayFor(model => model.imports.DepositDate)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- IMPORTS DETAIL -->
+                            <div class="tab-pane fade" id="tab_import_detail" role="tabpanel">
+                                <h1 class="h1-Productivo">Detalle Compra</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.importsDetails.Count == 0)
+                                        {
+                                            <h5>No hay registros de detalle de compra asociados aun en la orden.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.importsDetails[0].Products.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.importsDetails[0].Quantity)
+                                                        </th>
+                                                        <th>Valor @Html.DisplayFor(model => model.imports.Currencies.Initials)</th>
+
+                                                        <th>Subtotal @Html.DisplayFor(model => model.imports.Currencies.Initials)</th>
+                                                        <th>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.importsDetails)
+                                                    {
+                                                        var result = item.Amount * item.Quantity;
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Products.Name)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:#,##0.00}", item.Quantity)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:#,##0.00}", item.Amount)
+                                                            </td>
+                                                            <td>
+                                                                @string.Format("{0:#,##0.00}", result)
+                                                            </td>
+                                                            <td>
+                                                                <a asp-action="AddPackingList" asp-route-importdetailsId="@item.Id" asp-route-importId="@item.ImportsId" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Lista de Empaque Item"><i class="fal fa-th-large"></i></a>
+                                                            </td>
+                                                            <td>
+                                                                <a asp-action="ViewPackages" asp-route-importdetailsId="@item.Id" asp-route-importId="@item.ImportsId" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Ver Paquetes Item"><i class="fal fa-binoculars"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                    <tr>
+                                                        <th>
+                                                            <strong>Totales </strong>
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+
+                                                        </th>
+                                                        <th>
+                                                            <strong> @string.Format("{0:#,##0.00}", ViewBag.TotalItems)</strong>
+                                                        </th>
+                                                        <th>
+                                                        </th>
+                                                        <th>
+                                                        </th>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        }
+                                        @if (Model.imports.POFinishDate == null)
+                                        {
+                                            @Html.ActionLink("Adicionar items", "Create", "ImportDetails", new { orderId = Model.imports.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                            @if (Model.importsDetails.Count > 0)
+                                            {
+                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDatePO">Cerrar Orden de Compra</button>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- IMPORTS CONTAINERS -->
+                            <div class="tab-pane fade" id="tab_import_containers" role="tabpanel">
+                                <h1 class="h1-Productivo">Contenedores Compra</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.containers.Count == 0)
+                                        {
+                                            <h5>No hay registros de contenedores de compra asociados aun en la orden.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.containers[0].Container)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.containers[0].BL)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.containers[0].InitialDate)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.containers[0].FinalDate)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.containers[0].Booking)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.containers[0].ContainerTypes.Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.containers[0].GrossWeight)
+                                                        </th>
+                                                        <th>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.containers)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Container)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.BL)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.InitialDate)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.FinalDate)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Booking)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.ContainerTypes.Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.GrossWeight)
+                                                            </td>
+                                                            <td>
+                                                                <a asp-action="UpdateContainer" asp-route-Id="@item.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Modificar Contenedor"><i class="fal fa-edit"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                        @if (Model.imports.POFinishDate == null)
+                                        {
+                                            @Html.ActionLink("Adicionar Contenedores", "AddContainers", "Imports", new { importId = Model.imports.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                            @if (Model.importsDetails.Count > 0)
+                                            {
+                                                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#confirmFinishDatePO">Cerrar Orden de Compra</button>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- IMPORTS COMMUNICATIONS -->
+                            <div class="tab-pane fade" id="tab_import_comunications" role="tabpanel">
+                                <h1 class="h1-Productivo">Trazabilidad Compra</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- IMPORTS PAYMENTS -->
+                            <div class="tab-pane fade" id="tab_import_payments" role="tabpanel">
+                                <h1 class="h1-Productivo">Pagos Compra</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- IMPORTS FILES -->
+                            <div class="tab-pane fade" id="tab_import_file" role="tabpanel">
+                                <h1 class="h1-Productivo">Archivos Compra</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_ConfirmFinishDatePO" />
+
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // FinishOrder
+            $("#btnYesConfirm").click(function () {
+                window.location.pathname = window.location.pathname.replace('/Details/', '/FinishPOrder/');
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        FusionCharts.ready(function () {
+
+
+             var fusioncharts = new FusionCharts({
+                type: 'angulargauge',
+                renderAt: 'chart-container2',
+                width: '100%',
+                height: '300',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "showBorder": "0",
+                        "showShadow": "0",
+                        "use3DLighting": "0",
+                        "showLabels": "0",
+                        "showValues": "0",
+                        "paletteColors": "#58E2C2, #F7E53B",
+                        "bgColor": "#ffffff",
+                        "bgAlpha": "100",
+                        "canvasBgAlpha": "0",
+                        "decimals": "0",
+                        "baseFont": "Arial",
+                        "setAdaptiveMin": "1",
+                        "baseFontColor": "#000000",
+                        "chartTopMargin": "0",
+                        "canvasTopMargin": "0",
+                        "chartBottomMargin": "70",
+                        "chartLeftMargin": "10",
+                        "chartRightMargin": "10",
+                        "showTickMarks": "0",
+                        "showTickValues": "0",
+                        "showLimits": "0",
+                        "majorTMAlpha": "0",
+                        "minorTMAlpha": "0",
+                        "pivotFillAlpha": "0",
+                        "showPivotBorder": "0",
+                        "gaugeouterradius": "150",
+                        "gaugeInnerradius": "125",
+                        "showGaugeBorder": "0",
+                        "gaugeFillMix": "{light+0}",
+                        "toolTipBgcolor": "#484E69",
+                        "toolTipPadding": "7",
+                        "toolTipBorderRadius": "3",
+                        "toolTipBorderAlpha": "30",
+                        "tooltipBorderThickness": "0.7",
+                        "toolTipColor": "#FDFDFD",
+                        "transposeAnimation": "1"
+                    },
+                    "annotations": {
+                        "groups": [{
+                            "items": [
+                                {
+                                    "id": "2",
+                                    "type": "text",
+                                    "text": "@ViewBag.OEE%",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "1",
+                                    "fontSize": "45",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY"
+                                }, {
+                                    "id": "3",
+                                    "type": "text",
+                                    "text": "80% OEE Min.",
+                                    "align": "center",
+                                    "font": "Arial",
+                                    "bold": "0",
+                                    "fontSize": "25",
+                                    "color": "#000000",
+                                    "x": "$chartcenterX",
+                                    "y": "$chartCenterY + 45"
+                                }]
+                        }]
+                    },
+
+                    "colorRange": {
+                        "color": [{
+                            "minValue": "0",
+                            "maxValue": "@ViewBag.OEE",
+                            "code": "#58E2C2"
+                        },
+                        {
+                            "minValue": "0",
+                            "maxValue": "100",
+                            "code": "#48506E"
+                        }
+                        ]
+                    },
+                    "dials": {
+                        "dial": [{
+                            "value": "@ViewBag.OEE",
+                            "alpha": "0",
+                            "borderAlpha": "0",
+                            "radius": "0",
+                            "baseRadius": "0",
+                            "rearExtension": "0",
+                            "baseWidth": "0",
+                            "showValue": "0"
+                        }]
+                    }
+
+                }
+            });
+            fusioncharts.render();
+        });
+    </script>
+}
+

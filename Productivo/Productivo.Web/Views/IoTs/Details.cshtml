@@ -1,0 +1,404 @@
+﻿@model Productivo.Core.ViewModels.IoTs.IoTDetailViewModel
+
+<div class="row wrapper border-bottom page-heading">
+    <div class="col-lg-10">
+        <h2>Dispositivo IoT</h2>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-12">
+        <div id="panel-1" class="panel">
+            <div class="panel-hdr">
+                <h2></h2>
+                <div class="panel-toolbar">
+                    <button class="btn btn-panel" data-action="panel-collapse" data-toggle="tooltip" data-offset="0,10" data-original-title="Minimizar"></button>
+                    <button class="btn btn-panel" data-action="panel-fullscreen" data-toggle="tooltip" data-offset="0,10" data-original-title="Maximizar"></button>
+                    <button class="btn btn-panel" data-action="panel-close" data-toggle="tooltip" data-offset="0,10" data-original-title="Cerrar"></button>
+                </div>
+            </div>
+            <div class="panel-container show">
+                <div class="panel-content">
+                    @if (@ViewBag.msg != null)
+                    {
+                        <hr />
+                        <div id="message-alert" class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true"><i class="fal fa-trash-alt"></i></span>
+                            </button>
+                            <strong>Error </strong> @ViewBag.msg
+                        </div>
+                    }
+                    <form enctype="multipart/form-data" asp-action="Create">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item active"><a class="nav-link" data-toggle="tab" href="#tab_iot_details" role="tab">Info. General</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_iot_machines" role="tab">Maquinas</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_iot_variables" role="tab">Variables</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_iot_alerts" role="tab">Alertas</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#tab_iot_notifications" role="tab">Notificaciones</a></li>
+                        </ul>
+                        <div class="tab-content p-3">
+                            <!-- IoT Details -->
+                            <div class="tab-pane fade show active" id="tab_iot_details" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="m-b-md">
+                                            <h2>Información</h2>
+                                        </div>
+                                        <hr />
+                                        <div class="float-left col-sm-12">
+                                            <dl class="row">
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.IoT.Name)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.IoT.Name)
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="float-left col-sm-12">
+                                            <dl class="row">
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.IoT.CodeIoT)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.IoT.CodeIoT)
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="float-left col-sm-12">
+                                            <dl class="row">
+                                                <dt class="col-sm-4">
+                                                    @Html.DisplayNameFor(model => model.IoT.URLPath)
+                                                </dt>
+                                                <dd class="col-sm-8">
+                                                    @Html.DisplayFor(model => model.IoT.URLPath)
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- IoT Machines -->
+                            <div class="tab-pane fade" id="tab_iot_machines" role="tabpanel">
+                                <h1 class="h1-Productivo">Maquinas</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.IoTMachines.Count == 0)
+                                        {
+                                            <h5>No hay maquinas asociados al dispositivo.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTMachines[0].MachinesId)
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.IoTMachines)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.MachinesId)
+                                                            </td>
+                                                            <td>
+                                                                @Html.ActionLink(" ", "Details", "IoTMachines", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @Html.ActionLink("Adicionar Maquina", "Create", "IoTMachines", new { IoTId = Model.IoT.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                </p>
+                            </div>
+                            <!-- IoT Variables -->
+                            <div class="tab-pane fade" id="tab_iot_variables" role="tabpanel">
+                                <h1 class="h1-Productivo">Variables</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.IoTVariables.Count == 0)
+                                        {
+                                            <h5>No hay variables asociados al dispositivo.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTVariables[0].Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTVariables[0].MinValue)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTVariables[0].MaxValue)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTVariables[0].UpdateInterval)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTVariables[0].DailyReset)
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.IoTVariables)
+                                                    {
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.MinValue)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.MaxValue)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.UpdateInterval)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.DailyReset)
+                                                        </td>
+                                                        <td>
+                                                            @Html.ActionLink(" ", "Details", "IoTVariables", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                            @Html.ActionLink(" ", "Index", "IoTMetrics", new { iotId = Model.IoT.CodeIoT, iotVariable = item.Id }, new { @class = "btn btn-success btn-sm fal fa-chart-line" })
+                                                            @Html.ActionLink(" ", "#", new { }, new { @class = "btn btn-danger export-data btn-sm fal fa-file-excel", @data_toggle = "modal", @data_target = "#modal-export-iot-variable", @data_iotid = @Model.IoT.CodeIoT, @data_iotvariable = item.Name })
+
+                                                        </td>
+                                                    </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @Html.ActionLink("Adicionar Variable", "Create", "IoTVariables", new { IoTId = Model.IoT.Id }, new { @class = "h3-Productivo btn btn-success btn-sm" })
+                                </p>
+                            </div>
+                            <!-- IoT Alerts -->
+                            <div class="tab-pane fade" id="tab_iot_alerts" role="tabpanel">
+                                <h1 class="h1-Productivo">Alertas</h1>
+                                @if (Model.IoTVariables.Count == 0)
+                                {
+                                    <h5>No hay variables asociados al dispositivo, cree una primero para poder continuar.</h5>
+                                }
+                                else
+                                {
+                                    <div class="panel-container">
+                                        <div class="panel-content">
+
+                                            @if (Model.IoTAlerts.Count == 0)
+                                            {
+                                                <h5>No hay alertas asociados al dispositivo.</h5>
+                                            }
+                                            else
+                                            {
+                                                <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.IoTAlerts[0].Name)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.IoTAlerts[0].MinAlertValue)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.IoTAlerts[0].MaxAlertValue)
+                                                            </th>
+                                                            <th>
+                                                                @Html.DisplayNameFor(model => model.IoTAlerts[0].IoTVariables.Name)
+                                                            </th>
+                                                            <th>
+                                                            </th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var item in Model.IoTAlerts)
+                                                        {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.MinAlertValue)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.MaxAlertValue)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.DisplayFor(modelItem => item.IoTVariables.Name)
+                                                                </td>
+                                                                <td>
+                                                                    <div class="btn-group">
+                                                                        @Html.ActionLink(" ", "Details", "IoTAlerts", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <p>
+                                        @Html.ActionLink("Crear Alerta", "Create", "IoTAlerts", new { IoTId = Model.IoT.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                    </p>
+                                }
+                            </div>
+                            <!-- IoT Notifications -->
+                            <div class="tab-pane fade" id="tab_iot_notifications" role="tabpanel">
+                                <h1 class="h1-Productivo">Notificaciones</h1>
+                                <div class="panel-container">
+                                    <div class="panel-content">
+                                        @if (Model.IoTNotifications.Count == 0)
+                                        {
+                                            <h5>No hay notificaciones asociados al dispositivo.</h5>
+                                        }
+                                        else
+                                        {
+                                            <table id="MyTable" class="table table-hover table-striped table-sm w-100">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTNotifications[0].Name)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTNotifications[0].IoTAlertsId)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.IoTNotifications[0].Subject)
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.IoTNotifications)
+                                                    {
+                                                        <tr>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Name)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.IoTAlertsId)
+                                                            </td>
+                                                            <td>
+                                                                @Html.DisplayFor(modelItem => item.Subject)
+                                                            </td>
+                                                            <td>
+                                                                @Html.ActionLink(" ", "Details", "IoTNotifications", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square" })
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                    </div>
+                                </div>
+                                <p>
+                                    @Html.ActionLink("Adicionar Notificacion", "Create", "IoTNotifications", new { IoTId = Model.IoT.Id }, new { @class = "h3-Productivo  btn btn-success btn-sm" })
+                                </p>
+                            </div>
+
+                        </div>
+                        <p></p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-------------------------------------------------------ModalCode---------------------------------------------------------------->
+            <form id="export-data" asp-action="ExportToExcel">
+                <div class="modal fade" id="modal-export-iot-variable" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">
+                                    <div class="col-lg-12">
+                                        <h2>Exportar datos de <a id="variable-name"></a></h2>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel-container show">
+                                    <div class="panel-content">
+                                        <input type="hidden" id="iotID" name="iotID" />
+                                        <input type="hidden" id="variable" name="variable" />
+                                        <input type="hidden" id="startDate" name="startDate" />
+                                        <input type="hidden" id="endDate" name="endDate" />
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label asp-for="startDateExport" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="startDateExport" id="start-date" class="form-control" />
+                                                    <span asp-validation-for="startDateExport" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label asp-for="endDateExport" class="control-label h4-Pandora"></label>
+                                                    <input asp-for="endDateExport" id="end-date" class="form-control" />
+                                                    <span asp-validation-for="endDateExport" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Exportar</button>
+                                    <a id="close-modal" class="h3-Productivo  btn btn-warning btn-sm" data-dismiss="modal"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+@section ScriptsBlock {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/datagrid/datatables/datatables.bundle.js"></script>
+
+    <script type="text/javascript">
+        var _iotId;
+        var _iotVariableId;
+
+        $('.export-data').click((e) => {
+            _iotId = e.currentTarget.dataset.iotid;
+            _iotVariableId = e.currentTarget.dataset.iotvariable;
+            $("#variable-name").html(_iotVariableId);
+            $("#iotID").val(_iotId);
+            $("#variable").val(_iotVariableId);
+        });
+
+        $("#export-data").on('submit', function (evt) {
+            $("#startDate").val($("#start-date").val());
+            $("#endDate").val($("#end-date").val());
+
+            $("#close-modal").click();
+            $('#export-data')[0].reset();
+        });
+
+    </script>
+}
+

@@ -1,0 +1,742 @@
+{
+  "version": "4.5",
+  "lists": [
+    {
+      "title": "Dashboard Operation",
+      "icon": "fal fa-th-large",
+      "roles": [ "OPERARIO" ],
+      "items": [
+        {
+          "title": "Dashboard General",
+          "showOnSeed": false,
+          "href": "Home/Index",
+          "roles": [ "OPERARIO" ]
+        }
+      ]
+    },
+    {
+      "title": "Setup Data",
+      "icon": "fal fa-database",
+      "roles": [],
+      "items": [
+        {
+          "title": "Generales",
+          "text": "Generales",
+          "href": "javascript:void(0);",
+          "roles": [],
+          "items": [
+            {
+              "title": "Canales",
+              "href": "Channel/Index",
+              "roles": []
+            }
+          ]
+        },
+        {
+          "title": "Produccion",
+          "text": "Produccion",
+          "href": "javascript:void(0);",
+          "roles": [],
+          "items": [
+            {
+              "title": "Acabados",
+              "href": "Finisheses/Index",
+              "roles": []
+            },
+            {
+              "title": "Categorias Paradas",
+              "href": "StopCategories/Index",
+              "roles": []
+            },
+            {
+              "title": "Criterios de Afectacion",
+              "href": "Affectations/Index",
+              "roles": []
+            },
+            {
+              "title": "Detalle Tipo de Anormalidades",
+              "href": "AbnormalityDetails/Index",
+              "roles": []
+            },
+            {
+              "title": "Detalle Lugares de Anormalidades",
+              "href": "AbnormalityPlaceDetails/Index",
+              "roles": []
+            },
+            {
+              "title": "Dimensiones",
+              "href": "Dimensions/Index",
+              "roles": []
+            },
+            {
+              "title": "Formas",
+              "href": "Shapes/Index",
+              "roles": []
+            },
+            {
+              "title": "Instalaciones",
+              "href": "Installations/Index",
+              "roles": []
+            },
+            {
+              "title": "Lista de Materiales",
+              "href": "BOMS/Index",
+              "roles": []
+            },
+            {
+              "title": "Lugares Anormalidades",
+              "href": "AbnormalityPlaces/Index",
+              "roles": []
+            },
+            {
+              "title": "Maquinas",
+              "href": "Machines/Index",
+              "roles": []
+            },
+            {
+              "title": "Marcas",
+              "href": "Brands/Index",
+              "roles": []
+            },
+            {
+              "title": "Metodos",
+              "href": "Methods/Index",
+              "roles": []
+            },
+            {
+              "title": "Paradas",
+              "href": "Stops/Index",
+              "roles": []
+            },
+            {
+              "title": "Procesos",
+              "href": "Processes/Index",
+              "roles": []
+            },
+            {
+              "title": "Tipos de Anormalidades",
+              "href": "AbnormalityTypes/Index",
+              "roles": []
+            },
+            {
+              "title": "Tipos de Materia Prima",
+              "href": "RawMaterialTypes/Index",
+              "roles": []
+            },
+            {
+              "title": "Turnos",
+              "href": "Shifts/Index",
+              "roles": []
+            },
+            {
+              "title": "Ubicaciones",
+              "href": "Locations/Index",
+              "roles": []
+            },
+            {
+              "title": "Ubicaciones WH",
+              "href": "WHLocations/Index",
+              "roles": []
+            }
+          ]
+        }
+        
+        
+      ]
+    },
+    {
+      "title": "Administracion",
+      "showOnSeed": false,
+      "icon": "fal fa-lock",
+      "roles": [],
+      "items": [
+        {
+          "title": "Companias",
+          "href": "Companies/Index",
+          "roles": []
+        },
+        {
+          "title": "Dispositivos IoT",
+          "href": "IoTs/Index",
+          "roles": []
+        },
+        {
+          "title": "Planes",
+          "href": "Plans/Index",
+          "roles": []
+        },
+        {
+          "title": "Registro Usuarios",
+          "href": "Account/Register",
+          "roles": []
+        },
+        {
+          "title": "Roles",
+          "href": "Administration/ListRoles",
+          "roles": []
+        },
+        {
+          "title": "Usuarios",
+          "href": "Administration/ListUsers",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "Productivo Standard",
+      "roles": []
+    },
+    {
+      "title": "Diagnostico & Modelo",
+      "icon": "fal fa-atom",
+      "roles": [],
+      "items": [
+        {
+          "title": "Set Up Modelo",
+          "text": "Set Up Modelo",
+          "href": "javascript:void(0);",
+          "roles": [],
+          "items": [
+
+            {
+              "title": "Categorias Evaluacion",
+              "href": "EvaluationCategories/Index",
+              "roles": []
+            },
+            {
+              "title": "Categorias Modelos",
+              "href": "CategoryModels/Index",
+              "roles": []
+            },
+            {
+              "title": "Preguntas Modelo",
+              "href": "ModelQuestions/Index",
+              "roles": []
+            }
+          ]
+        },
+        {
+          "title": "Generar Diagnostico",
+          "href": "Diagnostics/Index",
+          "roles": []
+        },
+        {
+          "title": "Diagnostico vs Modelo",
+          "href": "CompareDiagnostics/Index",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "OEE",
+      "icon": "fal fa-drafting-compass",
+      "roles": [ "OPERARIO" ],
+      "items": [
+        {
+          "title": "Dashboard OEE",
+          "showOnSeed": false,
+          "href": "OEE/Index",
+          "roles": [ "OPERARIO" ]
+        },
+        {
+          "title": "Ordenes de Produccion",
+          "href": "ProductionOrders/Index",
+          "roles": [ "OPERARIO" ]
+        },
+        {
+          "title": "Medicion OEE",
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Perdidas Proceso",
+          "href": "ProductionOrders/ProcessLosses",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "Gestion Autonoma",
+      "icon": "fal fa-balance-scale",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard Gest. Autonoma",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Gestion 5S",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "LILA",
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "LUP",
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "Gestion Anormalidades",
+      "icon": "fal fa-glasses",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard Gest. Anormal.",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Tarjetas Digitales",
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Matriz de Anormalidades",
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+
+    {
+      "title": "Gestion Compras",
+      "icon": "fal fa-object-group",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard Compras",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Ordenes de Compra",
+          "href": "Imports/Index",
+          "roles": []
+        }
+      ]
+    },
+
+    {
+      "title": "Control Factor Critico",
+      "icon": "fal fa-calendar",
+      "roles": [],
+      "items": [
+        {
+          "title": "Calendarios Productivo",
+          "showOnSeed": false,
+          "href": "Home/Calendar",
+          "roles": []
+        },
+        {
+          "title": "Calendarios",
+          "href": "Calendars/Index",
+          "roles": []
+        },
+        {
+          "title": "Eventos Calendario",
+          "href": "CalendarEvents/Index",
+          "roles": []
+        },
+        {
+          "title": "Tipo Eventos Calendario",
+          "href": "CalendarCategories/Index",
+          "roles": []
+        }
+      ]
+    },
+
+    {
+      "title": "Productivo Plus",
+      "roles": [
+        "Administrator"
+      ]
+    },
+    {
+      "title": "Optimizacion de Espacios",
+      "icon": "fal fa-sort-amount-up-alt",
+      "roles": [
+        "Administrator"
+      ],
+      "items": [
+        {
+          "title": "Dashboard Opt. Espacios",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "Cascadeo",
+      "icon": "fal fa-cogs",
+      "roles": [
+        "Administrator"
+      ],
+      "items": [
+        {
+          "title": "Dashboard Cascadeo",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "Mejora Enfocada",
+      "icon": "fal fa-chart-line",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard Mejora Enfocada",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Causalidad",
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Impactos en Costo",
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "PEM",
+      "icon": "fal fa-users",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard PEM",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+
+    {
+      "title": "Productivo Premium",
+      "roles": [
+        "Administrator"
+      ]
+    },
+
+    {
+      "title": "Overhaul",
+      "icon": "fal fa-bolt",
+      "roles": [
+        "Administrator"
+      ],
+      "items": [
+        {
+          "title": "Dashboard Overhaul",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "TASC",
+      "icon": "fal fa-calendar-check",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard TASC",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "Matriz Habilidades",
+      "icon": "fal fa-hands-helping",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard Matriz Hab.",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "Arbol de Perdidas",
+      "icon": "fal fa-folder-tree",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard Arbol de Perdidas",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+
+    {
+      "title": "CRM",
+      "icon": "fal fa-cash-register",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard CRM",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Admin. Clientes",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Marketing",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Gestion Ordenes",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Gestion Propuestas",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Gestion Productos",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Gestion Competencia",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "CRM 360",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Gestion Soporte",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Calendario CRM",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+    {
+      "title": "Productivo Verticals",
+      "roles": []
+    },
+    {
+      "title": "Productivo Textile Factory",
+      "icon": "fal fa-tshirt",
+      "roles": [],
+      "items": [
+        {
+          "title": "Dashboard Textile Factory",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Movimientos Basicos",
+          "showOnSeed": false,
+          "href": "MovementBasics/Index",
+          "roles": []
+        },
+        {
+          "title": "Detalle Mov. Basicos",
+          "showOnSeed": false,
+          "href": "MovementDetails/Index",
+          "roles": []
+        },
+        {
+          "title": "Clases de Movimientos",
+          "showOnSeed": false,
+          "href": "MovementClasses/Index",
+          "roles": []
+        },
+        {
+          "title": "Tipos de Movimientos",
+          "showOnSeed": false,
+          "href": "MovementTypes/Index",
+          "roles": []
+        },
+        {
+          "title": "Movimientos",
+          "showOnSeed": false,
+          "href": "Movements/Index",
+          "roles": []
+        },
+        {
+          "title": "TPC",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Elementos",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        },
+        {
+          "title": "Secuencia de Operaciones",
+          "showOnSeed": false,
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
+    },
+
+    {
+        "title": "Productivo Agricultural ",
+        "icon": "fal fa-sheep",
+        "roles": [],
+        "items": [
+          {
+            "title": "Dashboard Agricultural",
+            "showOnSeed": false,
+            "href": "Home/UnderBuild",
+            "roles": []
+          }
+        ]
+      },
+      {
+        "title": "Productivo Health",
+        "roles": []
+      },
+      {
+        "title": "Productivo Bio-Care",
+        "icon": "fal fa-head-side-mask",
+        "roles": [],
+        "items": [
+          {
+            "title": "Dashboard Bio-Care",
+            "showOnSeed": false,
+            "href": "SpeechTest/Dashboard",
+            "roles": []
+          },
+          {
+            "title": "Encuesta Sintomas",
+            "showOnSeed": false,
+            "href": "SpeechTest/BioCareSurvey",
+            "roles": []
+          },
+          {
+            "title": "Resultados",
+            "showOnSeed": false,
+            "href": "BioCareSurveyAnswer/Index",
+            "roles": []
+          }
+        ]
+      },
+      {
+        "title": "SST",
+        "icon": "fal fa-user-injured",
+        "span": {
+          "class": "dl-ref bg-primary-500 hidden-nav-function-minify hidden-nav-function-top",
+          "text": "12+"
+        },
+        "roles": [],
+        "items": [
+          {
+            "title": "Reporte Incidentes",
+            "text": "Reporte Incidentes",
+            "href": "javascript:void(0);",
+            "roles": [],
+            "items": [
+              {
+                "title": "Dashboard SST",
+                "showOnSeed": false,
+                "href": "Home/UnderBuild",
+                "roles": []
+              }
+            ]
+          },
+          {
+            "title": "Gestion EPP",
+            "text": "Gestion EPP",
+            "href": "javascript:void(0);",
+            "roles": [],
+            "items": [
+              {
+                "title": "Dashboard EPP",
+                "showOnSeed": false,
+                "href": "Home/UnderBuild",
+                "roles": []
+              },
+              {
+                "title": "Matriz EPP",
+                "showOnSeed": false,
+                "href": "Home/UnderBuild",
+                "roles": []
+              },
+              {
+                "title": "Control EPP",
+                "showOnSeed": false,
+                "href": "EPPControls/Index",
+                "roles": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Helpdesk",
+        "roles": []
+      },
+      {
+        "title": "E-Learning",
+        "icon": "fal fa-user-graduate",
+        "roles": [],
+        "items": [
+          {
+            "title": "Operation Manual",
+            "href": "Home/UnderBuild",
+            "roles": []
+          },
+          {
+            "title": "Ticket Soporte",
+            "href": "Home/UnderBuild",
+            "roles": []
+          }
+        ]
+      }
+  ]
+    }
