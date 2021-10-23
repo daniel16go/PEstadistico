@@ -1,21 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\daniel.gomez\\Documents\\MEGA\\Trabajos Externos\\Estadistico\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj": {}
+    "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\daniel.gomez\\Documents\\MEGA\\Trabajos Externos\\Estadistico\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj": {
+    "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\daniel.gomez\\Documents\\MEGA\\Trabajos Externos\\Estadistico\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj",
         "projectName": "Productivo.UnitTests",
-        "projectPath": "C:\\Users\\daniel.gomez\\Documents\\MEGA\\Trabajos Externos\\Estadistico\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj",
-        "packagesPath": "C:\\Users\\daniel.gomez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\daniel.gomez\\Documents\\MEGA\\Trabajos Externos\\Estadistico\\Productivo\\Productivo.UnitTests\\obj\\",
+        "projectPath": "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\Productivo.UnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\daniel.gomez\\Documents\\MEGA\\Trabajos Externos\\Estadistico\\Productivo\\NuGet.Config",
-          "C:\\Users\\daniel.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\NuGet.Config",
+          "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -72,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

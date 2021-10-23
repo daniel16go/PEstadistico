@@ -82,3 +82,15 @@ C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Pr
 C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
 C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
 C:\Users\daniel.gomez\Documents\MEGA\Trabajos Externos\Estadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
