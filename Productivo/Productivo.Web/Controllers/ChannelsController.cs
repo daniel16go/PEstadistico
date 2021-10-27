@@ -12,14 +12,14 @@ using Rotativa.AspNetCore;
 
 namespace Productivo.Web.Controllers
 {
-    public class ChannelController : Controller
+    public class ChannelsController : Controller
     {
         private readonly IChannelRepository _channelRepository;
         private readonly ICombosHelper _combosHelper;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public ChannelController(IMapper mapper, IChannelRepository channelRepository, ICombosHelper combosHelper, IHostingEnvironment hostingEnvironment, UserManager<ApplicationUser> userManager)
+        public ChannelsController(IChannelRepository channelRepository, ICombosHelper combosHelper, IHostingEnvironment hostingEnvironment, UserManager<ApplicationUser> userManager)
         {
             _channelRepository = channelRepository;
             _combosHelper = combosHelper;
@@ -77,6 +77,7 @@ namespace Productivo.Web.Controllers
         {
             ChannelEntity ChannelEntity = await _channelRepository.GetByIdAsync(id);
 
+            ViewBag.Species = _combosHelper.SpeciesDropDownList(_userManager.GetUserAsync(User).Result.CompanyId);
             ViewBag.EditId = id;
 
             if (ChannelEntity == null)

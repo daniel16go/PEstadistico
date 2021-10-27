@@ -19,7 +19,12 @@ namespace Productivo.Infrastructure.Repositories
 
         public async Task<IEnumerable<ChannelEntity>> GetAllByCompanyId(int companyId)
         {
-            return await _context.Channels.Where(x => x.CompanyId == companyId).ToListAsync();
+            return await _context.Channels.Include(x => x.Specie).Where(x => x.CompanyId == companyId).ToListAsync();
+        }
+
+        public override async Task<ChannelEntity> GetByIdAsync(int id)
+        {
+            return await _context.Channels.Include(x => x.Specie).AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<bool> IsValidDelete(ChannelEntity channel)

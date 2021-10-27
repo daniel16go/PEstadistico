@@ -115,7 +115,7 @@ C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructur
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfo.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete

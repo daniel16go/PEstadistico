@@ -5830,10 +5830,10 @@ C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CategoryModels\Index.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CategoryModels\ReportPDF.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CategoryModels\Update.cshtml.g.cs
-C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Channel\Create.cshtml.g.cs
-C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Channel\Details.cshtml.g.cs
-C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Channel\Index.cshtml.g.cs
-C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Channel\Update.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Channels\Create.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Channels\Details.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Channels\Index.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Channels\Update.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Companies\Create.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Companies\Details.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Companies\Index.cshtml.g.cs
@@ -5866,6 +5866,10 @@ C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CustomAgents\Update.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Customers\Create.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Customers\Index.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\Create.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\Details.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\Index.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\Update.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\DiagnosticDetails\Create.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Diagnostics\Create.cshtml.g.cs
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\Diagnostics\Details.cshtml.g.cs
@@ -6402,3 +6406,7 @@ C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.dll
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.pdb
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.genruntimeconfig.cache
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\Subcuts.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\CreateSubCut.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\DetailSubCut.cshtml.g.cs
+C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\UpdateSubCut.cshtml.g.cs

@@ -20,7 +20,16 @@ namespace Productivo.Infrastructure.Repositories
 
         public async Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyId(int companyId)
         {
-            return await _context.CutsOfMeats.Where(x => x.CompanyId == companyId).ToListAsync();
+            return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId && x.MainCutId == null).ToListAsync();
+        }
+        //GetAllByCompanyIdAndMainCut
+        public async Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyIdAndMainCut(int companyId, int id)
+        {
+            return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId && x.MainCutId == id).ToListAsync();
+        }
+        public override async Task<MeatCuttingEntity> GetByIdAsync(int id)
+        {
+            return await _context.CutsOfMeats.Include(x => x.Channel).AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<bool> IsValidDelete(MeatCuttingEntity channel)
