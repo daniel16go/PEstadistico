@@ -22,6 +22,13 @@ namespace Productivo.Infrastructure.Repositories
             return await _context.StrippingDetails.Where(x => x.CompanyId == companyId).ToListAsync();
         }
 
+        public async Task<IEnumerable<StrippingDetailEntity>> GetAllByStrippingId(int id)
+        {
+            return await _context.StrippingDetails
+                .Include(x => x.Channel)
+                .Where(x => x.StrippingId == id).ToListAsync();
+        }
+
         public async Task<bool> IsValidDelete(StrippingDetailEntity channel)
         {
             StrippingDetailEntity strippingDetail = await _context.StrippingDetails

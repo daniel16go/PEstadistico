@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Productivo.Core.Entities;
 
 namespace Productivo.Core.ViewModels.StrippingDetails
 {
@@ -21,5 +22,7 @@ namespace Productivo.Core.ViewModels.StrippingDetails
         public string UpdateUserId { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime LastUpdateDate { get; set; }
+
+        public ChannelEntity Channels { get; set; }
     }
 }

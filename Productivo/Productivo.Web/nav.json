@@ -26,6 +26,29 @@
           "roles": [],
           "items": [
             {
+              "title": "Monedas",
+              "href": "Currencies/Index",
+              "roles": []
+            },
+            {
+              "title": "Roles",
+              "href": "Administration/ListRoles",
+              "roles": []
+            },
+            {
+              "title": "Usuarios",
+              "href": "Administration/ListUsers",
+              "roles": []
+            }
+          ]
+        },
+        {
+          "title": "Productivo",
+          "text": "Productivo",
+          "href": "javascript:void(0);",
+          "roles": [],
+          "items": [
+            {
               "title": "Canales",
               "href": "Channels/Index",
               "roles": []
@@ -39,7 +62,19 @@
         }
       ]
     },
-
+    {
+      "title": "Produccion",
+      "icon": "fal fa-meat",
+      "roles": [],
+      "items": [
+        {
+          "title": "Desposte",
+          "showOnSeed": false,
+          "href": "Strips/Index",
+          "roles": []
+        }
+      ]
+    },
 
 
 

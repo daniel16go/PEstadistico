@@ -26,6 +26,29 @@
           "roles": [],
           "items": [
             {
+              "title": "Monedas",
+              "href": "Currencies/Index",
+              "roles": []
+            },
+            {
+              "title": "Roles",
+              "href": "Administration/ListRoles",
+              "roles": []
+            },
+            {
+              "title": "Usuarios",
+              "href": "Administration/ListUsers",
+              "roles": []
+            }
+          ]
+        },
+        {
+          "title": "Productivo",
+          "text": "Productivo",
+          "href": "javascript:void(0);",
+          "roles": [],
+          "items": [
+            {
               "title": "Canales",
               "href": "Channels/Index",
               "roles": []
@@ -39,122 +62,42 @@
         }
       ]
     },
+    {
+      "title": "Produccion",
+      "icon": "fal fa-meat",
+      "roles": [],
+      "items": [
+        {
+          "title": "Desposte",
+          "showOnSeed": false,
+          "href": "Strips/Index",
+          "roles": []
+        }
+      ]
+    },
 
-  
+
 
     {
-        "title": "Productivo Agricultural ",
-        "icon": "fal fa-sheep",
-        "roles": [],
-        "items": [
-          {
-            "title": "Dashboard Agricultural",
-            "showOnSeed": false,
-            "href": "Home/UnderBuild",
-            "roles": []
-          }
-        ]
-      },
-      {
-        "title": "Productivo Health",
-        "roles": []
-      },
-      {
-        "title": "Productivo Bio-Care",
-        "icon": "fal fa-head-side-mask",
-        "roles": [],
-        "items": [
-          {
-            "title": "Dashboard Bio-Care",
-            "showOnSeed": false,
-            "href": "SpeechTest/Dashboard",
-            "roles": []
-          },
-          {
-            "title": "Encuesta Sintomas",
-            "showOnSeed": false,
-            "href": "SpeechTest/BioCareSurvey",
-            "roles": []
-          },
-          {
-            "title": "Resultados",
-            "showOnSeed": false,
-            "href": "BioCareSurveyAnswer/Index",
-            "roles": []
-          }
-        ]
-      },
-      {
-        "title": "SST",
-        "icon": "fal fa-user-injured",
-        "span": {
-          "class": "dl-ref bg-primary-500 hidden-nav-function-minify hidden-nav-function-top",
-          "text": "12+"
+      "title": "Helpdesk",
+      "roles": []
+    },
+    {
+      "title": "E-Learning",
+      "icon": "fal fa-user-graduate",
+      "roles": [],
+      "items": [
+        {
+          "title": "Operation Manual",
+          "href": "Home/UnderBuild",
+          "roles": []
         },
-        "roles": [],
-        "items": [
-          {
-            "title": "Reporte Incidentes",
-            "text": "Reporte Incidentes",
-            "href": "javascript:void(0);",
-            "roles": [],
-            "items": [
-              {
-                "title": "Dashboard SST",
-                "showOnSeed": false,
-                "href": "Home/UnderBuild",
-                "roles": []
-              }
-            ]
-          },
-          {
-            "title": "Gestion EPP",
-            "text": "Gestion EPP",
-            "href": "javascript:void(0);",
-            "roles": [],
-            "items": [
-              {
-                "title": "Dashboard EPP",
-                "showOnSeed": false,
-                "href": "Home/UnderBuild",
-                "roles": []
-              },
-              {
-                "title": "Matriz EPP",
-                "showOnSeed": false,
-                "href": "Home/UnderBuild",
-                "roles": []
-              },
-              {
-                "title": "Control EPP",
-                "showOnSeed": false,
-                "href": "EPPControls/Index",
-                "roles": []
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "title": "Helpdesk",
-        "roles": []
-      },
-      {
-        "title": "E-Learning",
-        "icon": "fal fa-user-graduate",
-        "roles": [],
-        "items": [
-          {
-            "title": "Operation Manual",
-            "href": "Home/UnderBuild",
-            "roles": []
-          },
-          {
-            "title": "Ticket Soporte",
-            "href": "Home/UnderBuild",
-            "roles": []
-          }
-        ]
-      }
-  ]
+        {
+          "title": "Ticket Soporte",
+          "href": "Home/UnderBuild",
+          "roles": []
+        }
+      ]
     }
+  ]
+}

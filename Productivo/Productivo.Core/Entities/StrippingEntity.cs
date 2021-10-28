@@ -14,7 +14,7 @@ namespace Productivo.Core.Entities
         public DateTime StartDate { get; set; }
 
         [Display(Name = "Fecha de finalizacion")]
-        public DateTime EndDate { get; set; }
+        public DateTime ? EndDate { get; set; }
 
         [Display(Name = "Estado")]
         public int StatusId { get; set; }

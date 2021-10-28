@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Productivo.Core.Entities;
 
 namespace Productivo.Core.ViewModels.Strips
 {
@@ -9,7 +10,7 @@ namespace Productivo.Core.ViewModels.Strips
         public DateTime StartDate { get; set; }
 
         [Display(Name = "Fecha de finalizacion")]
-        public DateTime EndDate { get; set; }
+        public DateTime ? EndDate { get; set; }
 
         [Display(Name = "Estado")]
         public int StatusId { get; set; }
@@ -23,5 +24,7 @@ namespace Productivo.Core.ViewModels.Strips
         public string UpdateUserId { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime LastUpdateDate { get; set; }
+
+        public StatusEntity Status { get; set; }
     }
 }

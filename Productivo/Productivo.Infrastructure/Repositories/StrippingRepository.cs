@@ -17,9 +17,14 @@ namespace Productivo.Infrastructure.Repositories
             _context = context;
         }
 
+        public override async Task<StrippingEntity> GetByIdAsync(int id)
+        {
+            return await _context.Strips.Include(x => x.Status).AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
+        }
+
         public async Task<IEnumerable<StrippingEntity>> GetAllByCompanyId(int companyId)
         {
-            return await _context.Strips.Where(x => x.CompanyId == companyId).ToListAsync();
+            return await _context.Strips.Include(x => x.Status).Where(x => x.CompanyId == companyId).ToListAsync();
         }
 
         public async Task<bool> IsValidDelete(StrippingEntity channel)

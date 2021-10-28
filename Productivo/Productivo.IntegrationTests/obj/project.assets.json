@@ -3505,20 +3505,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Danii\\.nuget\\packages\\": {}
+    "C:\\Users\\daniel.gomez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\Productivo.IntegrationTests\\Productivo.IntegrationTests.csproj",
+      "projectUniqueName": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.IntegrationTests\\Productivo.IntegrationTests.csproj",
       "projectName": "Productivo.IntegrationTests",
-      "projectPath": "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\Productivo.IntegrationTests\\Productivo.IntegrationTests.csproj",
-      "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\Productivo.IntegrationTests\\obj\\",
+      "projectPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.IntegrationTests\\Productivo.IntegrationTests.csproj",
+      "packagesPath": "C:\\Users\\daniel.gomez\\.nuget\\packages\\",
+      "outputPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.IntegrationTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Danii\\Documents\\GitHub\\PEstadistico\\Productivo\\NuGet.Config",
-        "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
+        "C:\\Users\\daniel.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3575,7 +3575,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

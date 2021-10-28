@@ -1,11 +1,11 @@
-﻿@model IEnumerable<Productivo.Core.Entities.MeatCuttingEntity>
+﻿@model IEnumerable<Productivo.Core.Entities.StrippingEntity>
 
 @section HeadBlock {
     <link rel="stylesheet" media="screen, print" href="~/css/datagrid/datatables/datatables.bundle.css">
 }
-<h1 class="h1-Productivo">Cortes de carne - @ViewBag.MeatCutting.Name</h1>
+<h1 class="h1-Productivo">Despostes</h1>
 <p>
-    <a asp-action="CreateSubCut" asp-route-id="@ViewBag.MeatCutting.Id" class="h3-Productivo  btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
+    <a asp-action="Create" class="h3-Productivo  btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
     <a asp-action="ReportPDF" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reporte PDF" target="_blank"><i class="fal fa-print"></i></a>
 </p>
 
@@ -36,19 +36,13 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.StartDate)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Channel.Name)
+                                    @Html.DisplayNameFor(model => model.EndDate)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Yield)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Price)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.TopQuantity)
+                                    @Html.DisplayNameFor(model => model.Status.Name)
                                 </th>
                                 <th></th>
                             </tr>
@@ -58,42 +52,28 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.StartDate)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Channel.Name)
+                                        @Html.DisplayFor(modelItem => item.EndDate)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Yield)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Price)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.TopQuantity)
+                                        @Html.DisplayFor(modelItem => item.Status.Name)
                                     </td>
                                     <td>
                                         <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Modificar"><i class="fal fa-edit"></i></a>
-                                        <a asp-action="DetailSubCut" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detalles"><i class="fal fa-info-square"></i></a>
-                                        <button data-id="@item.Id" data-maincut="@item.MainCutId" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>
-                                        <a asp-action="Subcuts" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="SubCortes"><i class="fal fa-sitemap"></i></a>
+                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detalles"><i class="fal fa-info-square"></i></a>
+                                        <button data-id="@item.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>
                                     </td>
-
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <div>
-                        @if (ViewBag.MeatCutting.MainCutId != null)
-                        {
-                            <a asp-action="Subcuts" asp-route-id="@ViewBag.MeatCutting.MainCutId" class="h3-Pandora  btn btn-warning btn-sm">Regresar</a>
-                        }
-                        <a asp-action="Index" class="btn btn-danger btn-sm">Salir</a>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 <partial name="_DeleteDialog" />
@@ -124,12 +104,10 @@
         var item_to_delete;
         $('.deleteItem').click((e) => {
             item_to_delete = e.currentTarget.dataset.id;
-            item_maincut = e.currentTarget.dataset.maincut;
         });
         $("#btnYesDelete").click(function () {
-            window.location.pathname = window.location.pathname.replace('/Subcuts/', '/DeleteSubCut/').replace("/" + item_maincut, "/" + item_to_delete);
+            window.location.pathname = window.location.pathname.replace('/Index', '/Delete/') + item_to_delete;
         });
-
     </script>
-
 }
+

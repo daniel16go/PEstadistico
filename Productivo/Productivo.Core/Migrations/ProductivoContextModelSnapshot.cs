@@ -5225,7 +5225,7 @@ namespace Productivo.Core.Migrations
                     b.Property<string>("CreateUserId")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("EndDate")
+                    b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime");
 
                     b.Property<DateTime>("LastUpdateDate")
