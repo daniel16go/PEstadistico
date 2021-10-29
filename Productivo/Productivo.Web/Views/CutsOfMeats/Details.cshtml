@@ -40,29 +40,11 @@
                                     <dd class="col-sm-8">
                                         @Html.DisplayFor(model => model.Channel.Name)
                                     </dd>
-                                    <dt class="col-sm-4">
-                                        @Html.DisplayNameFor(model => model.Yield)
-                                    </dt>
-                                    <dd class="col-sm-8">
-                                        @Html.DisplayFor(model => model.Yield)
-                                    </dd>
-                                    <dt class="col-sm-4">
-                                        @Html.DisplayNameFor(model => model.Price)
-                                    </dt>
-                                    <dd class="col-sm-8">
-                                        @Html.DisplayFor(model => model.Price)
-                                    </dd>
-                                    <dt class="col-sm-4">
-                                        @Html.DisplayNameFor(model => model.TopQuantity)
-                                    </dt>
-                                    <dd class="col-sm-8">
-                                        @Html.DisplayFor(model => model.TopQuantity)
-                                    </dd>
                                 </dl>
                             </div>
                             <div>
                                 <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-success btn-sm">Editar</a> |
-                                <a asp-action="Index" class="h3-Pandora  btn btn-secondary btn-sm">Regresar</a>
+                                <a asp-action="Index" asp-route-id="@Model.ChannelId"class="h3-Pandora  btn btn-secondary btn-sm">Regresar</a>
                             </div>
                         </div>
                     </div>

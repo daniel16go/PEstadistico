@@ -41,9 +41,6 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Specie.Name)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Sex)
-                                </th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -58,12 +55,10 @@
                                     @Html.DisplayFor(modelItem => item.Specie.Name)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Sex)
-                                </td>
-                                <td>
                                     <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Modificar"><i class="fal fa-edit"></i></a>
                                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detalles"><i class="fal fa-info-square"></i></a>
                                     <button data-id="@item.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>
+                                    <a asp-action="Cuts" asp-route-id="@item.Id" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cortes"><i class="fal fa-candy-corn"></i></a>
                                 </td>
 
                             </tr>

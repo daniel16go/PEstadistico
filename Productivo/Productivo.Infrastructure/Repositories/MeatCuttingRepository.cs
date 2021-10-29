@@ -20,12 +20,12 @@ namespace Productivo.Infrastructure.Repositories
 
         public async Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyId(int companyId)
         {
-            return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId && x.MainCutId == null).ToListAsync();
+            return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId).ToListAsync();
         }
-        //GetAllByCompanyIdAndMainCut
-        public async Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyIdAndMainCut(int companyId, int id)
+        //GetAllByCompanyIdAndChannelId
+        public async Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyIdAndChannelId(int companyId, int id)
         {
-            return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId && x.MainCutId == id).ToListAsync();
+            return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId && x.ChannelId == id).ToListAsync();
         }
         public override async Task<MeatCuttingEntity> GetByIdAsync(int id)
         {
@@ -35,11 +35,10 @@ namespace Productivo.Infrastructure.Repositories
         public async Task<bool> IsValidDelete(MeatCuttingEntity channel)
         {
             MeatCuttingEntity meatCuttingEntity = await _context.CutsOfMeats
-                                    .Include(x => x.SubCuts)
                                     .AsNoTracking()
                                     .FirstOrDefaultAsync(x => x.Id == channel.Id);
 
-            bool response = meatCuttingEntity.SubCuts.Count == 0;
+            bool response = true;
 
             return response;
         }

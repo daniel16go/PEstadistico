@@ -36,6 +36,11 @@
               "roles": []
             },
             {
+              "title": "Estados",
+              "href": "Status/Index",
+              "roles": []
+            },
+            {
               "title": "Usuarios",
               "href": "Administration/ListUsers",
               "roles": []
@@ -43,8 +48,8 @@
           ]
         },
         {
-          "title": "Productivo",
-          "text": "Productivo",
+          "title": "Produccion",
+          "text": "Produccion",
           "href": "javascript:void(0);",
           "roles": [],
           "items": [
@@ -54,8 +59,8 @@
               "roles": []
             },
             {
-              "title": "Cortes",
-              "href": "CutsOfMeats/Index",
+              "title": "Especies",
+              "href": "Species/Index",
               "roles": []
             }
           ]

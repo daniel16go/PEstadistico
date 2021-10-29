@@ -12,10 +12,6 @@ namespace Productivo.Core.ViewModels.Channels
         [Display(Name = "Especie")]
         public int SpecieId { get; set; }
 
-        [Display(Name = "Sexo")]
-        public string Sex { get; set; }
-
-
         public int CompanyId { get; set; }
         public string CreateUserId { get; set; }
         public string UpdateUserId { get; set; }

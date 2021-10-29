@@ -3172,29 +3172,15 @@ namespace Productivo.Core.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("MainCutId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .HasColumnType("text");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int>("TopQuantity")
-                        .HasColumnType("int");
 
                     b.Property<string>("UpdateUserId")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("Yield")
-                        .HasColumnType("decimal(18, 2)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ChannelId");
-
-                    b.HasIndex("MainCutId");
 
                     b.ToTable("CutsOfMeats");
                 });
@@ -3959,6 +3945,43 @@ namespace Productivo.Core.Migrations
                     b.ToTable("PlanPayments");
                 });
 
+            modelBuilder.Entity("Productivo.Core.Entities.PriceCutEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("FemalePrice")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<decimal>("MalePrice")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<int>("MeatCuttingId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateUserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MeatCuttingId");
+
+                    b.ToTable("PriceCuts");
+                });
+
             modelBuilder.Entity("Productivo.Core.Entities.PriceListEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -4602,6 +4625,40 @@ namespace Productivo.Core.Migrations
                     b.HasIndex("ProtectionCategoriesId");
 
                     b.ToTable("ProtectionTypes");
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.QuantitySaleTop", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("MeatCuttingId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateUserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MeatCuttingId");
+
+                    b.ToTable("QuantitySaleTops");
                 });
 
             modelBuilder.Entity("Productivo.Core.Entities.RawMaterialEntity", b =>
@@ -5248,6 +5305,42 @@ namespace Productivo.Core.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("Strips");
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.SubCutEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("MainCutId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubCutId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateUserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MainCutId");
+
+                    b.HasIndex("SubCutId");
+
+                    b.ToTable("SubCuts");
                 });
 
             modelBuilder.Entity("Productivo.Core.Entities.SubModuleEntity", b =>
@@ -5914,6 +6007,40 @@ namespace Productivo.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("WareHouseTypes");
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.YieldMeatCutting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("MeatCuttingId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Yield")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MeatCuttingId");
+
+                    b.ToTable("YieldMeatCuts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -6710,10 +6837,6 @@ namespace Productivo.Core.Migrations
                         .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "MainCut")
-                        .WithMany("SubCuts")
-                        .HasForeignKey("MainCutId");
                 });
 
             modelBuilder.Entity("Productivo.Core.Entities.MetalUnitEntity", b =>
@@ -6850,6 +6973,15 @@ namespace Productivo.Core.Migrations
                     b.HasOne("Productivo.Core.Entities.PlanEntity", "Plans")
                         .WithMany("PlanPayments")
                         .HasForeignKey("PlansId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.PriceCutEntity", b =>
+                {
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "MeatCutting")
+                        .WithMany()
+                        .HasForeignKey("MeatCuttingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -7007,6 +7139,15 @@ namespace Productivo.Core.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Productivo.Core.Entities.QuantitySaleTop", b =>
+                {
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "meatCutting")
+                        .WithMany()
+                        .HasForeignKey("MeatCuttingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Productivo.Core.Entities.RawMaterialEntity", b =>
                 {
                     b.HasOne("Productivo.Core.Entities.PackingListEntity", "PackingLists")
@@ -7108,6 +7249,21 @@ namespace Productivo.Core.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Productivo.Core.Entities.SubCutEntity", b =>
+                {
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "MainCut")
+                        .WithMany()
+                        .HasForeignKey("MainCutId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "SubCut")
+                        .WithMany()
+                        .HasForeignKey("SubCutId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Productivo.Core.Entities.SubModuleEntity", b =>
                 {
                     b.HasOne("Productivo.Core.Entities.ModuleEntity", "Modules")
@@ -7185,6 +7341,15 @@ namespace Productivo.Core.Migrations
                     b.HasOne("Productivo.Core.Entities.WareHouseTypeEntity", "WareHouseTypes")
                         .WithMany("WareHouses")
                         .HasForeignKey("WareHouseTypesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.YieldMeatCutting", b =>
+                {
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "meatCutting")
+                        .WithMany()
+                        .HasForeignKey("MeatCuttingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

@@ -50,7 +50,6 @@ namespace Productivo.Web.Controllers
             {
                 Name = model.Name,
                 SpecieId = model.SpecieId,
-                Sex = model.Sex,
 
                 CompanyId = model.CompanyId,
                 CreateDate = model.CreateDate,
@@ -90,7 +89,6 @@ namespace Productivo.Web.Controllers
                 Id = ChannelEntity.Id,
                 Name = ChannelEntity.Name,
                 SpecieId = ChannelEntity.SpecieId,
-                Sex = ChannelEntity.Sex,
 
                 CompanyId = ChannelEntity.CompanyId,
                 CreateUserId = ChannelEntity.CreateUserId,
@@ -110,7 +108,6 @@ namespace Productivo.Web.Controllers
 
             ChannelEntity.Name = model.Name;
             ChannelEntity.SpecieId = model.SpecieId;
-            ChannelEntity.Sex = model.Sex;
 
             ChannelEntity.UpdateUserId = model.UpdateUserId;
             ChannelEntity.LastUpdateDate = model.LastUpdateDate;
@@ -133,6 +130,10 @@ namespace Productivo.Web.Controllers
                 return RedirectToAction(nameof(Index), new { msg = "no se pudo eliminar la canal ya que este tiene registros asociados." });
             }
             return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Cuts(int Id)
+        {
+            return RedirectToAction("Index", "CutsOfMeats", new { id = Id});
         }
 
         public async Task<IActionResult> ReportPDF()
