@@ -9,6 +9,8 @@ namespace Productivo.Core.Entities
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Referencia")]
+        public string Reference { get; set; }
 
         [Display(Name = "Fecha de inicio")]
         public DateTime StartDate { get; set; }
@@ -28,7 +30,6 @@ namespace Productivo.Core.Entities
         public string UpdateUserId { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime LastUpdateDate { get; set; }
-
         public StatusEntity Status { get; set; }
         public ICollection<StrippingDetailEntity>? StrippingDetails { get; set; }
     }

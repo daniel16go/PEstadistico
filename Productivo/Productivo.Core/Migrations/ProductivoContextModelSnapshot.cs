@@ -889,9 +889,6 @@ namespace Productivo.Core.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<string>("Sex")
-                        .HasColumnType("text");
-
                     b.Property<int>("SpecieId")
                         .HasColumnType("int");
 
@@ -5246,8 +5243,8 @@ namespace Productivo.Core.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<string>("Remarks")
                         .HasColumnType("text");
@@ -5257,6 +5254,9 @@ namespace Productivo.Core.Migrations
 
                     b.Property<string>("UpdateUserId")
                         .HasColumnType("text");
+
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
 
@@ -5287,6 +5287,9 @@ namespace Productivo.Core.Migrations
 
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("Reference")
+                        .HasColumnType("text");
 
                     b.Property<string>("Remarks")
                         .HasColumnType("text");

@@ -95,18 +95,6 @@ C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debu
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
 E:\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
 E:\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
 E:\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
@@ -120,3 +108,15 @@ E:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Produc
 E:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
 E:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
 E:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csprojAssemblyReference.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache

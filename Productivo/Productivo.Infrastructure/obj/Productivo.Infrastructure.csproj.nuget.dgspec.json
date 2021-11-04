@@ -1,25 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {}
+    "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {}
   },
   "projects": {
-    "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
+    "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
+        "projectUniqueName": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
         "projectName": "Productivo.Core",
-        "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
-        "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\obj\\",
+        "projectPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
+        "packagesPath": "C:\\Users\\daniel.gomez\\.nuget\\packages\\",
+        "outputPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "E:\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
-          "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
+          "C:\\Users\\daniel.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -124,26 +120,22 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {
+    "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
+        "projectUniqueName": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
         "projectName": "Productivo.Infrastructure",
-        "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\obj\\",
+        "projectPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\daniel.gomez\\.nuget\\packages\\",
+        "outputPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "E:\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
-          "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
+          "C:\\Users\\daniel.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -156,8 +148,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
-                "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj"
+              "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
+                "projectPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj"
               }
             }
           }
@@ -248,7 +240,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

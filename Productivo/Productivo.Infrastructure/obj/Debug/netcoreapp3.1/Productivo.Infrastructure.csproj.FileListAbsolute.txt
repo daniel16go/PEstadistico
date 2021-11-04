@@ -119,21 +119,6 @@ C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructur
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache
 C:\Users\Danii\Documents\GitHub\PEstadistico\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.deps.json
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.json
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.dev.json
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Core.dll
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csprojAssemblyReference.cache
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfoInputs.cache
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfo.cs
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CoreCompileInputs.cache
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.deps.json
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.json
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.dev.json
@@ -150,3 +135,18 @@ E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.deps.json
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.json
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.dev.json
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csprojAssemblyReference.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfoInputs.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfo.cs
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CoreCompileInputs.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache

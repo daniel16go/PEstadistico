@@ -27,6 +27,13 @@
                         <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
                         <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Reference" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Reference" class="form-control" />
+                                    <span asp-validation-for="Reference" class="text-danger"></span>
+                                </div>
+                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label asp-for="StartDate" class="control-label h4-Pandora"></label>

@@ -375,7 +375,6 @@ F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\bin\Debug\ne
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
-F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\netcoreapp3.1\Productivo.UnitTests.csprojAssemblyReference.cache
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\netcoreapp3.1\Productivo.UnitTests.AssemblyInfoInputs.cache
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\netcoreapp3.1\Productivo.UnitTests.AssemblyInfo.cs
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\netcoreapp3.1\Productivo.UnitTests.csproj.CoreCompileInputs.cache
@@ -383,3 +382,4 @@ F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\ne
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\netcoreapp3.1\Productivo.UnitTests.dll
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\netcoreapp3.1\Productivo.UnitTests.pdb
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\netcoreapp3.1\Productivo.UnitTests.genruntimeconfig.cache
+F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.UnitTests\obj\Debug\netcoreapp3.1\Productivo.UnitTests.csprojAssemblyReference.cache

@@ -53,6 +53,7 @@ namespace Productivo.Web.Controllers
         {
             StrippingEntity newStripping = new StrippingEntity
             {
+                Reference  = model.Reference,
                 StartDate = model.StartDate,
                 StatusId = model.StatusId,
                 Remarks = model.Remarks,
@@ -97,6 +98,7 @@ namespace Productivo.Web.Controllers
             }
             StrippingEditViewModel updateStripping = new StrippingEditViewModel
             {
+                Reference = StrippingEntity.Reference,
                 StartDate = StrippingEntity.StartDate,
                 EndDate = StrippingEntity.EndDate,
                 StatusId = StrippingEntity.StatusId,
@@ -117,6 +119,7 @@ namespace Productivo.Web.Controllers
         {
             StrippingEntity StrippingEntity = await _strippingRepository.GetByIdAsync(model.Id);
 
+            StrippingEntity.Reference = model.Reference;
             StrippingEntity.StartDate = model.StartDate;
             StrippingEntity.EndDate = model.EndDate;
             StrippingEntity.StatusId = model.StatusId;

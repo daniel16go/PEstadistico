@@ -6,6 +6,8 @@ namespace Productivo.Core.ViewModels.Strips
 {
     public class StrippingCreateViewModel
     {
+        [Display(Name = "Referencia")]
+        public string Reference { get; set; }
         [Display(Name = "Fecha de inicio")]
         public DateTime StartDate { get; set; }
 

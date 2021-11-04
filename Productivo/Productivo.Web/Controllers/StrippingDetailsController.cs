@@ -41,6 +41,7 @@ namespace Productivo.Web.Controllers
                 StrippingId = model.StrippingId,
                 ChannelId = model.ChannelId,
                 Quantity = model.Quantity,
+                Weight = model.Weight,
                 Remarks = model.Remarks,
 
                 CompanyId = model.CompanyId,
