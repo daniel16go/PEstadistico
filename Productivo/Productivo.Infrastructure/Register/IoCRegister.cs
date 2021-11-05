@@ -155,6 +155,7 @@ namespace Productivo.Infrastructure.Register
             services.AddTransient<IMovementDetailRepository, MovementDetailRepository>();
 
             services.AddTransient<IChannelRepository, ChannelRepository>();
+            services.AddTransient<IChannelCategoryRepository, ChannelCategoryRepository>();
             services.AddTransient<IMeatCuttingRepository, MeatCuttingRepository>();
             services.AddTransient<ISpecieRepository, SpecieRepository>();
             services.AddTransient<IStrippingRepository, StrippingRepository>();

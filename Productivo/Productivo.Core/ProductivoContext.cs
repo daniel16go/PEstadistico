@@ -127,6 +127,7 @@ namespace Productivo.Core
 
         public DbSet<SpecieEntity> Species { get; set; }
         public DbSet<ChannelEntity> Channels { get; set; }
+        public DbSet<ChannelCategoryEntity> ChannelCategories { get; set; }
         public DbSet<MeatCuttingEntity> CutsOfMeats { get; set; }
         public DbSet<StrippingEntity> Strips  { get; set; }
         public DbSet<StrippingDetailEntity> StrippingDetails { get; set; }
@@ -134,6 +135,7 @@ namespace Productivo.Core
         public DbSet<QuantitySaleTop> QuantitySaleTops { get; set; }
         public DbSet<PriceCutEntity> PriceCuts { get; set; }
         public DbSet<SubCutEntity> SubCuts { get; set; }
+        
 
     }
 }

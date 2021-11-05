@@ -131,7 +131,6 @@ E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfoInputs.cache
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfo.cs
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CoreCompileInputs.cache
-E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache
@@ -150,3 +149,4 @@ F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Deb
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache
+E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete

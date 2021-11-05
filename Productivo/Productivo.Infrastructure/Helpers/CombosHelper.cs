@@ -1009,6 +1009,19 @@ namespace Productivo.Infrastructure.Helpers
            .ToList();
             return list;
         }
+
+        public IEnumerable<SelectListItem> ChannelCategoriesDropDownList(int companyId)
+        {
+            var list = _context.ChannelCategories.Where(x => x.CompanyId == companyId)
+           .Select(t => new SelectListItem
+           {
+               Text = t.Name,
+               Value = t.Id.ToString()
+           })
+           .OrderBy(t => t.Text)
+           .ToList();
+            return list;
+        }
     }
 }
 

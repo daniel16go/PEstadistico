@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace Productivo.Core.Migrations
 {
-    public partial class createDataBase : Migration
+    public partial class CreateDatabaseGoogle : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -1754,6 +1754,7 @@ namespace Productivo.Core.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Reference = table.Column<string>(nullable: true),
                     StartDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: true),
                     StatusId = table.Column<int>(nullable: false),
@@ -2436,7 +2437,8 @@ namespace Productivo.Core.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     StrippingId = table.Column<int>(nullable: false),
                     ChannelId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<decimal>(nullable: false),
+                    Weight = table.Column<decimal>(nullable: false),
+                    Quantity = table.Column<int>(nullable: false),
                     Remarks = table.Column<string>(nullable: true),
                     CompanyId = table.Column<int>(nullable: false),
                     CreateUserId = table.Column<string>(nullable: true),

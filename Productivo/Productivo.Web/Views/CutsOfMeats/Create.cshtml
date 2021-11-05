@@ -27,12 +27,20 @@
                         <input type="hidden" asp-for="UpdateUserId" value="@userManager.GetUserAsync(User).Result.Id" />
                         <input type="hidden" asp-for="CompanyId" value="@userManager.GetUserAsync(User).Result.CompanyId" />
                         <input type="hidden" asp-for="ChannelId" value="@ViewBag.ChannelId" />
+                        <input type="hidden" asp-for="MainCutId" value="@ViewBag.MainCut" />
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label asp-for="Name" class="control-label h4-Pandora"></label>
                                     <input asp-for="Name" class="form-control" />
                                     <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="Quantity" class="control-label h4-Pandora"></label>
+                                    <input asp-for="Quantity" class="form-control" />
+                                    <span asp-validation-for="Quantity" class="text-danger"></span>
                                 </div>
                             </div>
 
@@ -42,7 +50,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <button type="submit" class="h3-Productivo  btn btn-primary btn-sm"><i class="glyphicon glyphicon-floppy-saved"></i> Salvar</button>
-                                    <a asp-action="Index" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
+                                    <a asp-action="Index" asp-route-id="@ViewBag.ChannelId" class="h3-Productivo  btn btn-warning btn-sm"><i class="glyphicon glyphicon-step-backward"></i> Regresar</a>
                                 </div>
                             </div>
                         </div>

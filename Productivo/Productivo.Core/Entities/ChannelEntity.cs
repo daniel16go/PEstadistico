@@ -9,13 +9,10 @@ namespace Productivo.Core.Entities
     {
         [Key]
         public int Id { get; set; }
-
         [Display(Name = "Nombre del canal")]
         public string Name { get; set; }
-
         [Display(Name = "Especie")]
         public int SpecieId { get; set; }
-
         public int CompanyId { get; set; }
         public string CreateUserId { get; set; }
         public string UpdateUserId { get; set; }

@@ -12185,20 +12185,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\daniel.gomez\\.nuget\\packages\\": {}
+    "C:\\Users\\Danii\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj",
+      "projectUniqueName": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj",
       "projectName": "Productivo.Web",
-      "projectPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj",
-      "packagesPath": "C:\\Users\\daniel.gomez\\.nuget\\packages\\",
-      "outputPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\obj\\",
+      "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj",
+      "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
+      "outputPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
-        "C:\\Users\\daniel.gomez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "E:\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
+        "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12211,11 +12216,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
-              "projectPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj"
+            "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
+              "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj"
             },
-            "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {
-              "projectPath": "F:\\Daniel Gomez\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj"
+            "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {
+              "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj"
             }
           }
         }
@@ -12375,7 +12380,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

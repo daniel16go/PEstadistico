@@ -59,6 +59,11 @@
               "roles": []
             },
             {
+              "title": "Categoria de canales",
+              "href": "ChannelCategories/Index",
+              "roles": []
+            },
+            {
               "title": "Especies",
               "href": "Species/Index",
               "roles": []

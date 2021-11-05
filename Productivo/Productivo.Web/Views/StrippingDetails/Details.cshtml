@@ -36,6 +36,14 @@
                                 </dl>
                                 <dl class="row">
                                     <dt class="col-sm-4">
+                                        @Html.DisplayNameFor(model => model.ChannelCategory.Name)
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @Html.DisplayFor(model => model.ChannelCategory.Name)
+                                    </dd>
+                                </dl>
+                                <dl class="row">
+                                    <dt class="col-sm-4">
                                         @Html.DisplayNameFor(model => model.Weight)
                                     </dt>
                                     <dd class="col-sm-8">
@@ -61,7 +69,8 @@
                             </div>
                             <div>
                                 <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-success btn-sm">Editar</a> |
-                                <a asp-action="Index" class="h3-Pandora  btn btn-secondary btn-sm">Regresar</a>
+                                <button data-id="@Model.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog">Eliminar</button>|
+                                @Html.ActionLink("Regresar", "Details", "Strips", new { id = Model.StrippingId }, new { @class = "h3-Pandora  btn btn-secondary btn-sm", data_toggle = "tooltip", data_placement = "top", title = "Regresar" })
                             </div>
                         </div>
                     </div>
@@ -70,8 +79,19 @@
         </div>
     </div>
 </div>
-
+<partial name="_DeleteDialog" />
 @section ScriptsBlock {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        // Delete item
+        var item_to_delete;
+        $('.deleteItem').click((e) => {
+            item_to_delete = e.currentTarget.dataset.id;
+        });
+        $("#btnYesDelete").click(function () {
+            window.location.pathname = window.location.pathname.replace('/Details/', '/Delete/');
+        });
+    </script>
 }
 

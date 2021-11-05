@@ -22,10 +22,13 @@ namespace Productivo.Infrastructure.Repositories
         {
             return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId).ToListAsync();
         }
-        //GetAllByCompanyIdAndChannelId
         public async Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyIdAndChannelId(int companyId, int id)
         {
             return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId && x.ChannelId == id).ToListAsync();
+        }
+        public async Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyIdAndMainCut(int companyId, int id)
+        {
+            return await _context.CutsOfMeats.Include(x => x.Channel).Where(x => x.CompanyId == companyId && x.MainCutId == id).ToListAsync();
         }
         public override async Task<MeatCuttingEntity> GetByIdAsync(int id)
         {

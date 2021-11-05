@@ -19,14 +19,23 @@ namespace Productivo.Infrastructure.Repositories
 
         public async Task<IEnumerable<StrippingDetailEntity>> GetAllByCompanyId(int companyId)
         {
-            return await _context.StrippingDetails.Where(x => x.CompanyId == companyId).ToListAsync();
+            return await _context.StrippingDetails.Include(x => x.Channel)
+                                                  .Include(x => x.ChannelCategory)
+                                                  .Where(x => x.CompanyId == companyId).ToListAsync();
+        }
+
+        public override async Task<StrippingDetailEntity> GetByIdAsync(int id)
+        {
+            return await _context.StrippingDetails.Include(x => x.Channel)
+                                                  .Include(x => x.ChannelCategory)
+                                                  .AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
         }
 
         public async Task<IEnumerable<StrippingDetailEntity>> GetAllByStrippingId(int id)
         {
-            return await _context.StrippingDetails
-                .Include(x => x.Channel)
-                .Where(x => x.StrippingId == id).ToListAsync();
+            return await _context.StrippingDetails.Include(x => x.Channel)
+                                                  .Include(x => x.ChannelCategory)
+                                                  .Where(x => x.StrippingId == id).ToListAsync();
         }
 
         public async Task<bool> IsValidDelete(StrippingDetailEntity channel)

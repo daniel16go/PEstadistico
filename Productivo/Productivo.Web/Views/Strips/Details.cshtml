@@ -100,7 +100,13 @@
                                                             @Html.DisplayNameFor(model => model.StrippingDetails[0].Channel.Name)
                                                         </th>
                                                         <th>
+                                                            @Html.DisplayNameFor(model => model.StrippingDetails[0].ChannelCategory.Name)
+                                                        </th>
+                                                        <th>
                                                             @Html.DisplayNameFor(model => model.StrippingDetails[0].Quantity)
+                                                        </th>
+                                                        <th>
+                                                            @Html.DisplayNameFor(model => model.StrippingDetails[0].Weight)
                                                         </th>
                                                         <th>
                                                         </th>
@@ -109,19 +115,29 @@
                                                 <tbody>
                                                     @foreach (var item in Model.StrippingDetails)
                                                     {
-                                                        <tr>
-                                                            <td>
-                                                                @Html.DisplayFor(modelItem => item.Channel.Name)
-                                                            </td>
-                                                            <td>
-                                                                @Html.DisplayFor(modelItem => item.Quantity)
-                                                            </td>
-                                                            <td>
-                                                                <div class="btn-group">
-                                                                    @Html.ActionLink(" ", "Details", "ProductionOrderDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square", data_toggle = "tooltip", data_placement = "top", title = "Detalle Registro Produccion " })
-                                                                </div>
-                                                            </td>
-                                                        </tr>
+                                                    <tr>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Channel.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.ChannelCategory.Name)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Quantity)
+                                                        </td>
+                                                        <td>
+                                                            @Html.DisplayFor(modelItem => item.Weight)
+                                                        </td>
+                                                        <td>
+                                                            <div class="btn-group">
+                                                                @Html.ActionLink(" ", "Update", "StrippingDetails", new { id = item.Id }, new { @class = "btn btn-warning btn-sm fal fa-edit", data_toggle = "tooltip", data_placement = "top", title = "Modificar" })
+                                                            </div>
+                                                            <div class="btn-group">
+                                                                @Html.ActionLink(" ", "Details", "StrippingDetails", new { id = item.Id }, new { @class = "btn btn-info btn-sm fal fa-info-square", data_toggle = "tooltip", data_placement = "top", title = "Detalles" })
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
                                                     }
 
                                                 </tbody>
@@ -169,7 +185,7 @@
         $(document).ready(function () {
             // FinishOrder
             $("#btnYesConfirm").click(function () {
-                window.location.pathname = window.location.pathname.replace('/Details/', '/FinishProductionOrder/');
+                window.location.pathname = window.location.pathname.replace('/Details/', '/Finish/');
             });
 
         });

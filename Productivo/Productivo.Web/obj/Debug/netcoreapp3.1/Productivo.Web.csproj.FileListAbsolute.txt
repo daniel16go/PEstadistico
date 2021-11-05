@@ -8206,3 +8206,10 @@ F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcorea
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.pdb
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.genruntimeconfig.cache
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\StrippingDetails\Details.cshtml.g.cs
+E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\StrippingDetails\Details.cshtml.g.cs
+E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\StrippingDetails\Update.cshtml.g.cs
+E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\ChannelCategories\Index.cshtml.g.cs
+E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\ChannelCategories\Create.cshtml.g.cs
+E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\ChannelCategories\Details.cshtml.g.cs
+E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\ChannelCategories\Update.cshtml.g.cs
+E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\SubCuts.cshtml.g.cs

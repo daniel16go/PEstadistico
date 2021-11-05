@@ -9,14 +9,14 @@ namespace Productivo.Core.Entities
         [Key]
         public int Id { get; set; }
         public int StrippingId { get; set; }
-
         [Display(Name = "Canal")]
         public int ChannelId { get; set; }
+        [Display(Name = "Categoria")]
+        public int ChannelCategoryId { get; set; }
         [Display(Name = "Kg. por canal")]
         public decimal Weight { get; set; }
         [Display(Name = "Cantidad Und.")]
         public int Quantity { get; set; }
-
         [Display(Name = "Notas")]
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
@@ -29,7 +29,7 @@ namespace Productivo.Core.Entities
         public DateTime LastUpdateDate { get; set; }
         public StrippingEntity Stripping { get; set; }
         public ChannelEntity Channel { get; set; }
-
+        public ChannelCategoryEntity ChannelCategory { get; set; }
 
     }
 }

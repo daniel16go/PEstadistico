@@ -9,8 +9,8 @@ using Productivo.Core;
 namespace Productivo.Core.Migrations
 {
     [DbContext(typeof(ProductivoContext))]
-    [Migration("20211029143140_createDataBase")]
-    partial class createDataBase
+    [Migration("20211105071125_AddMainCutInMeatCut")]
+    partial class AddMainCutInMeatCut
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -22,7 +22,7 @@ namespace Productivo.Core.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -59,7 +59,7 @@ namespace Productivo.Core.Migrations
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.HasKey("Id");
 
@@ -82,7 +82,7 @@ namespace Productivo.Core.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.HasKey("Id");
 
@@ -94,17 +94,17 @@ namespace Productivo.Core.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("text");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -116,10 +116,10 @@ namespace Productivo.Core.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -131,13 +131,13 @@ namespace Productivo.Core.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<string>("Value")
                         .HasColumnType("text");
@@ -335,7 +335,7 @@ namespace Productivo.Core.Migrations
             modelBuilder.Entity("Productivo.Core.Entities.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("varchar(256)");
+                        .HasColumnType("varchar(767)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -868,6 +868,35 @@ namespace Productivo.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CategoryModels");
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.ChannelCategoryEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("UpdateUserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ChannelCategories");
                 });
 
             modelBuilder.Entity("Productivo.Core.Entities.ChannelEntity", b =>
@@ -3171,8 +3200,14 @@ namespace Productivo.Core.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime");
 
+                    b.Property<int?>("MainCutId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("text");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdateUserId")
                         .HasColumnType("text");
@@ -3180,6 +3215,8 @@ namespace Productivo.Core.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ChannelId");
+
+                    b.HasIndex("MainCutId");
 
                     b.ToTable("CutsOfMeats");
                 });
@@ -5230,6 +5267,9 @@ namespace Productivo.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int>("ChannelCategoryId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ChannelId")
                         .HasColumnType("int");
 
@@ -5245,8 +5285,8 @@ namespace Productivo.Core.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime");
 
-                    b.Property<decimal>("Quantity")
-                        .HasColumnType("decimal(18, 2)");
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.Property<string>("Remarks")
                         .HasColumnType("text");
@@ -5257,7 +5297,12 @@ namespace Productivo.Core.Migrations
                     b.Property<string>("UpdateUserId")
                         .HasColumnType("text");
 
+                    b.Property<decimal>("Weight")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ChannelCategoryId");
 
                     b.HasIndex("ChannelId");
 
@@ -5286,6 +5331,9 @@ namespace Productivo.Core.Migrations
 
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime");
+
+                    b.Property<string>("Reference")
+                        .HasColumnType("text");
 
                     b.Property<string>("Remarks")
                         .HasColumnType("text");
@@ -6836,6 +6884,10 @@ namespace Productivo.Core.Migrations
                         .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "MainCut")
+                        .WithMany()
+                        .HasForeignKey("MainCutId");
                 });
 
             modelBuilder.Entity("Productivo.Core.Entities.MetalUnitEntity", b =>
@@ -7226,6 +7278,12 @@ namespace Productivo.Core.Migrations
 
             modelBuilder.Entity("Productivo.Core.Entities.StrippingDetailEntity", b =>
                 {
+                    b.HasOne("Productivo.Core.Entities.ChannelCategoryEntity", "ChannelCategory")
+                        .WithMany("StrippingDetails")
+                        .HasForeignKey("ChannelCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Productivo.Core.Entities.ChannelEntity", "Channel")
                         .WithMany()
                         .HasForeignKey("ChannelId")

@@ -8,6 +8,7 @@ namespace Productivo.Core.Interfaces
     {
         Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyId(int companyId);
         Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyIdAndChannelId(int companyId, int channelId);
+        Task<IEnumerable<MeatCuttingEntity>> GetAllByCompanyIdAndMainCut(int companyId, int channelId);
         Task<bool> IsValidDelete(MeatCuttingEntity meatCutting);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -26,8 +27,9 @@ namespace Productivo.Web.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index(int? id, string? msg)
+        public async Task<IActionResult> Index(int? id, string? msg, int? maincut)
         {
+            List<MeatCuttingEntity> data = new List<MeatCuttingEntity>();
             if (id == null)
             {
                 return NotFound();
@@ -36,15 +38,34 @@ namespace Productivo.Web.Controllers
             {
                 ViewBag.msg = msg;
             }
-
+            if (maincut == null)
+            {
+                data = (List<MeatCuttingEntity>)await _meatCuttingRepository.GetAllByCompanyIdAndChannelId(_userManager.GetUserAsync(User).Result.CompanyId, id ?? 1);
+            }
+            else
+            {
+                data = (List<MeatCuttingEntity>)await _meatCuttingRepository.GetAllByCompanyIdAndMainCut(_userManager.GetUserAsync(User).Result.CompanyId, maincut ?? 1);
+                ViewBag.MainCut = maincut;
+            }
             ViewBag.ChannelId = id;
-            return View(await _meatCuttingRepository.GetAllByCompanyIdAndChannelId(_userManager.GetUserAsync(User).Result.CompanyId, id??0));
+            return View(data);
         }
-        
+
+        public async Task<IActionResult> SubCuts(int? id, string? msg, int ? maincut)
+        {
+            List<MeatCuttingEntity> data = new List<MeatCuttingEntity>();
+            
+            return View(data);
+        }
+
         [HttpGet]
-        public IActionResult Create(int id)
+        public IActionResult Create(int id, int?maincut)
         {
             ViewBag.ChannelId = id;
+            if(maincut != null)
+            {
+                ViewBag.MainCut = maincut;
+            }
             ViewBag.Channels = _combosHelper.ChannelsDropDownList(_userManager.GetUserAsync(User).Result.CompanyId);
             return View();
         }
@@ -55,7 +76,9 @@ namespace Productivo.Web.Controllers
             MeatCuttingEntity newMeatCutting = new MeatCuttingEntity
             {
                 Name = model.Name,
+                Quantity = model.Quantity ?? 1,
                 ChannelId = model.ChannelId,
+                MainCutId = model.MainCutId,
 
                 CompanyId = model.CompanyId,
                 CreateDate = model.CreateDate,
@@ -64,7 +87,7 @@ namespace Productivo.Web.Controllers
                 UpdateUserId = model.UpdateUserId
             };
             _meatCuttingRepository.CreateAsync(newMeatCutting);
-            return RedirectToAction(nameof(Index), new {id = model.ChannelId });
+            return RedirectToAction(nameof(Index), new {id = model.ChannelId, maincut=model.MainCut });
         }
 
         public async Task<IActionResult> Details(int id)
@@ -93,7 +116,9 @@ namespace Productivo.Web.Controllers
             {
                 Id = MeatCuttingEntity.Id,
                 Name = MeatCuttingEntity.Name,
+                Quantity = MeatCuttingEntity.Quantity,
                 ChannelId = MeatCuttingEntity.ChannelId,
+                MainCutId = MeatCuttingEntity.MainCutId,
 
                 CompanyId = MeatCuttingEntity.CompanyId,
                 CreateUserId = MeatCuttingEntity.CreateUserId,
@@ -112,13 +137,14 @@ namespace Productivo.Web.Controllers
             MeatCuttingEntity MeatCuttingEntity = await _meatCuttingRepository.GetByIdAsync(model.Id);
 
             MeatCuttingEntity.Name = model.Name;
+            MeatCuttingEntity.Quantity = model.Quantity ?? 1;
             MeatCuttingEntity.ChannelId = model.ChannelId;
 
             MeatCuttingEntity.UpdateUserId = model.UpdateUserId;
             MeatCuttingEntity.LastUpdateDate = model.LastUpdateDate;
 
             await _meatCuttingRepository.UpdateAsync(MeatCuttingEntity);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { id = model.ChannelId, maincut = model.MainCut });
         }
 
         public async Task<IActionResult> Delete(MeatCuttingEntity delCutOfMeat)

@@ -86,6 +86,20 @@ namespace Productivo.Web.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> Finish(int id)
+        {
+            StrippingEntity strippingEntity = await _strippingRepository.GetByIdAsync(id);
+            StatusEntity status = await _statusRepository.GetFinishStatusCompanyId(strippingEntity.CompanyId, "STRIPPING");
+
+            strippingEntity.EndDate = DateTime.Now;
+            strippingEntity.StatusId = status.Id;
+            strippingEntity.Status = null;
+
+            await _strippingRepository.UpdateAsync(strippingEntity);
+
+            return RedirectToAction(nameof(Index));
+        }
+
         public async Task<IActionResult> Update(int id)
         {
             StrippingEntity StrippingEntity = await _strippingRepository.GetByIdAsync(id);

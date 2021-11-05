@@ -22,6 +22,15 @@ namespace Productivo.Infrastructure.Repositories
             return await _context.Status.Where(x => x.CompanyId == companyId).ToListAsync();
         }
 
+        //GetFinishStatusCompanyId
+        public async Task<StatusEntity> GetFinishStatusCompanyId(int companyId, string module)
+        {
+            StatusEntity statusEntity = await _context.Status.Where(x => x.CompanyId == companyId && x.Module.ToUpper().Equals(module.ToUpper()) && x.Name.ToUpper().StartsWith("FIN"))
+                                        .AsNoTracking()
+                                        .FirstOrDefaultAsync();
+            return statusEntity;
+        }
+
         public async Task<bool> IsValidDelete(StatusEntity status)
         {
             StatusEntity statusEntity = await _context.Status
