@@ -9,7 +9,7 @@ namespace Productivo.Core.ViewModels.Channels
         [Display(Name = "Nombre del canal")]
         public string Name { get; set; }
 
-        [Display(Name = "Especie")]
+        [Display(Name = "Animal")]
         public int SpecieId { get; set; }
 
         public int CompanyId { get; set; }

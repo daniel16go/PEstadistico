@@ -1920,6 +1920,42 @@ namespace Productivo.Core.Migrations
                     b.ToTable("CustomsAgencies");
                 });
 
+            modelBuilder.Entity("Productivo.Core.Entities.CutsRelationEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("MainCutMeatId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubCutMeatId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateUserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MainCutMeatId");
+
+                    b.HasIndex("SubCutMeatId");
+
+                    b.ToTable("CutsRelations");
+                });
+
             modelBuilder.Entity("Productivo.Core.Entities.DiagnosticDetailEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -6054,10 +6090,16 @@ namespace Productivo.Core.Migrations
                     b.ToTable("WareHouseTypes");
                 });
 
-            modelBuilder.Entity("Productivo.Core.Entities.YieldMeatCutting", b =>
+            modelBuilder.Entity("Productivo.Core.Entities.YieldMeatCuttingEntity", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChannelCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChannelId")
                         .HasColumnType("int");
 
                     b.Property<int>("CompanyId")
@@ -6072,18 +6114,14 @@ namespace Productivo.Core.Migrations
                     b.Property<DateTime>("LastUpdateDate")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("MeatCuttingId")
-                        .HasColumnType("int");
-
                     b.Property<string>("UpdateUserId")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("Yield")
-                        .HasColumnType("decimal(18, 2)");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("MeatCuttingId");
+                    b.HasIndex("ChannelCategoryId");
+
+                    b.HasIndex("ChannelId");
 
                     b.ToTable("YieldMeatCuts");
                 });
@@ -6634,6 +6672,21 @@ namespace Productivo.Core.Migrations
                     b.HasOne("Productivo.Core.Entities.CustomerEntity", "Customers")
                         .WithMany("CustomerFiles")
                         .HasForeignKey("CustomersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.CutsRelationEntity", b =>
+                {
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "MainCutMeat")
+                        .WithMany()
+                        .HasForeignKey("MainCutMeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "SubCutMeat")
+                        .WithMany()
+                        .HasForeignKey("SubCutMeatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -7400,11 +7453,17 @@ namespace Productivo.Core.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Productivo.Core.Entities.YieldMeatCutting", b =>
+            modelBuilder.Entity("Productivo.Core.Entities.YieldMeatCuttingEntity", b =>
                 {
-                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "meatCutting")
+                    b.HasOne("Productivo.Core.Entities.ChannelCategoryEntity", "ChannelCategory")
                         .WithMany()
-                        .HasForeignKey("MeatCuttingId")
+                        .HasForeignKey("ChannelCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Productivo.Core.Entities.ChannelEntity", "Channel")
+                        .WithMany()
+                        .HasForeignKey("ChannelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

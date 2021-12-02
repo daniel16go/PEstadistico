@@ -1,11 +1,10 @@
-﻿using System.Threading.Tasks;
-using AutoMapper;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Productivo.Core.Entities;
 using Productivo.Core.Interfaces;
-using Productivo.Core.ViewModels.Areas;
 using Productivo.Core.ViewModels.Channels;
 using Productivo.Infrastructure.Helpers;
 using Rotativa.AspNetCore;
@@ -15,13 +14,15 @@ namespace Productivo.Web.Controllers
     public class ChannelsController : Controller
     {
         private readonly IChannelRepository _channelRepository;
+        private readonly IMeatCuttingRepository _meatCuttingRepository;
         private readonly ICombosHelper _combosHelper;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public ChannelsController(IChannelRepository channelRepository, ICombosHelper combosHelper, IHostingEnvironment hostingEnvironment, UserManager<ApplicationUser> userManager)
+        public ChannelsController(IChannelRepository channelRepository, IMeatCuttingRepository meatCuttingRepository, ICombosHelper combosHelper, IHostingEnvironment hostingEnvironment, UserManager<ApplicationUser> userManager)
         {
             _channelRepository = channelRepository;
+            _meatCuttingRepository = meatCuttingRepository;
             _combosHelper = combosHelper;
             _hostingEnvironment = hostingEnvironment;
             _userManager = userManager;
@@ -64,6 +65,10 @@ namespace Productivo.Web.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var ChannelEntity = await _channelRepository.GetByIdAsync(id);
+            List<MeatCuttingEntity>Cuts =(List<MeatCuttingEntity>) await _meatCuttingRepository.GetAllByCompanyIdAndChannelId(_userManager.GetUserAsync(User).Result.CompanyId, id);
+
+            ViewBag.NumOfCuts = Cuts.Count;
+
             if (ChannelEntity == null)
             {
                 return NotFound();
@@ -133,7 +138,7 @@ namespace Productivo.Web.Controllers
         }
         public async Task<IActionResult> Cuts(int Id)
         {
-            return RedirectToAction("Index", "CutsOfMeats", new { id = Id});
+            return RedirectToAction("Index", "CutsOfMeats", new { id = Id });
         }
 
         public async Task<IActionResult> ReportPDF()

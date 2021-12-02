@@ -64,7 +64,7 @@
                                     <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Modificar"><i class="fal fa-edit"></i></a>
                                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detalles"><i class="fal fa-info-square"></i></a>
                                     <button data-id="@item.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>
-                                    <a asp-action="Index" asp-route-id="@ViewBag.ChannelId" asp-route-maincut="@item.Id" class="h3-Productivo  btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cortes"><i class="fal fa-sitemap"></i></a>
+                                    <a asp-action="SubCuts" asp-route-id="@ViewBag.ChannelId" asp-route-maincut="@item.Id" class="h3-Productivo  btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cortes"><i class="fal fa-sitemap"></i></a>
                                 </td>
 
                             </tr>
@@ -80,10 +80,6 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            @if (ViewBag.MainCut != null)
-            {
-                @Html.ActionLink("Regresar", "Index", "CutsOfMeats", new {id = ViewBag.ChannelId, maincut= ViewBag.MainCut }, new { @class = "h3-Productivo  btn btn-danger btn-sm" })
-            }
             @Html.ActionLink("Salir", "Index", "Channels", new { }, new { @class = "h3-Productivo  btn btn-warning btn-sm" })
         </div>
     </div>
@@ -110,7 +106,8 @@
                         "previous": "Anterior"
                     },
                     "infoFiltered": "(Filtrado de _MAX_ registros totales)"
-                }
+                },
+                paging: false
             });
         });
         // Delete item
@@ -119,7 +116,8 @@
             item_to_delete = e.currentTarget.dataset.id;
         });
         $("#btnYesDelete").click(function () {
-            window.location.pathname = window.location.pathname.replace('/Index', '/Delete') + item_to_delete;
+            var channelId = "@ViewBag.ChannelId";
+            window.location.pathname = window.location.pathname.replace('/Index', '/Delete').replace("/"+channelId, "/"+item_to_delete) ;
         });
 
     </script>

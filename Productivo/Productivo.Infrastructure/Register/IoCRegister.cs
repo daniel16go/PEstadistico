@@ -160,6 +160,8 @@ namespace Productivo.Infrastructure.Register
             services.AddTransient<ISpecieRepository, SpecieRepository>();
             services.AddTransient<IStrippingRepository, StrippingRepository>();
             services.AddTransient<IStrippingDetailRepository, StrippingDetailRepository>();
+            services.AddTransient<ICutsRelationRepository, CutsRelationRepository>();
+            services.AddTransient<IYieldMeatCuttingRepository, YieldMeatCuttingRepository>();
 
 
             return services;

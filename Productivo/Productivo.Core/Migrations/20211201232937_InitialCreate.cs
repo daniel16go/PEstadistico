@@ -4,7 +4,7 @@ using MySql.Data.EntityFrameworkCore.Metadata;
 
 namespace Productivo.Core.Migrations
 {
-    public partial class CreateDatabaseGoogle : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -188,6 +188,24 @@ namespace Productivo.Core.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CategoryModels", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChannelCategories",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    CompanyId = table.Column<int>(nullable: false),
+                    CreateUserId = table.Column<string>(nullable: true),
+                    UpdateUserId = table.Column<string>(nullable: true),
+                    CreateDate = table.Column<DateTime>(nullable: false),
+                    LastUpdateDate = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChannelCategories", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -2411,7 +2429,9 @@ namespace Productivo.Core.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true),
+                    Quantity = table.Column<int>(nullable: false),
                     ChannelId = table.Column<int>(nullable: false),
+                    MainCutId = table.Column<int>(nullable: true),
                     CompanyId = table.Column<int>(nullable: false),
                     CreateUserId = table.Column<string>(nullable: true),
                     UpdateUserId = table.Column<string>(nullable: true),
@@ -2427,6 +2447,12 @@ namespace Productivo.Core.Migrations
                         principalTable: "Channels",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CutsOfMeats_CutsOfMeats_MainCutId",
+                        column: x => x.MainCutId,
+                        principalTable: "CutsOfMeats",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -2437,6 +2463,7 @@ namespace Productivo.Core.Migrations
                         .Annotation("MySQL:ValueGenerationStrategy", MySQLValueGenerationStrategy.IdentityColumn),
                     StrippingId = table.Column<int>(nullable: false),
                     ChannelId = table.Column<int>(nullable: false),
+                    ChannelCategoryId = table.Column<int>(nullable: false),
                     Weight = table.Column<decimal>(nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     Remarks = table.Column<string>(nullable: true),
@@ -2449,6 +2476,12 @@ namespace Productivo.Core.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_StrippingDetails", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_StrippingDetails_ChannelCategories_ChannelCategoryId",
+                        column: x => x.ChannelCategoryId,
+                        principalTable: "ChannelCategories",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_StrippingDetails_Channels_ChannelId",
                         column: x => x.ChannelId,
@@ -4641,6 +4674,11 @@ namespace Productivo.Core.Migrations
                 column: "ChannelId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_CutsOfMeats_MainCutId",
+                table: "CutsOfMeats",
+                column: "MainCutId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DiagnosticDetails_DiagnosticsId",
                 table: "DiagnosticDetails",
                 column: "DiagnosticsId");
@@ -5076,6 +5114,11 @@ namespace Productivo.Core.Migrations
                 column: "StopsCategoriesId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_StrippingDetails_ChannelCategoryId",
+                table: "StrippingDetails",
+                column: "ChannelCategoryId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_StrippingDetails_ChannelId",
                 table: "StrippingDetails",
                 column: "ChannelId");
@@ -5301,6 +5344,9 @@ namespace Productivo.Core.Migrations
 
             migrationBuilder.DropTable(
                 name: "Routes");
+
+            migrationBuilder.DropTable(
+                name: "ChannelCategories");
 
             migrationBuilder.DropTable(
                 name: "Strips");

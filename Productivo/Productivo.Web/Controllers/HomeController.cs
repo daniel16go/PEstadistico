@@ -54,19 +54,8 @@ namespace Productivo.Web.Controllers
         }
 
 
-        public async Task<IActionResult> Index()
-        {
-            int control = suscriptionControl();
-            if ( control == 0)
-            {
-                return RedirectToAction("Login", "Account", new { msg = "Actualmente no cuenta con un plan vigente, contacte al administrador" });
-            }else if( control == -1)
-            {
-                return RedirectToAction("Login", "Account", new { msg = "sesion expirada, realice el porceso de login nuevamente" });
-            }
-
-            return View();
-        }
+        public async Task<IActionResult> Index() => View();
+        
 
         public async Task<IActionResult> Calendar()
         {

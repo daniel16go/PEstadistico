@@ -1,12 +1,11 @@
-﻿@model IEnumerable<Productivo.Core.Entities.MeatCuttingEntity>
+﻿@model IEnumerable<Productivo.Core.Entities.CutsRelationEntity>
 
 @section HeadBlock {
     <link rel="stylesheet" media="screen, print" href="~/css/datagrid/datatables/datatables.bundle.css">
 }
 <h1 class="h1-Productivo">Cortes de carne</h1>
 <p>
-    <a asp-action="Create" asp-route-id="@ViewBag.ChannelId" class="h3-Productivo  btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
-    <a asp-action="ReportPDF" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reporte PDF" target="_blank"><i class="fal fa-print"></i></a>
+    <a asp-action="Create" asp-controller="CutsRelations" asp-route-id="@ViewBag.ChannelId" asp-route-maincut="@ViewBag.MainCut" class="h3-Productivo  btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Nuevo"><i class="fal fa-plus-square"></i></a>
 </p>
 
 <div class="row">
@@ -36,13 +35,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Quantity)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Channel.Name)
+                                    @Html.DisplayNameFor(model => model.SubCutMeat.Name)
                                 </th>
                                 <th></th>
                             </tr>
@@ -50,24 +43,16 @@
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Quantity)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Channel.Name)
-                                    </td>
-                                    <td>
-                                        <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Modificar"><i class="fal fa-edit"></i></a>
-                                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detalles"><i class="fal fa-info-square"></i></a>
-                                        <button data-id="@item.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>
-                                        <a asp-action="Index" asp-route-idMeatCut="@ViewBag.MeatCut" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="SubCortes"><i class="fal fa-sitemap"></i></a>
-                                    </td>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SubCutMeat.Name)
+                                </td>
+                                <td>
+                                    <button data-id="@item.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>
+                                    <a asp-action="SubCuts" asp-route-id="@ViewBag.ChannelId" asp-route-maincut="@item.SubCutMeatId" class="h3-Productivo  btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cortes"><i class="fal fa-sitemap"></i></a>
+                                </td>
 
-                                </tr>
+                            </tr>
                             }
                         </tbody>
                     </table>
@@ -80,7 +65,8 @@
 <div class="row">
     <div class="col-md-4">
         <div class="form-group">
-            @Html.ActionLink("Regresar", "Index", "Channels", new { }, new { @class = "h3-Productivo  btn btn-warning btn-sm" })
+            @Html.ActionLink("Regresar", "Index", "CutsOfMeats", new {id = ViewBag.ChannelId}, new { @class = "h3-Productivo  btn btn-danger btn-sm" })
+            @Html.ActionLink("Salir", "Index", "Channels", new { }, new { @class = "h3-Productivo  btn btn-warning btn-sm" })
         </div>
     </div>
 </div>
@@ -115,7 +101,8 @@
             item_to_delete = e.currentTarget.dataset.id;
         });
         $("#btnYesDelete").click(function () {
-            window.location.pathname = window.location.pathname.replace('/Index', '/Delete/') + item_to_delete;
+            var channelId = "@ViewBag.ChannelId";
+            window.location.pathname = window.location.pathname.replace('/SubCuts', '/DeleteSubCut').replace("/"+channelId, "/"+item_to_delete) ;
         });
 
     </script>

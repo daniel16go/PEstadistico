@@ -38,6 +38,7 @@ namespace Productivo.Infrastructure.Repositories
         public async Task<bool> IsValidDelete(MeatCuttingEntity channel)
         {
             MeatCuttingEntity meatCuttingEntity = await _context.CutsOfMeats
+                                    .Include(x => x.Channel)
                                     .AsNoTracking()
                                     .FirstOrDefaultAsync(x => x.Id == channel.Id);
 

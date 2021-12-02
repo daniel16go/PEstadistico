@@ -35,10 +35,16 @@
                                         @Html.DisplayFor(model => model.Name)
                                     </dd>
                                     <dt class="col-sm-4">
-                                        @Html.DisplayNameFor(model => model.Specie.Name)
+                                        @Html.DisplayNameFor(model => model.SpecieId)
                                     </dt>
                                     <dd class="col-sm-8">
                                         @Html.DisplayFor(model => model.Specie.Name)
+                                    </dd>
+                                    <dt class="col-sm-4">
+                                        <strong>Numero de cortes</strong>
+                                    </dt>
+                                    <dd class="col-sm-8">
+                                        @ViewBag.NumOfCuts
                                     </dd>
                                 </dl>
                             </div>

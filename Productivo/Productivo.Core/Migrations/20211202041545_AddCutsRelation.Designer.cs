@@ -9,8 +9,8 @@ using Productivo.Core;
 namespace Productivo.Core.Migrations
 {
     [DbContext(typeof(ProductivoContext))]
-    [Migration("20211105071125_AddMainCutInMeatCut")]
-    partial class AddMainCutInMeatCut
+    [Migration("20211202041545_AddCutsRelation")]
+    partial class AddCutsRelation
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1920,6 +1920,42 @@ namespace Productivo.Core.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CustomsAgencies");
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.CutsRelationEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompanyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("CreateUserId")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdateDate")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("MainCutMeatId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubCutMeatId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UpdateUserId")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MainCutMeatId");
+
+                    b.HasIndex("SubCutMeatId");
+
+                    b.ToTable("CutsRelations");
                 });
 
             modelBuilder.Entity("Productivo.Core.Entities.DiagnosticDetailEntity", b =>
@@ -6636,6 +6672,21 @@ namespace Productivo.Core.Migrations
                     b.HasOne("Productivo.Core.Entities.CustomerEntity", "Customers")
                         .WithMany("CustomerFiles")
                         .HasForeignKey("CustomersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Productivo.Core.Entities.CutsRelationEntity", b =>
+                {
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "MainCutMeat")
+                        .WithMany()
+                        .HasForeignKey("MainCutMeatId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Productivo.Core.Entities.MeatCuttingEntity", "SubCutMeat")
+                        .WithMany()
+                        .HasForeignKey("SubCutMeatId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

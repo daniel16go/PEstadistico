@@ -74,15 +74,13 @@ using Microsoft.AspNetCore.Components.Web;
             __builder.AddAttribute(4, "class", "alert alert-success mb-0 mt-1 p-1");
             __builder.AddMarkupContent(5, "\r\n            ");
             __builder.AddMarkupContent(6, "<strong>Message:</strong> Hello ");
-            __builder.AddContent(7, 
 #nullable restore
 #line 11 "E:\Proyectos\en_equipo\Productivo\Productivo.Web\Pages\HelloWorld.razor"
-                                             Name
+__builder.AddContent(7, Name);
 
 #line default
 #line hidden
 #nullable disable
-            );
             __builder.AddMarkupContent(8, "!\r\n            ");
             __builder.OpenElement(9, "button");
             __builder.AddAttribute(10, "class", "btn btn-sm btn-primary");

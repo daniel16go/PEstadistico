@@ -7300,7 +7300,6 @@ E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Product
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.RazorAssemblyInfo.cs
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\staticwebassets\Productivo.Web.StaticWebAssets.Manifest.cache
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\staticwebassets\Productivo.Web.StaticWebAssets.xml
-E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\scopedcss\bundle\Productivo.Web.styles.css
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.RazorTargetAssemblyInfo.cache
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.RazorTargetAssemblyInfo.cs
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Productivo.Web.Views.pdb
@@ -8213,3 +8212,4 @@ E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\V
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\ChannelCategories\Details.cshtml.g.cs
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\ChannelCategories\Update.cshtml.g.cs
 E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsOfMeats\SubCuts.cshtml.g.cs
+E:\Proyectos\en_equipo\Productivo\Productivo.Web\obj\Debug\netcoreapp3.1\Razor\Views\CutsRelations\Create.cshtml.g.cs

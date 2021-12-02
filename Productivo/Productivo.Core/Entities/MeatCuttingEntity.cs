@@ -28,5 +28,6 @@ namespace Productivo.Core.Entities
         public DateTime LastUpdateDate { get; set; }
         public ChannelEntity Channel { get; set; }
         public MeatCuttingEntity MainCut { get; set; }
+
     }
 }

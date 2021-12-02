@@ -58,7 +58,8 @@
                                     <a asp-action="Update" asp-route-id="@item.Id" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="bottom" title="Modificar"><i class="fal fa-edit"></i></a>
                                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detalles"><i class="fal fa-info-square"></i></a>
                                     <button data-id="@item.Id" class="btn btn-danger btn-sm deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class="fal fa-trash-alt"></i></button>
-                                    <a asp-action="Cuts" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cortes"><i class="fal fa-sitemap"></i></a>
+                                    <a asp-action="Index" asp-controller="CutsOfMeats" asp-route-id="@item.Id" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cortes"><i class="fal fa-sitemap"></i></a>
+                                    <a asp-action="Index" asp-controller="YieldMeatCuts" asp-route-id="@item.Id" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cortes"><i class="fal fa-analytics"></i></a>
                                 </td>
 
                             </tr>

@@ -1022,6 +1022,19 @@ namespace Productivo.Infrastructure.Helpers
            .ToList();
             return list;
         }
+
+        public IEnumerable<SelectListItem> CutsDropDownList(int companyId, int id)
+        {
+            var list = _context.CutsOfMeats.Where(x => x.CompanyId == companyId && x.Id != id)
+           .Select(t => new SelectListItem
+           {
+               Text = t.Name,
+               Value = t.Id.ToString()
+           })
+           .OrderBy(t => t.Text)
+           .ToList();
+            return list;
+        }
     }
 }
 

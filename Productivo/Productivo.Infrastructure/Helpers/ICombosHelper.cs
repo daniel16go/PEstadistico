@@ -159,5 +159,7 @@ namespace Productivo.Infrastructure.Helpers
 
         IEnumerable<SelectListItem> ChannelCategoriesDropDownList(int companyId);
 
+        IEnumerable<SelectListItem> CutsDropDownList(int companyId, int cut);
+
     }
 }

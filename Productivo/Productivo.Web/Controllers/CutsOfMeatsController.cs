@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,21 +14,24 @@ namespace Productivo.Web.Controllers
     public class CutsOfMeatsController : Controller
     {
         private readonly IMeatCuttingRepository _meatCuttingRepository;
+        private readonly ICutsRelationRepository _cutsRelationRepository;
         private readonly ICombosHelper _combosHelper;
         private readonly IHostingEnvironment _hostingEnvironment;
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public CutsOfMeatsController(IMeatCuttingRepository meatCuttingRepository, ICombosHelper combosHelper, IHostingEnvironment hostingEnvironment, UserManager<ApplicationUser> userManager)
+        public CutsOfMeatsController(IMeatCuttingRepository meatCuttingRepository,
+            ICutsRelationRepository cutsRelationRepository,
+            ICombosHelper combosHelper, IHostingEnvironment hostingEnvironment, UserManager<ApplicationUser> userManager)
         {
             _meatCuttingRepository = meatCuttingRepository;
+            _cutsRelationRepository = cutsRelationRepository;
             _combosHelper = combosHelper;
             _hostingEnvironment = hostingEnvironment;
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index(int? id, string? msg, int? maincut)
+        public async Task<IActionResult> Index(int? id, string? msg)
         {
-            List<MeatCuttingEntity> data = new List<MeatCuttingEntity>();
             if (id == null)
             {
                 return NotFound();
@@ -38,31 +40,23 @@ namespace Productivo.Web.Controllers
             {
                 ViewBag.msg = msg;
             }
-            if (maincut == null)
-            {
-                data = (List<MeatCuttingEntity>)await _meatCuttingRepository.GetAllByCompanyIdAndChannelId(_userManager.GetUserAsync(User).Result.CompanyId, id ?? 1);
-            }
-            else
-            {
-                data = (List<MeatCuttingEntity>)await _meatCuttingRepository.GetAllByCompanyIdAndMainCut(_userManager.GetUserAsync(User).Result.CompanyId, maincut ?? 1);
-                ViewBag.MainCut = maincut;
-            }
             ViewBag.ChannelId = id;
-            return View(data);
+            return View(await _meatCuttingRepository.GetAllByCompanyIdAndChannelId(_userManager.GetUserAsync(User).Result.CompanyId, id ?? 0));
         }
 
-        public async Task<IActionResult> SubCuts(int? id, string? msg, int ? maincut)
+        public async Task<IActionResult> SubCuts(int id, int maincut)
         {
-            List<MeatCuttingEntity> data = new List<MeatCuttingEntity>();
-            
-            return View(data);
+            var mainCuts = await _cutsRelationRepository.GetAllByMainCutId(maincut);
+            ViewBag.ChannelId = id;
+            ViewBag.MainCut = maincut;
+            return View(mainCuts);
         }
 
         [HttpGet]
-        public IActionResult Create(int id, int?maincut)
+        public IActionResult Create(int id, int? maincut)
         {
             ViewBag.ChannelId = id;
-            if(maincut != null)
+            if (maincut != null)
             {
                 ViewBag.MainCut = maincut;
             }
@@ -87,7 +81,7 @@ namespace Productivo.Web.Controllers
                 UpdateUserId = model.UpdateUserId
             };
             _meatCuttingRepository.CreateAsync(newMeatCutting);
-            return RedirectToAction(nameof(Index), new {id = model.ChannelId, maincut=model.MainCut });
+            return RedirectToAction(nameof(Index), new { id = model.ChannelId, maincut = model.MainCut });
         }
 
         public async Task<IActionResult> Details(int id)
@@ -157,9 +151,25 @@ namespace Productivo.Web.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(Index), new {id = idMeatCut, msg = "no se pudo eliminar el corte ya que este tiene registros asociados." });
+                return RedirectToAction(nameof(Index), new { id = idMeatCut, msg = "no se pudo eliminar el corte ya que este tiene registros asociados." });
             }
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { id = idMeatCut });
+        }
+
+        public async Task<IActionResult> DeleteSubCut(CutsRelationEntity delCutRelation)
+        {
+            CutsRelationEntity Cut = await _cutsRelationRepository.GetByIdAsync(delCutRelation.Id);
+            var channelId = Cut.MainCutMeat.ChannelId;
+            var mainCut = Cut.MainCutMeatId;
+            if (await _cutsRelationRepository.IsValidDelete(delCutRelation))
+            {
+                await _cutsRelationRepository.DeleteAsync(delCutRelation);
+            }
+            else
+            {
+                return RedirectToAction("SubCuts", "CutsOfMeats", new { id = channelId, maincut = mainCut, msg = "no se pudo eliminar el corte ya que este tiene registros asociados." });
+            }
+            return RedirectToAction("SubCuts", "CutsOfMeats", new { id = channelId, maincut = mainCut});
         }
 
         public async Task<IActionResult> ReportPDF()

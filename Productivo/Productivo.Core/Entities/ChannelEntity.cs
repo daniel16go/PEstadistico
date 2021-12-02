@@ -11,7 +11,7 @@ namespace Productivo.Core.Entities
         public int Id { get; set; }
         [Display(Name = "Nombre del canal")]
         public string Name { get; set; }
-        [Display(Name = "Especie")]
+        [Display(Name = "Animal")]
         public int SpecieId { get; set; }
         public int CompanyId { get; set; }
         public string CreateUserId { get; set; }
