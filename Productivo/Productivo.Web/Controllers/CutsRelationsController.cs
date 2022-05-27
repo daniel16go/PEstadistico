@@ -35,8 +35,9 @@ namespace Productivo.Web.Controllers
         {
             ViewBag.ChannelId = id;
             ViewBag.MainCutId = maincut;
+            var mainCutEntity = _meatCuttingRepository.GetByIdAsync(maincut).Result;
 
-            ViewBag.Cuts = _combosHelper.CutsDropDownList(_userManager.GetUserAsync(User).Result.CompanyId, maincut);
+            ViewBag.Cuts = _combosHelper.CutsByChannelDropDownList(_userManager.GetUserAsync(User).Result.CompanyId, maincut, mainCutEntity.ChannelId);
             return View();
         }
 

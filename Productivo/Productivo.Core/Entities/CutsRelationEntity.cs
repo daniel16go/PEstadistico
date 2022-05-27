@@ -7,10 +7,12 @@ namespace Productivo.Core.Entities
     public class CutsRelationEntity : IEntity
     {
         public int Id { get; set; }
+
         [Display(Name = "Corte principal")]
         public int MainCutMeatId { get; set; }
         [Display(Name = "Corte")]
         public int SubCutMeatId { get; set; }
+
         public int CompanyId { get; set; }
         public string CreateUserId { get; set; }
         public string UpdateUserId { get; set; }

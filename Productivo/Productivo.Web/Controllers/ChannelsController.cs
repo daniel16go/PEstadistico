@@ -65,7 +65,7 @@ namespace Productivo.Web.Controllers
         public async Task<IActionResult> Details(int id)
         {
             var ChannelEntity = await _channelRepository.GetByIdAsync(id);
-            List<MeatCuttingEntity>Cuts =(List<MeatCuttingEntity>) await _meatCuttingRepository.GetAllByCompanyIdAndChannelId(_userManager.GetUserAsync(User).Result.CompanyId, id);
+            List<MeatCuttingEntity> Cuts = (List<MeatCuttingEntity>)await _meatCuttingRepository.GetAllByCompanyIdAndChannelId(_userManager.GetUserAsync(User).Result.CompanyId, id);
 
             ViewBag.NumOfCuts = Cuts.Count;
 
@@ -75,7 +75,6 @@ namespace Productivo.Web.Controllers
             }
             return View(ChannelEntity);
         }
-
 
         public async Task<IActionResult> Update(int id)
         {
@@ -105,7 +104,6 @@ namespace Productivo.Web.Controllers
             return View(updateChannel);
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Update(ChannelEditViewModel model)
         {
@@ -123,7 +121,6 @@ namespace Productivo.Web.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
         public async Task<IActionResult> Delete(ChannelEntity delChannel)
         {
             if (await _channelRepository.IsValidDelete(delChannel))
@@ -135,10 +132,6 @@ namespace Productivo.Web.Controllers
                 return RedirectToAction(nameof(Index), new { msg = "no se pudo eliminar la canal ya que este tiene registros asociados." });
             }
             return RedirectToAction(nameof(Index));
-        }
-        public async Task<IActionResult> Cuts(int Id)
-        {
-            return RedirectToAction("Index", "CutsOfMeats", new { id = Id });
         }
 
         public async Task<IActionResult> ReportPDF()
@@ -159,5 +152,12 @@ namespace Productivo.Web.Controllers
             };
         }
 
+
+        public async Task<IActionResult> Cuts(int Id)
+        {
+            return RedirectToAction("Index", "CutsOfMeats", new { id = Id });
+        }
+
+       
     }
 }

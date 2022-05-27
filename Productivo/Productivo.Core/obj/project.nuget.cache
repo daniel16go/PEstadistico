@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lefn1YLEKleE70oHh51Xxv0u/VShb4AF+o1M6TtR+CavZgAMo/3tWPLv7nwBXnphw1tpEWj2BgKvM+St9vb7Tg==",
+  "dgSpecHash": "2TU/zl/ARTd09ZYN4lMZS9gg0uY3gzcNca4qplL5iqmAmAm8mRm/ZZiVO9ih40/upM129/QPpp91M4lIviZtuQ==",
   "success": true,
-  "projectFilePath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
+  "projectFilePath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danii\\.nuget\\packages\\bouncycastle.netcore\\1.8.3\\bouncycastle.netcore.1.8.3.nupkg.sha512",
     "C:\\Users\\Danii\\.nuget\\packages\\google.protobuf\\3.6.1\\google.protobuf.3.6.1.nupkg.sha512",

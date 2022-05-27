@@ -120,3 +120,29 @@ F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcore
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.AssemblyReference.cache
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Proyectos\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.deps.json
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.json
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.runtimeconfig.dev.json
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.AssemblyReference.cache
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfoInputs.cache
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.AssemblyInfo.cs
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.csproj.CoreCompileInputs.cache
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Core\obj\Debug\netcoreapp3.1\Productivo.Core.genruntimeconfig.cache

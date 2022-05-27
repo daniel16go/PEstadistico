@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj": {}
+    "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj": {}
   },
   "projects": {
-    "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
+    "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
+        "projectUniqueName": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
         "projectName": "Productivo.Core",
-        "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
+        "projectPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj",
         "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\obj\\",
+        "outputPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "E:\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
+          "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\NuGet.Config",
           "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -120,21 +120,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {
+    "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
+        "projectUniqueName": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
         "projectName": "Productivo.Infrastructure",
-        "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
+        "projectPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\obj\\",
+        "outputPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "E:\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
+          "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\NuGet.Config",
           "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -148,8 +148,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
-                "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj"
+              "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
+                "projectPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj"
               }
             }
           }
@@ -240,21 +240,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj": {
+    "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj",
+        "projectUniqueName": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj",
         "projectName": "Productivo.Web",
-        "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj",
+        "projectPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Web\\Productivo.Web.csproj",
         "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Web\\obj\\",
+        "outputPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "E:\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
+          "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\NuGet.Config",
           "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -268,11 +268,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
-                "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj"
+              "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj": {
+                "projectPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Core\\Productivo.Core.csproj"
               },
-              "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {
-                "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj"
+              "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj": {
+                "projectPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj"
               }
             }
           }
@@ -432,7 +432,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

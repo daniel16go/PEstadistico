@@ -1035,6 +1035,21 @@ namespace Productivo.Infrastructure.Helpers
            .ToList();
             return list;
         }
+
+        public IEnumerable<SelectListItem> CutsByChannelDropDownList(int companyId, int id, int channelId)
+        {
+            var list = _context.CutsOfMeats.Where(x => x.CompanyId == companyId && x.Id != id && x.ChannelId == channelId)
+           .Select(t => new SelectListItem
+           {
+               Text = t.Name,
+               Value = t.Id.ToString()
+           })
+           .OrderBy(t => t.Text)
+           .ToList();
+            return list;
+        }
+
+
     }
 }
 

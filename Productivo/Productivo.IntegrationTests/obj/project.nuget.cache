@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jRVZxqedGILy83jAZrUWTCPYujSjhg1tuhax+OIQ8uD4yXl5FxpeeccEaiz1KzyEGMP026guMyD4w3GwiXEDTQ==",
+  "dgSpecHash": "nmGHE3UGMivqDRykF/yO8LEP/oVjSOxx4tg3Uy2CclhbrFjBiPi/vaQmoXiZAnEGO57trPN6v7vtj+24xHaYYw==",
   "success": true,
-  "projectFilePath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.IntegrationTests\\Productivo.IntegrationTests.csproj",
+  "projectFilePath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.IntegrationTests\\Productivo.IntegrationTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danii\\.nuget\\packages\\coverlet.collector\\1.2.0\\coverlet.collector.1.2.0.nupkg.sha512",
     "C:\\Users\\Danii\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",

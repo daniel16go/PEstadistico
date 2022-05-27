@@ -81,6 +81,7 @@
 
   <ItemGroup>
     <Folder Include="Exceptions\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>

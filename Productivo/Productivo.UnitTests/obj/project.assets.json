@@ -3510,14 +3510,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj",
+      "projectUniqueName": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj",
       "projectName": "Productivo.UnitTests",
-      "projectPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj",
+      "projectPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.UnitTests\\Productivo.UnitTests.csproj",
       "packagesPath": "C:\\Users\\Danii\\.nuget\\packages\\",
-      "outputPath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.UnitTests\\obj\\",
+      "outputPath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "E:\\Proyectos\\en_equipo\\Productivo\\NuGet.Config",
+        "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\NuGet.Config",
         "C:\\Users\\Danii\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3575,7 +3575,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

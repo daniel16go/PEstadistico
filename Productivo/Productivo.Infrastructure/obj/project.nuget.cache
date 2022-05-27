@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J2OQuLKY31wRMV76sHEZdTMj924Rwx38lECzDUcBiKV8aXtJDS3Rx+ESZDjHVjBZO7cVZ83HNU28L1QaKZV6oQ==",
+  "dgSpecHash": "3MtpI1n182rcWIaQzsOfyvu+p0jyWxOYJIM2Ap7HEq8OjapCXpVWj0lwM/k/Q5BMs73pr/9T2M1iqy5leK+2Mg==",
   "success": true,
-  "projectFilePath": "E:\\Proyectos\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
+  "projectFilePath": "D:\\Proyectos\\carnes-enequipo\\en_equipo\\Productivo\\Productivo.Infrastructure\\Productivo.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Danii\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\Danii\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",

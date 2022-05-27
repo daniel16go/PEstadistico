@@ -150,3 +150,35 @@ F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Deb
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
 F:\Daniel Gomez\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache
 E:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.deps.json
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.json
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.dev.json
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.AssemblyReference.cache
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfoInputs.cache
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfo.cs
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
+D:\Proyectos\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.deps.json
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.json
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.runtimeconfig.dev.json
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Core.dll
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\bin\Debug\netcoreapp3.1\Productivo.Core.pdb
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.AssemblyReference.cache
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfoInputs.cache
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.AssemblyInfo.cs
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.csproj.CopyComplete
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.dll
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.pdb
+D:\Proyectos\carnes-enequipo\en_equipo\Productivo\Productivo.Infrastructure\obj\Debug\netcoreapp3.1\Productivo.Infrastructure.genruntimeconfig.cache

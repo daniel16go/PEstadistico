@@ -131,9 +131,6 @@ namespace Productivo.Core
         public DbSet<MeatCuttingEntity> CutsOfMeats { get; set; }
         public DbSet<StrippingEntity> Strips  { get; set; }
         public DbSet<StrippingDetailEntity> StrippingDetails { get; set; }
-        public DbSet<YieldMeatCuttingEntity> YieldMeatCuts { get; set; }
-        public DbSet<QuantitySaleTop> QuantitySaleTops { get; set; }
-        public DbSet<PriceCutEntity> PriceCuts { get; set; }
         public DbSet<SubCutEntity> SubCuts { get; set; }
         public DbSet<CutsRelationEntity> CutsRelations { get; set; }
 
